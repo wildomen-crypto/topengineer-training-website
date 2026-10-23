@@ -1,0 +1,1789 @@
+{
+  "source": "https://topengineer.ru/education-centr/ts/single",
+  "courses": [
+    {
+      "level": 1,
+      "title": "Tekla Structures basic course",
+      "topics": [
+        {
+          "code": "1.1",
+          "ru": "Введение, обзор возможностей Tekla Structures.",
+          "en": "Introduction to Tekla Structures and an overview of its capabilities"
+        },
+        {
+          "code": "1.2",
+          "ru": "Запуск программы Tekla Structures.",
+          "en": "Starting Tekla Structures"
+        },
+        {
+          "code": "1.3",
+          "ru": "Выбор сред и шаблонов проектирования.",
+          "en": "Selecting environments and model templates"
+        },
+        {
+          "code": "1.4",
+          "ru": "Создание новой модели",
+          "en": "Creating a new model"
+        },
+        {
+          "code": "1.5",
+          "ru": "Структура новой модели",
+          "en": "Understanding the structure of a new model"
+        },
+        {
+          "code": "1.6",
+          "ru": "Понятие рабочей области вида",
+          "en": "Understanding the view work area"
+        },
+        {
+          "code": "1.7",
+          "ru": "Способы вращения модели",
+          "en": "Rotating and navigating the model"
+        },
+        {
+          "code": "1.8",
+          "ru": "Переход в плоскость вида",
+          "en": "Switching to the view plane"
+        },
+        {
+          "code": "1.9",
+          "ru": "Работа с геодезической сеткой",
+          "en": "Working with model grids"
+        },
+        {
+          "code": "1.10",
+          "ru": "Инструмент создания колонн",
+          "en": "Creating columns"
+        },
+        {
+          "code": "1.11",
+          "ru": "Инструмент создания балки",
+          "en": "Creating beams"
+        },
+        {
+          "code": "1.12",
+          "ru": "Инструмент создания пластины по контуру",
+          "en": "Creating contour plates"
+        },
+        {
+          "code": "1.13",
+          "ru": "Инструмент «Составная балка»",
+          "en": "Creating twin profiles"
+        },
+        {
+          "code": "1.14",
+          "ru": "Инструмент «Полибалка»",
+          "en": "Creating polybeams"
+        },
+        {
+          "code": "1.15",
+          "ru": "Режимы отображения Ctrl+1,2,3,4,5",
+          "en": "Part representation modes: Ctrl+1–5"
+        },
+        {
+          "code": "1.16",
+          "ru": "Свойства точек — фаски",
+          "en": "Corner points and chamfer properties"
+        },
+        {
+          "code": "1.17",
+          "ru": "Выделение точек в объекте",
+          "en": "Selecting object handles"
+        },
+        {
+          "code": "1.18",
+          "ru": "Вспомогательная геометрия",
+          "en": "Using construction geometry"
+        },
+        {
+          "code": "1.19",
+          "ru": "Привязки",
+          "en": "Snapping to points and objects"
+        },
+        {
+          "code": "1.20",
+          "ru": "Инструменты выбора по типу объекта",
+          "en": "Using selection switches for different object types"
+        },
+        {
+          "code": "1.21",
+          "ru": "Инструмент «Подгонка»",
+          "en": "Fitting part ends"
+        },
+        {
+          "code": "1.22",
+          "ru": "Инструмент «Обрезка»",
+          "en": "Cutting parts with a line"
+        },
+        {
+          "code": "1.23",
+          "ru": "Обрезка детали многоугольником",
+          "en": "Cutting parts with a polygon"
+        },
+        {
+          "code": "1.24",
+          "ru": "Обрезка детали другой деталью",
+          "en": "Cutting a part with another part"
+        },
+        {
+          "code": "1.25",
+          "ru": "Болтовые соединения",
+          "en": "Creating bolted connections"
+        },
+        {
+          "code": "1.26",
+          "ru": "Понятие сборки",
+          "en": "Understanding assemblies"
+        },
+        {
+          "code": "1.27",
+          "ru": "Инструмент «Сварка»",
+          "en": "Creating welds"
+        },
+        {
+          "code": "1.28",
+          "ru": "Создание основных видов",
+          "en": "Creating basic model views"
+        },
+        {
+          "code": "1.29",
+          "ru": "Создание видов по линиям сетки",
+          "en": "Creating views along grid lines"
+        },
+        {
+          "code": "1.30",
+          "ru": "Плоскость вида",
+          "en": "Understanding the view plane"
+        },
+        {
+          "code": "1.31",
+          "ru": "Рабочая плоскость",
+          "en": "Setting and using the work plane"
+        },
+        {
+          "code": "1.32",
+          "ru": "Понятие компонента",
+          "en": "Understanding components"
+        },
+        {
+          "code": "1.33",
+          "ru": "Создание собственного простого компонента",
+          "en": "Creating a simple custom component"
+        },
+        {
+          "code": "1.34",
+          "ru": "Редактор компонентов",
+          "en": "Introduction to the Custom Component Editor"
+        },
+        {
+          "code": "1.35",
+          "ru": "Создание привязок в компоненте",
+          "en": "Binding component objects to planes"
+        },
+        {
+          "code": "1.36",
+          "ru": "Создание формул в редакторе компонентов",
+          "en": "Creating formulas in the Custom Component Editor"
+        },
+        {
+          "code": "1.37",
+          "ru": "Создание собственных переменных",
+          "en": "Defining custom variables"
+        },
+        {
+          "code": "1.38",
+          "ru": "Изменение свойств через дерево компонента",
+          "en": "Modifying object properties in the component browser"
+        },
+        {
+          "code": "1.39",
+          "ru": "Создание сложного параметрического компонента",
+          "en": "Introduction to more complex parametric custom components"
+        },
+        {
+          "code": "1.40",
+          "ru": "Практика создания разнообразных компонентов",
+          "en": "Introductory practice with different custom components"
+        },
+        {
+          "code": "1.41",
+          "ru": "Каталоги компонентов",
+          "en": "Working with component catalogues"
+        },
+        {
+          "code": "1.42",
+          "ru": "Перенос компонентов в другие проекты",
+          "en": "Transferring components between projects"
+        },
+        {
+          "code": "1.43",
+          "ru": "Практика создания типовых компонентов (обзор)",
+          "en": "Overview of creating common custom components"
+        },
+        {
+          "code": "1.44",
+          "ru": "ИИ работе с Tekla Structures (обзор)",
+          "en": "Overview of using AI with Tekla Structures"
+        },
+        {
+          "code": "2.1",
+          "ru": "Подготовка модели к созданию чертежей",
+          "en": "Preparing the model for drawing creation"
+        },
+        {
+          "code": "2.2",
+          "ru": "Основные типы чертежей",
+          "en": "Understanding the main drawing types"
+        },
+        {
+          "code": "2.3",
+          "ru": "Работа с базой чертежей",
+          "en": "Managing drawings in Document Manager / Drawing List"
+        },
+        {
+          "code": "2.4",
+          "ru": "Предварительная настройка генерации чертежей общего вида",
+          "en": "Configuring settings before creating general arrangement drawings"
+        },
+        {
+          "code": "2.5",
+          "ru": "Создание чертежей общего вида",
+          "en": "Creating general arrangement drawings"
+        },
+        {
+          "code": "2.6",
+          "ru": "Открытие созданного чертежа",
+          "en": "Opening an existing drawing"
+        },
+        {
+          "code": "2.7",
+          "ru": "Сохранение чертежей и сохранение модели",
+          "en": "Saving drawings and saving the model"
+        },
+        {
+          "code": "2.8",
+          "ru": "Основные свойства чертежа",
+          "en": "Understanding drawing properties"
+        },
+        {
+          "code": "2.9",
+          "ru": "Основные свойства вида",
+          "en": "Understanding drawing view properties"
+        },
+        {
+          "code": "2.10",
+          "ru": "Основные свойства выбранного объекта",
+          "en": "Modifying the properties of a selected drawing object"
+        },
+        {
+          "code": "2.11",
+          "ru": "Свойства меток на чертеже",
+          "en": "Setting mark properties in drawings"
+        },
+        {
+          "code": "2.12",
+          "ru": "Свойства отображения на чертеже",
+          "en": "Controlling object representation in drawings"
+        },
+        {
+          "code": "2.13",
+          "ru": "Усечение объектов на чертеже",
+          "en": "Shortening parts in drawing views"
+        },
+        {
+          "code": "2.14",
+          "ru": "Свойства имени вида на чертеже",
+          "en": "Setting drawing view label properties"
+        },
+        {
+          "code": "2.15",
+          "ru": "Инструмент создания размеров",
+          "en": "Creating dimensions"
+        },
+        {
+          "code": "2.16",
+          "ru": "Изменение размеров: добавление и удаление точек",
+          "en": "Modifying dimensions by adding and removing dimension points"
+        },
+        {
+          "code": "2.17",
+          "ru": "Создание основных видов",
+          "en": "Creating basic drawing views"
+        },
+        {
+          "code": "2.18",
+          "ru": "Создание разрезов на чертеже",
+          "en": "Creating section views in drawings"
+        },
+        {
+          "code": "2.19",
+          "ru": "Предварительная настройка генерации чертежей отдельных деталей",
+          "en": "Configuring settings before creating single-part drawings"
+        },
+        {
+          "code": "2.20",
+          "ru": "Создание чертежей отдельных деталей",
+          "en": "Creating single-part drawings"
+        },
+        {
+          "code": "2.21",
+          "ru": "Изучение правил нанесения размеров на чертежах деталей",
+          "en": "Applying dimensioning rules to single-part drawings"
+        },
+        {
+          "code": "2.22",
+          "ru": "Предварительная настройка генерации сборочных чертежей",
+          "en": "Configuring settings before creating assembly drawings"
+        },
+        {
+          "code": "2.23",
+          "ru": "Создание сборочных чертежей",
+          "en": "Creating assembly drawings"
+        },
+        {
+          "code": "2.24",
+          "ru": "Изучение правил нанесения размеров на сборочных чертежах",
+          "en": "Applying dimensioning rules to assembly drawings"
+        },
+        {
+          "code": "2.25",
+          "ru": "Предварительная настройка генерации чертежей отлитых элементов (бетон)",
+          "en": "Configuring settings before creating cast unit drawings"
+        },
+        {
+          "code": "2.26",
+          "ru": "Создание чертежей отлитых элементов",
+          "en": "Creating cast unit drawings"
+        },
+        {
+          "code": "2.27",
+          "ru": "Изучение правил нанесения размеров на чертежах отлитых элементов",
+          "en": "Applying dimensioning rules to cast unit drawings"
+        },
+        {
+          "code": "2.28",
+          "ru": "Предварительная настройка генерации мультичертежей",
+          "en": "Configuring settings before creating multidrawings"
+        },
+        {
+          "code": "2.29",
+          "ru": "Создание мультичертежей",
+          "en": "Creating multidrawings"
+        },
+        {
+          "code": "2.30",
+          "ru": "Клонирование чертежей",
+          "en": "Cloning drawings"
+        },
+        {
+          "code": "2.31",
+          "ru": "Клонирование чертежей из другой модели",
+          "en": "Cloning drawings from another model"
+        },
+        {
+          "code": "2.32",
+          "ru": "Изучение редактора чертежей",
+          "en": "Working in the Drawing Editor"
+        },
+        {
+          "code": "2.33",
+          "ru": "Печать чертежей; Печать в PDF",
+          "en": "Printing drawings and producing PDF files"
+        },
+        {
+          "code": "2.34",
+          "ru": "Экспорт чертежей в DWG",
+          "en": "Exporting drawings to DWG"
+        },
+        {
+          "code": "2.35",
+          "ru": "Редактор профилей (обзор)",
+          "en": "Overview of editing the profile catalogue"
+        },
+        {
+          "code": "2.36",
+          "ru": "Редактор материалов (обзор)",
+          "en": "Overview of editing the material catalogue"
+        },
+        {
+          "code": "2.37",
+          "ru": "Редактор отчётов (обзор)",
+          "en": "Overview of Template Editor for reports"
+        },
+        {
+          "code": "2.38",
+          "ru": "Настройка многопользовательской модели",
+          "en": "Setting up a multi-user model"
+        },
+        {
+          "code": "2.39",
+          "ru": "Работа в многопользовательской модели",
+          "en": "Working in multi-user mode"
+        },
+        {
+          "code": "2.40",
+          "ru": "Расширенные настройки проекта",
+          "en": "Configuring advanced project options"
+        },
+        {
+          "code": "2.41",
+          "ru": "Создание отчётов",
+          "en": "Creating reports from the model"
+        },
+        {
+          "code": "2.42",
+          "ru": "Проверка модели на конфликты",
+          "en": "Checking the model for clashes"
+        },
+        {
+          "code": "2.43",
+          "ru": "Проверка и исправление нумерации",
+          "en": "Checking and correcting numbering"
+        },
+        {
+          "code": "2.44",
+          "ru": "Использование ИИ для настройки чертежей (обзор)",
+          "en": "Overview of using AI to configure drawing settings"
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "title": "Custom components in Tekla Structures",
+      "topics": [
+        {
+          "code": "1.1",
+          "ru": "Обзор возможностей и предназначения стандартных компонентов",
+          "en": "Understanding the purpose and capabilities of system components"
+        },
+        {
+          "code": "1.2",
+          "ru": "Обзор возможностей пользовательских компонентов",
+          "en": "Exploring the capabilities of custom components"
+        },
+        {
+          "code": "1.3",
+          "ru": "Общая схема работы с компонентами в Tekla Structures",
+          "en": "Understanding the component workflow in Tekla Structures"
+        },
+        {
+          "code": "1.4",
+          "ru": "Статические и динамические пользовательские компоненты",
+          "en": "Non-parametric and parametric custom components"
+        },
+        {
+          "code": "1.5",
+          "ru": "Порядок создания пользовательского компонента",
+          "en": "Following the custom component creation workflow"
+        },
+        {
+          "code": "1.6",
+          "ru": "Классификация пользовательских компонентов по методу вставки",
+          "en": "Understanding custom component types and their insertion methods"
+        },
+        {
+          "code": "1.7",
+          "ru": "Создание статического пользовательского компонента опоры колонн",
+          "en": "Creating a non-parametric column base component"
+        },
+        {
+          "code": "1.8",
+          "ru": "Создание статического компонента торцевая пластина балка к полке колонны",
+          "en": "Creating a non-parametric beam-to-column-flange end plate connection"
+        },
+        {
+          "code": "1.9",
+          "ru": "Создание статического компонента торцевая пластина балка к стенке колонны",
+          "en": "Creating a non-parametric beam-to-column-web end plate connection"
+        },
+        {
+          "code": "1.10",
+          "ru": "Создание статического компонента торцевой пластины балка к балке",
+          "en": "Creating a non-parametric beam-to-beam end plate connection"
+        },
+        {
+          "code": "1.11",
+          "ru": "Создание статического компонента вертикальной пластины балка с балкой",
+          "en": "Creating a non-parametric beam-to-beam fin plate connection"
+        },
+        {
+          "code": "1.12",
+          "ru": "Создание параметрического узла балка к полке колонны",
+          "en": "Creating a parametric beam-to-column-flange connection"
+        },
+        {
+          "code": "1.13",
+          "ru": "Основы параметризации параметрических узлов привязка точек к плоскости",
+          "en": "Understanding parametric connections: binding points to planes"
+        },
+        {
+          "code": "1.14",
+          "ru": "Разбор всех полей в списке переменных",
+          "en": "Understanding every field in the Variables dialog"
+        },
+        {
+          "code": "1.15",
+          "ru": "Привязка точке к верху балки и настройка параметризации",
+          "en": "Binding a point to the top of a beam and defining its behaviour"
+        },
+        {
+          "code": "1.16",
+          "ru": "Привязка точке к низу балки и настройка параметризации",
+          "en": "Binding a point to the bottom of a beam and defining its behaviour"
+        },
+        {
+          "code": "1.17",
+          "ru": "Привязка точке к правой и левой стороне балки",
+          "en": "Binding points to the left and right sides of a beam"
+        },
+        {
+          "code": "1.18",
+          "ru": "Создание и параметризация ребер жесткости в колонне",
+          "en": "Creating and parameterising column stiffeners"
+        },
+        {
+          "code": "1.19",
+          "ru": "Добавление собственных переменных – создание да нет (Булевое)",
+          "en": "Adding a Yes/No variable to control whether an object is created"
+        },
+        {
+          "code": "1.20",
+          "ru": "Добавление собственных переменных – класс (цвет)",
+          "en": "Adding a variable for object class and colour"
+        },
+        {
+          "code": "1.21",
+          "ru": "Добавление собственных переменных – материал",
+          "en": "Adding a variable for material grade"
+        },
+        {
+          "code": "1.22",
+          "ru": "Добавление собственных переменных – тип фаски",
+          "en": "Adding a variable for chamfer type"
+        },
+        {
+          "code": "1.23",
+          "ru": "Добавление собственных переменных – размер фаски",
+          "en": "Adding a variable for chamfer size"
+        },
+        {
+          "code": "1.24",
+          "ru": "Добавление собственных переменных – профиль",
+          "en": "Adding a variable for profile selection"
+        },
+        {
+          "code": "1.25",
+          "ru": "Добавление собственных переменных – стандарт болта",
+          "en": "Adding a variable for bolt standard"
+        },
+        {
+          "code": "1.26",
+          "ru": "Добавление собственных переменных – диаметр болта",
+          "en": "Adding a variable for bolt diameter"
+        },
+        {
+          "code": "1.27",
+          "ru": "Совместная работа стандарта и диаметра болта",
+          "en": "Coordinating bolt standard and bolt diameter selection"
+        },
+        {
+          "code": "1.28",
+          "ru": "Добавление собственных переменных – тип сварного шва",
+          "en": "Adding a variable for weld type"
+        },
+        {
+          "code": "1.29",
+          "ru": "Добавление собственных переменных - размер шва",
+          "en": "Adding a variable for weld size"
+        },
+        {
+          "code": "1.30",
+          "ru": "Добавление собственных переменных – количества болтов через списки расстояний",
+          "en": "Controlling bolt quantities through spacing lists"
+        },
+        {
+          "code": "1.31",
+          "ru": "Как запрашивать текущие размеры профилей балок и колонн",
+          "en": "Retrieving the current dimensions of beam and column profiles"
+        },
+        {
+          "code": "1.32",
+          "ru": "Изучение операторов mid()",
+          "en": "Using the mid() string function"
+        },
+        {
+          "code": "1.33",
+          "ru": "Изучение операторов find()",
+          "en": "Using the find() string function"
+        },
+        {
+          "code": "1.34",
+          "ru": "Изучение операторов length()",
+          "en": "Using the length() string function"
+        },
+        {
+          "code": "1.35",
+          "ru": "Изучение операторов round()",
+          "en": "Using the round() function"
+        },
+        {
+          "code": "1.36",
+          "ru": "Изучение операторов ceil()",
+          "en": "Using the ceil() function"
+        },
+        {
+          "code": "1.37",
+          "ru": "Изучение операторов int()",
+          "en": "Using the int() conversion function"
+        },
+        {
+          "code": "1.38",
+          "ru": "Сохранение импорт и экспорт компонентов в новые модели",
+          "en": "Saving, importing and exporting components between models"
+        },
+        {
+          "code": "1.39",
+          "ru": "Автоматизация отступов для первого болта по вертикали",
+          "en": "Automatically setting the vertical offset to the first bolt"
+        },
+        {
+          "code": "1.40",
+          "ru": "Автоматизация для расстояний между болтами по горизонтали",
+          "en": "Automatically setting horizontal bolt spacing"
+        },
+        {
+          "code": "1.41",
+          "ru": "Автоматическое распределения болтов в зависимости от профиля балки",
+          "en": "Adapting bolt layouts to the beam profile"
+        },
+        {
+          "code": "1.42",
+          "ru": "Тестирование на разных размерах профилей исправление багов распределения болтов",
+          "en": "Testing different profile sizes and correcting bolt layout errors"
+        },
+        {
+          "code": "1.43",
+          "ru": "Проверка пересчёта зависимых переменных при изменении профиля балки",
+          "en": "Checking that dependent variables update when the beam profile changes"
+        },
+        {
+          "code": "1.44",
+          "ru": "Отладка сохранения параметров и повторного использования пользовательского компонента",
+          "en": "Debugging parameter saving and custom component reuse"
+        },
+        {
+          "code": "2.1",
+          "ru": "Создание статического компонента с возможностью параметризации",
+          "en": "Creating a non-parametric component ready for parameterisation"
+        },
+        {
+          "code": "2.2",
+          "ru": "Разбор задания",
+          "en": "Reviewing the practical assignment"
+        },
+        {
+          "code": "2.3",
+          "ru": "Подготовка тестового поля для разных комбинаций балок и колонн",
+          "en": "Building a test model with different beam and column combinations"
+        },
+        {
+          "code": "2.4",
+          "ru": "Создание соединения для первой комбинации",
+          "en": "Creating the connection for the first profile combination"
+        },
+        {
+          "code": "2.5",
+          "ru": "Параметризация первого примера для универсального использования",
+          "en": "Parameterising the first example for use with other profile combinations"
+        },
+        {
+          "code": "2.6",
+          "ru": "Проверка и тестирование соединения на всём тестовом поле",
+          "en": "Testing the connection across the full test model"
+        },
+        {
+          "code": "2.7",
+          "ru": "Настройка нескольких соединений на готовом тестовом поле",
+          "en": "Configuring several connections in the prepared test model"
+        },
+        {
+          "code": "2.8",
+          "ru": "Подготовка табличных данных для считывания компонентами",
+          "en": "Preparing tabular data for use by custom components"
+        },
+        {
+          "code": "2.9",
+          "ru": "Обсуждение багов при считывании данных из таблиц",
+          "en": "Understanding common errors when reading lookup tables"
+        },
+        {
+          "code": "2.10",
+          "ru": "Изучение принципов считывания данных из таблиц в компонентах",
+          "en": "Understanding how components retrieve data from lookup tables"
+        },
+        {
+          "code": "2.11",
+          "ru": "Практическое задание по считыванию реальной таблицы в компонент",
+          "en": "Practical exercise: using a real design table in a component"
+        },
+        {
+          "code": "2.12",
+          "ru": "Модификация статического компонента до полностью автоматизированного",
+          "en": "Turning a non-parametric component into a fully automated component"
+        },
+        {
+          "code": "2.13",
+          "ru": "Разработка логики приоритетов параметризации",
+          "en": "Defining priorities in the component’s parametric logic"
+        },
+        {
+          "code": "2.14",
+          "ru": "Автоматизация комбинаций которых нет в таблице",
+          "en": "Handling profile combinations that are not included in the lookup table"
+        },
+        {
+          "code": "2.15",
+          "ru": "Использование ИИ для автоматического заполнения таблиц из ПДФ",
+          "en": "Using AI to populate lookup tables from PDF documents"
+        },
+        {
+          "code": "2.16",
+          "ru": "Недостатки считывания данных из Excel",
+          "en": "Understanding the limitations of reading data from Excel"
+        },
+        {
+          "code": "2.17",
+          "ru": "Создание компонента для поручней (рейлингов)",
+          "en": "Creating a handrail component"
+        },
+        {
+          "code": "2.18",
+          "ru": "Создание компонента для стремянок",
+          "en": "Creating a fixed steel access ladder component with a safety cage"
+        },
+        {
+          "code": "2.19",
+          "ru": "Создание компонента для лестничных пролётов",
+          "en": "Creating a stair flight component"
+        },
+        {
+          "code": "2.20",
+          "ru": "Создание компонентов типа «в стык»",
+          "en": "Creating custom seams"
+        },
+        {
+          "code": "2.21",
+          "ru": "Создание опорных расстояний в компоненте",
+          "en": "Creating reference distances in a custom component"
+        },
+        {
+          "code": "2.22",
+          "ru": "Компонент с переключением типов подкомпонентов",
+          "en": "Creating a component that switches between sub-component types"
+        },
+        {
+          "code": "2.23",
+          "ru": "Основы работы с интерфейсами компонентов",
+          "en": "Understanding custom component dialog design"
+        },
+        {
+          "code": "2.24",
+          "ru": "Добавление новой закладки в интерфейсе компонента",
+          "en": "Adding a tab to a custom component dialog"
+        },
+        {
+          "code": "2.25",
+          "ru": "Распределение переменных по разным закладкам",
+          "en": "Organising variables across dialog tabs"
+        },
+        {
+          "code": "2.26",
+          "ru": "Изменение положения переменных внутри каждой закладки",
+          "en": "Arranging variable controls within each tab"
+        },
+        {
+          "code": "2.27",
+          "ru": "Добавление картинок в интерфейс компонента",
+          "en": "Adding images to a custom component dialog"
+        },
+        {
+          "code": "2.28",
+          "ru": "Обновление картинок в интерфейсе компонента",
+          "en": "Updating images in a custom component dialog"
+        },
+        {
+          "code": "2.29",
+          "ru": "Выпадающий список без картинок",
+          "en": "Creating a drop-down list without images"
+        },
+        {
+          "code": "2.30",
+          "ru": "Выпадающий список с картинками",
+          "en": "Creating a picture drop-down list"
+        },
+        {
+          "code": "2.31",
+          "ru": "Создание компонента соединения балки со стенкой колонны",
+          "en": "Creating a beam-to-column-web connection component"
+        },
+        {
+          "code": "2.32",
+          "ru": "Создание тестовой 3D-модели по файлам AutoCAD",
+          "en": "Building a 3D test model from AutoCAD files"
+        },
+        {
+          "code": "2.33",
+          "ru": "Применение разработанных компонентов на реальной модели",
+          "en": "Applying the developed components to a real project model"
+        },
+        {
+          "code": "2.34",
+          "ru": "Исправление багов и коллизий",
+          "en": "Correcting component errors and resolving clashes"
+        },
+        {
+          "code": "2.35",
+          "ru": "Особенности экспорта и импорта компонентов в новой модели",
+          "en": "Understanding component export and import into a new model"
+        },
+        {
+          "code": "2.36",
+          "ru": "Добавление системных интерфейсов для болтовых соединений",
+          "en": "Reusing Tekla’s built-in bolt dialog images and interface elements"
+        },
+        {
+          "code": "2.37",
+          "ru": "Проверка и тестирование на реальных болтовых соединениях",
+          "en": "Testing the component on actual bolted connections"
+        },
+        {
+          "code": "2.38",
+          "ru": "Автосоединения (AutoConnection)",
+          "en": "Working with AutoConnection"
+        },
+        {
+          "code": "2.39",
+          "ru": "Автоматизация вставки нужных соединений в 3D-модель",
+          "en": "Automating the placement of suitable connections in the 3D model"
+        },
+        {
+          "code": "2.40",
+          "ru": "Разработка соединений для связей (bracing)",
+          "en": "Developing bracing connections"
+        },
+        {
+          "code": "2.41",
+          "ru": "Особенности и преимущества соединений, написанных на C# (ИИ)",
+          "en": "Exploring the capabilities and advantages of C# connections with AI assistance"
+        },
+        {
+          "code": "2.42",
+          "ru": "Создание собственного соединения на C# (ИИ)",
+          "en": "Creating a custom C# connection with AI assistance"
+        },
+        {
+          "code": "2.43",
+          "ru": "Тестирование соединения на C# на нескольких комбинациях профилей (ИИ)",
+          "en": "Testing an AI-assisted C# connection with different profile combinations"
+        },
+        {
+          "code": "2.44",
+          "ru": "Сравнение результатов пользовательского компонента и соединения на C# (ИИ)",
+          "en": "Comparing a custom component with an AI-assisted C# connection"
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "title": "Tekla Structures Advanced Training",
+      "topics": [
+        {
+          "code": "1.1",
+          "ru": "Оценка общего уровня знаний Tekla Structures",
+          "en": "Assessing your current knowledge of Tekla Structures"
+        },
+        {
+          "code": "1.2",
+          "ru": "Оценка правильности подходов к 3D-моделированию",
+          "en": "Reviewing your approach to 3D modelling"
+        },
+        {
+          "code": "1.3",
+          "ru": "Оценка правильности подходов к разработке чертежей",
+          "en": "Reviewing your approach to drawing production"
+        },
+        {
+          "code": "1.4",
+          "ru": "Оценка используемых плагинов и дополнительного ПО",
+          "en": "Reviewing the plugins and supporting software you use"
+        },
+        {
+          "code": "1.5",
+          "ru": "Разбор основных направлений работы с 3D-моделью и чертежами",
+          "en": "Identifying key areas for improving model and drawing workflows"
+        },
+        {
+          "code": "1.6",
+          "ru": "Изучение новых инструментов моделирования Tekla Structures",
+          "en": "Exploring newer modelling tools in Tekla Structures"
+        },
+        {
+          "code": "1.7",
+          "ru": "Изучение новых инструментов создания чертежей Tekla Structures",
+          "en": "Exploring newer drawing creation tools in Tekla Structures"
+        },
+        {
+          "code": "1.8",
+          "ru": "Использование дополнительных программ для генерации чертежей",
+          "en": "Using supporting applications to generate drawings"
+        },
+        {
+          "code": "1.9",
+          "ru": "Изучение дополнительных плагинов и ПО для 3D-моделирования",
+          "en": "Exploring additional plugins and software for 3D modelling"
+        },
+        {
+          "code": "1.10",
+          "ru": "Изучение вариантов моделирования узлов связей",
+          "en": "Comparing approaches to modelling bracing connections"
+        },
+        {
+          "code": "1.11",
+          "ru": "Автоматизация создания поручней",
+          "en": "Automating handrail modelling"
+        },
+        {
+          "code": "1.12",
+          "ru": "Автоматизация создания стремянок",
+          "en": "Automating fixed steel access ladders with safety cages"
+        },
+        {
+          "code": "1.13",
+          "ru": "Автоматизация создания лестниц",
+          "en": "Automating stair modelling"
+        },
+        {
+          "code": "1.14",
+          "ru": "Автоматизация создания настилов",
+          "en": "Automating floor grating and decking"
+        },
+        {
+          "code": "1.15",
+          "ru": "Автоматизация создания типовых узлов",
+          "en": "Automating common connection details"
+        },
+        {
+          "code": "1.16",
+          "ru": "Автоматизация создания областей без окраски на конструкциях",
+          "en": "Automating no-paint areas on structural parts"
+        },
+        {
+          "code": "1.17",
+          "ru": "Изучение структуры проектов Tekla Structures",
+          "en": "Understanding the structure of Tekla Structures projects"
+        },
+        {
+          "code": "1.18",
+          "ru": "Назначение файлов модели Tekla Structures",
+          "en": "Understanding the purpose of model files"
+        },
+        {
+          "code": "1.19",
+          "ru": "Уровни приоритетов файлов модели, среды и настроек Tekla Structures",
+          "en": "Understanding the search order for model, environment and settings files"
+        },
+        {
+          "code": "1.20",
+          "ru": "Создание параметрических профилей в Tekla Structures",
+          "en": "Creating parametric profiles in Tekla Structures"
+        },
+        {
+          "code": "1.21",
+          "ru": "Создание параметрических профилей переменного сечения по длине",
+          "en": "Creating parametric profiles with a cross-section that varies along the part"
+        },
+        {
+          "code": "1.22",
+          "ru": "Создание и редактирование правил в дереве каталога профилей",
+          "en": "Creating and editing rules in the profile catalogue tree"
+        },
+        {
+          "code": "1.23",
+          "ru": "Создание собственного каталога метизов",
+          "en": "Creating a custom bolt catalogue"
+        },
+        {
+          "code": "1.24",
+          "ru": "Создание собственного каталога комплектов метизов",
+          "en": "Creating a custom bolt assembly catalogue"
+        },
+        {
+          "code": "1.25",
+          "ru": "Создание каталога материалов",
+          "en": "Creating a material catalogue"
+        },
+        {
+          "code": "1.26",
+          "ru": "Редактор отчётов (обзор)",
+          "en": "Overview of Template Editor for reports"
+        },
+        {
+          "code": "1.27",
+          "ru": "Использование Shift для изменения режимов работы инструментов",
+          "en": "Using Shift to change how modelling commands operate"
+        },
+        {
+          "code": "1.28",
+          "ru": "Работа с нумерацией деталей",
+          "en": "Working with part numbering"
+        },
+        {
+          "code": "1.29",
+          "ru": "Создание серий нумерации",
+          "en": "Defining numbering series"
+        },
+        {
+          "code": "1.30",
+          "ru": "Работа с расширенными параметрами",
+          "en": "Working with advanced options"
+        },
+        {
+          "code": "1.31",
+          "ru": "Работа с менеджером конфликтов",
+          "en": "Using Clash Check Manager"
+        },
+        {
+          "code": "1.32",
+          "ru": "Настройка точности менеджера конфликтов",
+          "en": "Configuring clash check tolerances"
+        },
+        {
+          "code": "1.33",
+          "ru": "Особенности импорта в Tekla Structures",
+          "en": "Understanding model import options and limitations"
+        },
+        {
+          "code": "1.34",
+          "ru": "Особенности экспорта из Tekla Structures",
+          "en": "Understanding model export options and limitations"
+        },
+        {
+          "code": "1.35",
+          "ru": "Работа со сложными компонентами",
+          "en": "Working with complex components"
+        },
+        {
+          "code": "1.36",
+          "ru": "Настройки и оптимизация клонирования",
+          "en": "Configuring and optimising drawing cloning"
+        },
+        {
+          "code": "1.37",
+          "ru": "Работа с соседними деталями",
+          "en": "Controlling neighbour parts in drawings"
+        },
+        {
+          "code": "1.38",
+          "ru": "Работа с уровнями настроек",
+          "en": "Understanding drawing, view and object-level settings"
+        },
+        {
+          "code": "1.39",
+          "ru": "Предварительные настройки чертежей",
+          "en": "Preparing drawing settings before drawing creation"
+        },
+        {
+          "code": "1.40",
+          "ru": "Тонкости автоматического расположения видов",
+          "en": "Fine-tuning automatic drawing view placement"
+        },
+        {
+          "code": "1.41",
+          "ru": "Иерархия настроек видов",
+          "en": "Understanding the hierarchy of drawing view settings"
+        },
+        {
+          "code": "1.42",
+          "ru": "Иерархия настроек меток",
+          "en": "Understanding the hierarchy of mark settings"
+        },
+        {
+          "code": "1.43",
+          "ru": "Отображение опорных объектов со слоями",
+          "en": "Displaying linked 2D and 3D DWG reference models and controlling layer visibility"
+        },
+        {
+          "code": "1.44",
+          "ru": "Продвинутое использование других сред",
+          "en": "Using additional Tekla Structures environments effectively"
+        },
+        {
+          "code": "2.1",
+          "ru": "Обзор сред проектирования",
+          "en": "Understanding Tekla Structures environments"
+        },
+        {
+          "code": "2.2",
+          "ru": "Состав сред проектирования",
+          "en": "Exploring the files and settings that make up an environment"
+        },
+        {
+          "code": "2.3",
+          "ru": "Структура файла objects.inp",
+          "en": "Understanding the structure of objects.inp"
+        },
+        {
+          "code": "2.4",
+          "ru": "Создание новых переменных в среде",
+          "en": "Defining additional user-defined attributes in the environment"
+        },
+        {
+          "code": "2.5",
+          "ru": "Добавление новых свойств стальной балки",
+          "en": "Adding user-defined attributes to steel beams"
+        },
+        {
+          "code": "2.6",
+          "ru": "Добавление новых свойств бетонной балки",
+          "en": "Adding user-defined attributes to concrete beams"
+        },
+        {
+          "code": "2.7",
+          "ru": "Добавление новых свойств болтового соединения",
+          "en": "Adding user-defined attributes to bolt groups"
+        },
+        {
+          "code": "2.8",
+          "ru": "Редактирование базы чертежей: изменение и добавление колонок",
+          "en": "Customising Document Manager / Drawing List columns"
+        },
+        {
+          "code": "2.9",
+          "ru": "Редактор форм арматурных стержней; Создание собственных форм арматурных стержней",
+          "en": "Using Rebar Shape Manager to define custom reinforcing bar shapes"
+        },
+        {
+          "code": "2.10",
+          "ru": "Обзор редактора отчётов",
+          "en": "Introduction to Template Editor for reports"
+        },
+        {
+          "code": "2.11",
+          "ru": "Изменение существующих отчётов",
+          "en": "Modifying existing report templates"
+        },
+        {
+          "code": "2.12",
+          "ru": "Создание простого отчёта",
+          "en": "Creating a simple report template"
+        },
+        {
+          "code": "2.13",
+          "ru": "Работа со строковыми переменными",
+          "en": "Working with string values and variables"
+        },
+        {
+          "code": "2.14",
+          "ru": "Работа с математическими функциями",
+          "en": "Using mathematical functions"
+        },
+        {
+          "code": "2.15",
+          "ru": "Работа с условиями",
+          "en": "Using conditional expressions"
+        },
+        {
+          "code": "2.16",
+          "ru": "Список переменных редактора компонентов",
+          "en": "Understanding the variable list in the Custom Component Editor"
+        },
+        {
+          "code": "2.17",
+          "ru": "Основы HTML для создания сложных отчётов и таблиц",
+          "en": "HTML fundamentals for more complex reports and tables"
+        },
+        {
+          "code": "2.18",
+          "ru": "Создание HTML-отчётов",
+          "en": "Creating HTML reports"
+        },
+        {
+          "code": "2.19",
+          "ru": "Создание XLS (Excel) отчётов",
+          "en": "Creating XLS (Excel) reports"
+        },
+        {
+          "code": "2.20",
+          "ru": "Создание отчётов с использованием новых переменных среды",
+          "en": "Including custom environment attributes in reports"
+        },
+        {
+          "code": "2.21",
+          "ru": "Создание и изменение компоновок чертежей",
+          "en": "Creating and modifying drawing layouts"
+        },
+        {
+          "code": "2.22",
+          "ru": "Интеграция с расчётными программами",
+          "en": "Integrating Tekla Structures with structural analysis software"
+        },
+        {
+          "code": "2.23",
+          "ru": "Интеграция с программами раскроя",
+          "en": "Integrating Tekla Structures with cutting and nesting software"
+        },
+        {
+          "code": "2.24",
+          "ru": "Интеграция с программами 3D-моделирования",
+          "en": "Integrating Tekla Structures with other 3D modelling software"
+        },
+        {
+          "code": "2.25",
+          "ru": "Создание интерфейсов пользовательских компонентов",
+          "en": "Designing custom component dialogs"
+        },
+        {
+          "code": "2.26",
+          "ru": "Хранение отчётов и таблиц в папке модели",
+          "en": "Storing report and drawing table templates in the model folder"
+        },
+        {
+          "code": "2.27",
+          "ru": "Хранение материалов в папке модели",
+          "en": "Storing material catalogue files in the model folder"
+        },
+        {
+          "code": "2.28",
+          "ru": "Хранение метизов в папке модели",
+          "en": "Storing bolt and bolt assembly catalogue files in the model folder"
+        },
+        {
+          "code": "2.29",
+          "ru": "Хранение символов в папке модели",
+          "en": "Storing symbol files in the model folder"
+        },
+        {
+          "code": "2.30",
+          "ru": "Хранение меток в папке модели",
+          "en": "Storing custom graphical mark templates from Template Editor in the model folder"
+        },
+        {
+          "code": "2.31",
+          "ru": "Хранение DWG-файлов в папке модели",
+          "en": "Storing DWG files in the model folder"
+        },
+        {
+          "code": "2.32",
+          "ru": "Особенности работы в локальных многопользовательских моделях",
+          "en": "Working with local multi-user models"
+        },
+        {
+          "code": "2.33",
+          "ru": "Особенности работы в облачных многопользовательских моделях",
+          "en": "Working with Tekla Model Sharing for cloud-based collaboration"
+        },
+        {
+          "code": "2.34",
+          "ru": "Варианты дальнейшей автоматизации",
+          "en": "Planning further workflow automation"
+        },
+        {
+          "code": "2.35",
+          "ru": "Логика работы ориентации деталей",
+          "en": "Understanding part orientation"
+        },
+        {
+          "code": "2.36",
+          "ru": "Логика работы ориентации компонентов",
+          "en": "Understanding component orientation"
+        },
+        {
+          "code": "2.37",
+          "ru": "Варианты исправления известных багов в Tekla Structures",
+          "en": "Working around known Tekla Structures issues"
+        },
+        {
+          "code": "2.38",
+          "ru": "Принципы разработки приложений для Tekla Structures",
+          "en": "Understanding how Tekla Structures applications are developed"
+        },
+        {
+          "code": "2.39",
+          "ru": "Блокировка модели на время сохранения",
+          "en": "Understanding model locking during saving"
+        },
+        {
+          "code": "2.40",
+          "ru": "Обзор работы с ИИ-агентами; Установка и настройка ИИ-агентов",
+          "en": "Introduction to AI agents: installation and setup"
+        },
+        {
+          "code": "2.41",
+          "ru": "3D-моделирование при помощи ИИ-агентов",
+          "en": "Using AI agents for 3D modelling"
+        },
+        {
+          "code": "2.42",
+          "ru": "Работа с чертежами при помощи ИИ-агентов",
+          "en": "Using AI agents to work with drawings"
+        },
+        {
+          "code": "2.43",
+          "ru": "Разработка плагинов при помощи ИИ-агентов",
+          "en": "Developing plugins with AI assistance"
+        },
+        {
+          "code": "2.44",
+          "ru": "Подведение итогов и планирование улучшения работы компании",
+          "en": "Reviewing progress and planning improvements to your company’s workflows"
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "title": "System customisation and template creation",
+      "topics": [
+        {
+          "code": "1.1",
+          "ru": "Назначение Template Editor (TplEd) и его место в Tekla Structures",
+          "en": "Understanding the role of Template Editor (TplEd) in Tekla Structures"
+        },
+        {
+          "code": "1.2",
+          "ru": "Различия между отчётами, таблицами чертежей и шаблонами меток",
+          "en": "Distinguishing report templates, drawing tables and mark templates"
+        },
+        {
+          "code": "1.3",
+          "ru": "Текстовые (.rpt) и графические (.tpl) шаблоны",
+          "en": "Understanding textual (.rpt) and graphical (.tpl) templates"
+        },
+        {
+          "code": "1.4",
+          "ru": "Обзор форматов .html.rpt и .xlsx.rpt",
+          "en": "Overview of .html.rpt and .xlsx.rpt report formats"
+        },
+        {
+          "code": "1.5",
+          "ru": "Запуск Template Editor из Tekla Structures",
+          "en": "Opening Template Editor from Tekla Structures"
+        },
+        {
+          "code": "1.6",
+          "ru": "Обзор интерфейса: Workarea, Content Browser, панели инструментов",
+          "en": "Exploring the interface: work area, Content Browser and toolbars"
+        },
+        {
+          "code": "1.7",
+          "ru": "Настройка параметров редактора и путей к файлам",
+          "en": "Setting editor preferences and file locations"
+        },
+        {
+          "code": "1.8",
+          "ru": "Системные шаблоны и безопасное создание рабочих копий",
+          "en": "Making working copies of system templates safely"
+        },
+        {
+          "code": "1.9",
+          "ru": "Поиск шаблонов в папках модели, проекта, фирмы и среды",
+          "en": "Finding templates in model, project, firm and environment folders"
+        },
+        {
+          "code": "1.10",
+          "ru": "Создание нового текстового шаблона",
+          "en": "Creating a new textual template"
+        },
+        {
+          "code": "1.11",
+          "ru": "Создание нового графического шаблона",
+          "en": "Creating a new graphical template"
+        },
+        {
+          "code": "1.12",
+          "ru": "Сохранение шаблонов и правила именования файлов",
+          "en": "Saving templates and choosing file names"
+        },
+        {
+          "code": "1.13",
+          "ru": "Настройка размеров страницы, полей и единиц измерения",
+          "en": "Setting page size, margins and measurement units"
+        },
+        {
+          "code": "1.14",
+          "ru": "Настройка рабочей области и параметров привязки",
+          "en": "Configuring the work area and snapping settings"
+        },
+        {
+          "code": "1.15",
+          "ru": "Структура шаблона: Header, Page Header, Row, Page Footer, Footer",
+          "en": "Understanding template structure: Header, Page Header, Row, Page Footer and Footer"
+        },
+        {
+          "code": "1.16",
+          "ru": "Создание общего заголовка отчёта (Header)",
+          "en": "Creating a report Header"
+        },
+        {
+          "code": "1.17",
+          "ru": "Создание заголовка страницы (Page Header)",
+          "en": "Creating a Page Header"
+        },
+        {
+          "code": "1.18",
+          "ru": "Создание основной строки данных (Row)",
+          "en": "Creating a data Row"
+        },
+        {
+          "code": "1.19",
+          "ru": "Создание итогового блока отчёта (Footer)",
+          "en": "Creating a report Footer for overall totals"
+        },
+        {
+          "code": "1.20",
+          "ru": "Создание нижнего колонтитула страницы (Page Footer)",
+          "en": "Creating a Page Footer"
+        },
+        {
+          "code": "1.21",
+          "ru": "Добавление статического текста и подписей колонок",
+          "en": "Adding static text and column headings"
+        },
+        {
+          "code": "1.22",
+          "ru": "Размещение и выравнивание объектов шаблона",
+          "en": "Positioning and aligning template objects"
+        },
+        {
+          "code": "1.23",
+          "ru": "Изменение ширины, высоты и свойств строк",
+          "en": "Modifying row width, height and properties"
+        },
+        {
+          "code": "1.24",
+          "ru": "Знакомство с типами содержимого строк (Content Type)",
+          "en": "Understanding row content types"
+        },
+        {
+          "code": "1.25",
+          "ru": "Строки типа PART: сведения о деталях",
+          "en": "Using PART rows to report part information"
+        },
+        {
+          "code": "1.26",
+          "ru": "Строки типа ASSEMBLY: сведения о сборках",
+          "en": "Using ASSEMBLY rows to report assembly information"
+        },
+        {
+          "code": "1.27",
+          "ru": "Строки типа BOLT: сведения о болтовых соединениях",
+          "en": "Using BOLT rows to report bolt information"
+        },
+        {
+          "code": "1.28",
+          "ru": "Строки типа DRAWING: сведения о чертежах",
+          "en": "Using DRAWING rows to report drawing information"
+        },
+        {
+          "code": "1.29",
+          "ru": "Обзор типов содержимого для бетона, арматуры и других объектов",
+          "en": "Exploring content types for concrete, reinforcement and other objects"
+        },
+        {
+          "code": "1.30",
+          "ru": "Добавление Value Field и выбор атрибута данных",
+          "en": "Adding a value field and selecting a data attribute"
+        },
+        {
+          "code": "1.31",
+          "ru": "Использование стандартных атрибутов Tekla Structures",
+          "en": "Using standard Tekla Structures template attributes"
+        },
+        {
+          "code": "1.32",
+          "ru": "Вывод марки, имени, профиля и материала детали",
+          "en": "Outputting part position, name, profile and material"
+        },
+        {
+          "code": "1.33",
+          "ru": "Вывод геометрических характеристик и массы",
+          "en": "Outputting geometric properties and weight"
+        },
+        {
+          "code": "1.34",
+          "ru": "Вывод сведений о проекте в заголовке отчёта",
+          "en": "Displaying project information in the report header"
+        },
+        {
+          "code": "1.35",
+          "ru": "Вывод пользовательских атрибутов (UDA)",
+          "en": "Outputting user-defined attributes (UDAs)"
+        },
+        {
+          "code": "1.36",
+          "ru": "Настройка имени поля и его длины",
+          "en": "Setting a value field’s name and length"
+        },
+        {
+          "code": "1.37",
+          "ru": "Выбор типов данных: текст, целое и дробное число",
+          "en": "Choosing data types: text, whole numbers and decimal numbers"
+        },
+        {
+          "code": "1.38",
+          "ru": "Управление единицами измерения и числом знаков после запятой",
+          "en": "Setting measurement units and decimal places"
+        },
+        {
+          "code": "1.39",
+          "ru": "Форматирование значений длины, площади, объёма и массы",
+          "en": "Formatting length, area, volume and weight values"
+        },
+        {
+          "code": "1.40",
+          "ru": "Настройка выравнивания и многострочного вывода",
+          "en": "Setting alignment and multiline output"
+        },
+        {
+          "code": "1.41",
+          "ru": "Создание простых формул с GetValue()",
+          "en": "Writing simple formulas with GetValue()"
+        },
+        {
+          "code": "1.42",
+          "ru": "Обработка пустых и нулевых значений",
+          "en": "Handling empty and zero values"
+        },
+        {
+          "code": "1.43",
+          "ru": "Практика: создание ведомости деталей с нуля",
+          "en": "Practical exercise: creating a part list from scratch"
+        },
+        {
+          "code": "1.44",
+          "ru": "Проверка отчёта для выбранных объектов и всей модели",
+          "en": "Checking reports for selected objects and for the entire model"
+        },
+        {
+          "code": "2.1",
+          "ru": "Разбор результатов первого дня и анализ ошибок ведомости",
+          "en": "Reviewing Part 1 results and checking the part list for errors"
+        },
+        {
+          "code": "2.2",
+          "ru": "Типы сортировки строк: None, Combine, Distinct",
+          "en": "Understanding row sort types: None, Combine and Distinct"
+        },
+        {
+          "code": "2.3",
+          "ru": "Сортировка полей по возрастанию и убыванию",
+          "en": "Sorting value fields in ascending and descending order"
+        },
+        {
+          "code": "2.4",
+          "ru": "Настройка приоритета сортировки нескольких полей",
+          "en": "Setting the sorting priority of multiple value fields"
+        },
+        {
+          "code": "2.5",
+          "ru": "Объединение одинаковых строк и исключение дублей",
+          "en": "Combining identical rows and preventing duplicate output"
+        },
+        {
+          "code": "2.6",
+          "ru": "Расчёт количества и суммарной массы при объединении",
+          "en": "Calculating quantities and total weights for combined rows"
+        },
+        {
+          "code": "2.7",
+          "ru": "Скрытые поля для сортировки и вспомогательных расчётов",
+          "en": "Using hidden fields for sorting and supporting calculations"
+        },
+        {
+          "code": "2.8",
+          "ru": "Функции Sum(), Total(), Count() для итоговых значений",
+          "en": "Using Sum(), Total() and Count() for summaries"
+        },
+        {
+          "code": "2.9",
+          "ru": "Промежуточные и общие итоги по группам",
+          "en": "Creating group subtotals and overall totals"
+        },
+        {
+          "code": "2.10",
+          "ru": "Иерархические строки ASSEMBLY и вложенные строки PART",
+          "en": "Working with ASSEMBLY rows and nested PART rows"
+        },
+        {
+          "code": "2.11",
+          "ru": "Изменение и проверка иерархии строк",
+          "en": "Modifying and checking the row hierarchy"
+        },
+        {
+          "code": "2.12",
+          "ru": "Правила вывода строк (Row Rules)",
+          "en": "Controlling row output with row rules"
+        },
+        {
+          "code": "2.13",
+          "ru": "Создание правил через Rule Wizard",
+          "en": "Creating rules with Rule Wizard"
+        },
+        {
+          "code": "2.14",
+          "ru": "Условные конструкции if / then / else / endif",
+          "en": "Writing conditional expressions with if / then / else / endif"
+        },
+        {
+          "code": "2.15",
+          "ru": "Операторы сравнения и логические условия",
+          "en": "Using comparison operators and logical conditions"
+        },
+        {
+          "code": "2.16",
+          "ru": "Фильтрация деталей по профилю и материалу",
+          "en": "Filtering parts by profile and material"
+        },
+        {
+          "code": "2.17",
+          "ru": "Управление строками: Output(), StepOver(), StepOut()",
+          "en": "Controlling row processing with Output(), StepOver() and StepOut()"
+        },
+        {
+          "code": "2.18",
+          "ru": "Определение первой и последней строки: IsFirst(), IsLast()",
+          "en": "Identifying the first and last rows with IsFirst() and IsLast()"
+        },
+        {
+          "code": "2.19",
+          "ru": "Сравнение соседних строк: PreviousValue(), NextValue()",
+          "en": "Comparing adjacent rows with PreviousValue() and NextValue()"
+        },
+        {
+          "code": "2.20",
+          "ru": "Условный вывод промежуточных итогов при смене группы",
+          "en": "Outputting subtotals when a group changes"
+        },
+        {
+          "code": "2.21",
+          "ru": "Сохранение и повторное использование правил (.pdr)",
+          "en": "Saving and reusing row rules (.pdr)"
+        },
+        {
+          "code": "2.22",
+          "ru": "Редактор формул: проверка синтаксиса и типов данных",
+          "en": "Checking formula syntax and data types in the formula editor"
+        },
+        {
+          "code": "2.23",
+          "ru": "Работа со строками: find(), mid(), length()",
+          "en": "Working with strings using find(), mid() and length()"
+        },
+        {
+          "code": "2.24",
+          "ru": "Поиск фрагментов строк с FindAny() (Tekla Structures 2026)",
+          "en": "Finding text with FindAny() in Tekla Structures 2026"
+        },
+        {
+          "code": "2.25",
+          "ru": "Объединение строк и формирование составных обозначений",
+          "en": "Concatenating strings to build composite identifiers"
+        },
+        {
+          "code": "2.26",
+          "ru": "Преобразование строковых чисел и вычисления",
+          "en": "Converting numeric strings and using them in calculations"
+        },
+        {
+          "code": "2.27",
+          "ru": "Округление и форматирование вычисленных величин",
+          "en": "Rounding and formatting calculated values"
+        },
+        {
+          "code": "2.28",
+          "ru": "Условное изменение формата единиц измерения",
+          "en": "Changing measurement unit formatting conditionally"
+        },
+        {
+          "code": "2.29",
+          "ru": "Подключение новых UDA через objects.inp и contentattributes_*.lst",
+          "en": "Making additional UDAs available through objects.inp and contentattributes_*.lst"
+        },
+        {
+          "code": "2.30",
+          "ru": "Правила вывода заголовков, колонтитулов и разрывов страниц",
+          "en": "Controlling report headers, footers and page breaks"
+        },
+        {
+          "code": "2.31",
+          "ru": "Создание ведомости сборок с детализацией по элементам",
+          "en": "Creating an assembly list with a breakdown of its parts"
+        },
+        {
+          "code": "2.32",
+          "ru": "Создание спецификации болтов и метизов",
+          "en": "Creating a bolt and fastener list"
+        },
+        {
+          "code": "2.33",
+          "ru": "Создание списка чертежей с обозначениями и датами",
+          "en": "Creating a drawing list with drawing identifiers and dates"
+        },
+        {
+          "code": "2.34",
+          "ru": "Работа с графическими таблицами в оформлении чертежа",
+          "en": "Using graphical tables in drawing layouts"
+        },
+        {
+          "code": "2.35",
+          "ru": "Создание основной надписи и таблицы изменений",
+          "en": "Creating a title block and a revision table"
+        },
+        {
+          "code": "2.36",
+          "ru": "Размещение графического шаблона в Drawing Layout",
+          "en": "Adding a graphical template to a drawing layout"
+        },
+        {
+          "code": "2.37",
+          "ru": "Добавление логотипов, линий, символов и графики",
+          "en": "Adding logos, lines, symbols and other graphics"
+        },
+        {
+          "code": "2.38",
+          "ru": "Использование графических шаблонов в метках чертежей",
+          "en": "Using graphical templates in drawing marks"
+        },
+        {
+          "code": "2.39",
+          "ru": "Создание отчёта HTML (.html.rpt)",
+          "en": "Creating an HTML report (.html.rpt)"
+        },
+        {
+          "code": "2.40",
+          "ru": "Подготовка Excel-формы (.xltx) в Microsoft Excel (Tekla 2026)",
+          "en": "Preparing an Excel layout template (.xltx) in Microsoft Excel for Tekla Structures 2026"
+        },
+        {
+          "code": "2.41",
+          "ru": "Создание структуры данных Excel-отчёта (.xlsx.rpt)",
+          "en": "Defining an Excel report’s data structure in an .xlsx.rpt template"
+        },
+        {
+          "code": "2.42",
+          "ru": "Сопоставление колонок и экспорт итогового .xlsx",
+          "en": "Mapping columns and exporting the final .xlsx file"
+        },
+        {
+          "code": "2.43",
+          "ru": "Проверка кириллицы, UTF-8 и перенос шаблонов между моделями",
+          "en": "Checking Cyrillic text and UTF-8 encoding, and transferring templates between models"
+        },
+        {
+          "code": "2.44",
+          "ru": "Итоговый проект: комплект отчётов, проверка и поиск ошибок с помощью ИИ",
+          "en": "Final project: producing a set of reports, checking the results and troubleshooting with AI assistance"
+        }
+      ]
+    }
+  ]
+}

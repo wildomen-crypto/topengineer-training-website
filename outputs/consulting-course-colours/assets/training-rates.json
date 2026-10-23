@@ -1,0 +1,86 @@
+{
+  "currency": "EUR",
+  "hoursPerDay": 8,
+  "days": [
+    2,
+    5,
+    10
+  ],
+  "maxParticipants": 20,
+  "minimumBillableParticipants": {
+    "2": 1,
+    "5": 3,
+    "10": 3
+  },
+  "totalsCents": {
+    "2": {
+      "1": 45000,
+      "2": 60000,
+      "3": 75000,
+      "4": 85000,
+      "5": 95000,
+      "6": 100000,
+      "7": 110000,
+      "8": 120000,
+      "9": 130000,
+      "10": 140000,
+      "11": 150000,
+      "12": 160000,
+      "13": 170000,
+      "14": 180000,
+      "15": 190000,
+      "16": 200000,
+      "17": 210000,
+      "18": 220000,
+      "19": 230000,
+      "20": 240000
+    },
+    "5": {
+      "3": 175000,
+      "4": 200000,
+      "5": 220000,
+      "6": 240000,
+      "7": 260000,
+      "8": 280000,
+      "9": 300000,
+      "10": 400000,
+      "11": 420000,
+      "12": 440000,
+      "13": 460000,
+      "14": 480000,
+      "15": 500000,
+      "16": 520000,
+      "17": 540000,
+      "18": 560000,
+      "19": 580000,
+      "20": 600000
+    },
+    "10": {
+      "3": 350000,
+      "4": 400000,
+      "5": 440000,
+      "6": 480000,
+      "7": 520000,
+      "8": 560000,
+      "9": 600000,
+      "10": 800000,
+      "11": 840000,
+      "12": 880000,
+      "13": 920000,
+      "14": 960000,
+      "15": 1000000,
+      "16": 1040000,
+      "17": 1080000,
+      "18": 1120000,
+      "19": 1160000,
+      "20": 1200000
+    }
+  },
+  "source": "https://docs.google.com/spreadsheets/d/1OXJCYJOVf4lFeD9aB64Fyh17PpONTn-8G2UBpMU-D5Y/edit",
+  "confirmedRules": [
+    "Two-day and five-day group totals match the user-supplied pricing screenshots.",
+    "Five-day and ten-day courses have a minimum fee for three participants, including when one or two attend.",
+    "The ten-day price is twice the five-day price for the billable group size.",
+    "Each selected course has its own duration and actual participant count. Group fees are added without a bundle discount."
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "output": "outputs/consulting-course-colours",
+  "port": 8771,
+  "title": "TopEngineer | Training — course colour scheme",
+  "label": "ЦВЕТА КУРСОВ: КАРТОЧКИ И КАЛЬКУЛЯТОР",
+  "theme": "course-colours.css"
+}

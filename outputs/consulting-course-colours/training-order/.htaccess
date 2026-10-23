@@ -1,0 +1,7 @@
+Options -Indexes
+<Files "settings.example.php">
+Require all denied
+</Files>
+<Files "agreement-clauses.json">
+Require all denied
+</Files>
