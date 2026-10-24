@@ -69,50 +69,26 @@ def build():
     (OUT / 'index.html').write_text(html, encoding='utf-8')
     (OUT / 'Start-preview.ps1').write_text(f"$PreviewRoot = Split-Path -Parent $MyInvocation.MyCommand.Path\nSet-Location -LiteralPath $PreviewRoot\npython -m http.server {PORT} --bind 127.0.0.1\n", encoding='utf-8-sig')
     (OUT / 'README.txt').write_text(f'''TOPENGINEER — {SETTINGS['label']}
-Открыть: http://127.0.0.1:{PORT}/#course-descriptions
+
+Это готовая текущая цветная версия самостоятельного проекта.
+Для запуска из корня репозитория: Start-Windows.cmd.
+Или из этой папки: powershell.exe -NoProfile -ExecutionPolicy Bypass -File Start-preview.ps1
+Оставить окно сервера открытым; PHP нужен для формы и PDF.
+
+Главная: http://127.0.0.1:{PORT}/
 Калькулятор: http://127.0.0.1:{PORT}/#training-calculator
 Программы: http://127.0.0.1:{PORT}/#course-programmes
-Варианты для сравнения: http://127.0.0.1:8770/ и http://127.0.0.1:8771/
-Прежняя версия: http://127.0.0.1:8768/#course-programmes
+Форма реквизитов: http://127.0.0.1:{PORT}/training-order/
+При занятом порте из корня: powershell.exe -NoProfile -ExecutionPolicy Bypass -File tools/Start-Windows.ps1 -Port 8774
 
-На экранах от 1600 px: две части рядом, по две колонки тем в каждой (всего четыре).
-На экранах 992–1599 px: две части рядом, по одной колонке тем.
-На планшетах 768–991 px: части друг под другом, темы в двух колонках.
-На телефонах: части и темы в одной колонке.
-Всплывающее окно программы также показывает обе части одновременно.
-Все разделы раскрыты по умолчанию. «Collapse all» сворачивает обе части.
+Начальный расчёт: Level 1, 2 дня, 1 участник, EUR 450.
+Четыре курса, 352 темы. Part 1 и Part 2 одновременно видны на широком экране.
+Режим документов PREVIEW. Реальные банковские инструкции не включены.
 
-Включены все 352 переведённые темы четырёх курсов, по 44 темы в каждой части.
-Программа не привязана к числу дней: Part 1 и Part 2 подходят для курсов на 2, 5 и 10 дней.
-Прочие разделы сайта, изображения и расчёты сохранены из предыдущей версии.
-
-Калькулятор: при открытии выбран только Level 1, 2 дня и 1 участник (€450).
-При каждом добавлении курса: 2 дня и 1 участник; дата, введённая ранее, сохраняется.
-Номера Level 1–4 сохранены в описаниях, калькуляторе и программах.
-Цветовая схема задаётся только собственными стилями этой версии.
-Настройки по умолчанию и метки: calculator_defaults.py; поведение: table-calculator.js.
-Перед Before your training starts добавлено сравнение 2, 5 и 10 дней.
-2 дня: минимум практики; 5 дней: углублённое обучение с существенно большей практикой.
-10 дней: 5 дней обучения + 5 дней работы над собственным проектом заказчика с преподавателем.
-Данные форматов: training-formats.json; разметка: training_formats.py.
-Карточки форматов используют только исходные pricing, box, featured, btn-wrap и классы Bootstrap.
-Собственные правила карточек и файл training-formats.css удалены.
-В калькуляторе короткая ссылка на формат занимает существующую строку рядом с Programme.
-Два прежних правила этой ссылки сохранены в table-calculator.css.
-
-Сертификаты: три типа на 2, 5 и 10 дней (16, 40 и 80 часов).
-На широком экране образцы стоят рядом; при уменьшении ширины перекрываются со смещением.
-Каждый образец открывается в полном размере по изображению или ссылке с длительностью.
-Изображения и запросы генерации: certificate-assets/; разметка: certificate_gallery.py.
-Стили блока изолированы в certificate-gallery.css.
-
-Это самостоятельная копия: нет ссылок на файлы прежнего сайта.
-Свои исходники: work/{HERE.name}/.
-Свои данные: course-programme.json. Разметка программ: parallel_renderer.py.
-Пересборка: python -X utf8 work/{HERE.name}/build_parallel.py
-Основа остальной страницы сохранена в base-page.html; её можно развивать отдельно.
-Файлы прежнего сайта в consulting-table-version не изменяются при сборке.
-Запуск: Start-preview.ps1 (сервер {PORT}).
+Для Codex: открыть корень репозитория и прочитать AGENTS.md, CODEX_HANDOFF.md,
+PROJECT_CONTEXT.md и README.md. Старые версии и прежний компьютер не нужны.
+Исходники: work/{HERE.name}/. Не редактировать только готовый outputs.
+Пересборка из корня: python -X utf8 work/{HERE.name}/build_parallel.py
 ''', encoding='utf-8-sig')
     from checkout_builder import build_checkout
     build_checkout(OUT, html)

@@ -4,6 +4,7 @@
 *.py[cod]
 .venv/
 **/qa/
+**/.revisions/
 *.sqlite
 *.sqlite-*
 *.db
