@@ -4,6 +4,7 @@
   const apiUrl = 'api.php';
   const cartKey = 'TE-training-cart-v1';
   const currency = value => new Intl.NumberFormat('en-IE', {style:'currency',currency:'EUR'}).format(value / 100);
+  const dateLabel = value => new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',year:'numeric'}).format(new Date(value+'T12:00:00'));
   const key = () => crypto.randomUUID ? crypto.randomUUID() : Array.from(crypto.getRandomValues(new Uint8Array(20)), n => n.toString(16).padStart(2,'0')).join('');
   let config, cart, quote, order, requestKey = key(), quoteRequest = 0, busy = false;
 
@@ -19,6 +20,13 @@
     $('order-error').focus();
   }
   function clearError() { $('order-error').hidden = true; }
+  function renderTerms(terms, target) {
+    const list = $(target);
+    list.replaceChildren();
+    if (!terms) { list.parentElement.hidden = true; return; }
+    list.parentElement.hidden = false;
+    ['Invoices are valid for '+terms.validity_months+' calendar months from issue.',terms.rescheduling,terms.refunds].forEach(text => list.append(element('li',text,'mb-1')));
+  }
   async function api(action, body) {
     const response = await fetch(apiUrl + '?action=' + action, {
       method:body ? 'POST' : 'GET', credentials:'same-origin',
@@ -49,6 +57,7 @@
     $('quote-total').textContent = currency(data.totalCents);
     $('quote-total-label').textContent = data.paymentReady ? 'Total' : 'Indicative total';
     $('quote-tax-note').textContent = data.tax.note;
+    renderTerms(data.commercialTerms,'quote-terms');
     $('prerequisite-area').hidden = !data.needsPrerequisiteConfirmation;
     $('prerequisiteConfirmed').required = data.needsPrerequisiteConfirmation;
     $('prepare-order').textContent = data.paymentReady ? 'Prepare proposal & invoice' : 'Prepare preview documents';
@@ -75,9 +84,12 @@
     $('checkout-layout').hidden = true;
     $('order-result').hidden = false;
     $('resume-area').hidden = true;
-    $('result-heading').textContent = data.preview ? 'Your preview documents are ready' : 'Your documents are ready';
-    $('result-introduction').textContent = data.preview ? 'Download the proposal, sample payment request and any requested agreement. These preview documents must not be used to make a payment.' : 'Send the pro forma invoice to your finance team or arrange the bank transfer now. Training dates will be confirmed separately.';
+    $('result-heading').textContent = data.expired ? 'This quotation has expired' : data.preview ? 'Your preview documents are ready' : 'Your documents are ready';
+    $('result-introduction').textContent = data.expired ? 'Return to the calculator to prepare an updated quotation before arranging payment. The original documents remain available for your records.' : data.preview ? 'Download the proposal, sample payment request and any requested agreement. These preview documents must not be used to make a payment.' : 'Send the pro forma invoice to your finance team or arrange the bank transfer now. Training dates will be confirmed separately.';
     $('result-reference').textContent = data.reference;
+    $('result-validity').hidden = !data.validUntil;
+    $('result-validity').textContent = data.validUntil ? 'Valid until: '+dateLabel(data.validUntil) : '';
+    renderTerms(data.commercialTerms,'result-terms');
     $('result-customer').textContent = data.customer.companyName + ' · ' + data.customer.email;
     $('document-list').replaceChildren();
     data.documents.forEach(document => {
@@ -86,9 +98,12 @@
       button.addEventListener('click', () => download(document.kind,document.filename,button));
       $('document-list').append(button);
     });
-    $('result-amount').textContent = (data.preview ? 'Indicative: ' : 'Payable: ') + currency(data.quote.totalCents);
+    $('result-amount').textContent = (data.expired ? 'Quoted: ' : data.preview ? 'Indicative: ' : 'Payable: ') + currency(data.quote.totalCents);
     $('payment-details').replaceChildren();
-    if (data.bank) {
+    if (data.expired) {
+      $('payment-message').textContent = 'This quotation expired on '+dateLabel(data.validUntil)+'. Please prepare an updated quotation before making a payment.';
+      $('payment-term').textContent = 'Use Change your training plan to return to the calculator.';
+    } else if (data.bank) {
       bankField('Beneficiary',data.bank.beneficiary);
       bankField('IBAN',data.bank.iban);
       bankField('SWIFT / BIC',data.bank.swift);

@@ -2036,7 +2036,7 @@
     },
     {
       "title": "Fees and payment",
-      "text": "Payment is made by bank transfer against the supplier’s pro forma invoice. The payable amount, currency, tax treatment and payment reference are stated in that document. Full payment is required before training begins. A downloaded pro forma invoice is not proof that payment has been received."
+      "text": "Payment is made by bank transfer against the supplier’s pro forma invoice. The agreed amount, currency, tax treatment and payment reference are stated in that document. The invoice is valid for six calendar months from its issue date; the expiry date is printed on the document. Payment terms are agreed separately. A downloaded pro forma invoice is not proof that payment has been received."
     },
     {
       "title": "Preparation and customer responsibilities",
@@ -2056,12 +2056,12 @@
     },
     {
       "title": "Changes, cancellation and rescheduling",
-      "text": "Requests to change the scope, participants or schedule are discussed promptly in writing. Any change to fees, refunds or rescheduling arrangements must be agreed by both parties before it takes effect. The final cancellation and refund provisions are to be confirmed in the approved version of this agreement."
+      "text": "Rescheduling the training does not change the training fee. If the customer requests a refund, the supplier refunds the payment less bank commissions. No other cancellation fee is deducted. Changes to the selected courses, duration or group size require an updated quotation."
     },
     {
       "title": "Final review and execution",
       "text": "This template is a draft for review. The parties must confirm the final legal terms, applicable law and dispute-resolution provisions before signature. The website does not sign this document on behalf of either party. The customer’s request to prepare documents is not acceptance of an unsigned draft agreement."
     }
   ],
-  "revision": "18f4875246e4a0b6fb76144cfaf621128efe30e23fbcdd7c1229e7a0d63d0965"
+  "revision": "06d23cef94539c308af5bf8ba20c9d785fc8cffdc9bdc4184fed03b7aca898b5"
 }

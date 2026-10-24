@@ -7,9 +7,17 @@ function e(string|int $text): string {
 function money(int $cents): string { return 'EUR '.number_format($cents/100,2,'.',','); }
 function date_label(string $date): string { return $date ? (new DateTimeImmutable($date))->format('d M Y') : 'To be agreed'; }
 
+function commercial_terms_html(array $order): string {
+    $terms=$order['commercialTerms']??null;
+    if(!$terms) return '';
+    return '<p class="small"><strong>Invoice terms:</strong> Valid for '.e($terms['validity_months']).' calendar months from issue. '.e($terms['rescheduling']).' '.e($terms['refunds']).'</p>';
+}
+
 function document_start(array $order, string $title, bool $draft = false): string {
     $ref=e($order['reference']); $seller=e($order['seller']['legal_name']);
-    $warning=$draft?'<div class="notice">DRAFT FOR REVIEW - not an executed agreement.</div>':($order['preview']?'<div class="notice">PREVIEW ONLY - NOT VALID FOR PAYMENT. Bank details and tax treatment are not configured.</div>':'');
+    $warning=$draft?'<div class="notice">DRAFT FOR REVIEW - not an executed agreement.</div>':($order['preview']?'<div class="notice">PREVIEW ONLY - NOT VALID FOR PAYMENT.</div>':'');
+    $validityLabel=$title==='Training services agreement'?'Invoice valid until: ':'Valid until: ';
+    $validity=empty($order['validUntil'])?'':' &nbsp; | &nbsp; <strong>'.$validityLabel.e(date_label($order['validUntil'])).'</strong>';
     return '<!doctype html><html><head><meta charset="utf-8"><style>
     @page { margin: 53pt 38pt 46pt; }
     body { font-family: "DejaVu Sans",sans-serif; font-size: 8.5pt; line-height: 1.3; color: #263746; }
@@ -46,17 +54,20 @@ function document_start(array $order, string $title, bool $draft = false): strin
     .clause { page-break-inside: avoid; }
     .invoice { font-size: 8pt; line-height: 1.22; }
     .invoice td,.invoice th { padding: 3pt; }
+    .invoice table { margin: 3pt 0 6pt; }
+    .invoice .totals td { padding: 2pt 3pt; }
+    .invoice .totals { margin-left: 44%; }
     .invoice .parties td { font-size: 7.5pt; padding: 5pt; }
-    .invoice p { margin-bottom: 4pt; }
+    .invoice p { margin-bottom: 3pt; }
     .invoice h2 { font-size: 13pt; margin: 8pt 0 5pt; }
     .bank-instructions { background: #edf5fb; padding: 7pt; font-size: 8pt; }
     .signatures td { height: 65pt; width: 50%; border: .5pt solid #d4dfe8; }
-    </style></head><body><div class="running">TOPENGINEER <span>'.$ref.' | '.$seller.'</span></div>'.$warning.'<div class="brand">TOPENGINEER</div><h1>'.e($title).'</h1><p class="meta">Reference: '.$ref.' &nbsp; | &nbsp; Issued: '.e(date_label($order['date'])).' &nbsp; | &nbsp; Currency: EUR</p>';
+    </style></head><body><div class="running">TOPENGINEER <span>'.$ref.' | '.$seller.'</span></div>'.$warning.'<div class="brand">TOPENGINEER</div><h1>'.e($title).'</h1><p class="meta">Reference: '.$ref.' &nbsp; | &nbsp; Issued: '.e(date_label($order['date'])).' &nbsp; | &nbsp; Currency: EUR'.$validity.'</p>';
 }
 
 function parties_html(array $order): string {
     $s=$order['seller']; $b=$order['customer'];
-    return '<table class="parties"><tr><td><strong>Supplier</strong><br>'.e($s['legal_name']).'<br>'.nl2br(e($s['address'])).'<br>Registration: '.e($s['registration_number']).'<br>Tax ID (PIB): '.e($s['tax_number']).'<br>'.e($s['email']).'</td><td><strong>Customer</strong><br>'.e($b['companyName']).'<br>'.nl2br(e($b['address'])).'<br>'.e(trim($b['postalCode'].' '.$b['city'])).'<br>'.e($order['catalogue']['countries'][$b['country']]).'<br>Business ID: '.e($b['registrationId']).($b['vatId']?'<br>VAT / tax ID: '.e($b['vatId']):'').'<br>Contact: '.e($b['contactName']).'<br>'.e($b['email']).($b['poReference']?'<br>PO / reference: '.e($b['poReference']):'').'</td></tr></table>';
+    return '<table class="parties"><tr><td><strong>Supplier</strong><br>'.e($s['legal_name']).'<br>'.nl2br(e($s['address'])).'<br>Registration: '.e($s['registration_number']).'<br>Tax ID (PIB): '.e($s['tax_number']).(!empty($s['director'])?'<br>Director: '.e($s['director']):'').'<br>'.e($s['email']).'</td><td><strong>Customer</strong><br>'.e($b['companyName']).'<br>'.nl2br(e($b['address'])).'<br>'.e(trim($b['postalCode'].' '.$b['city'])).'<br>'.e($order['catalogue']['countries'][$b['country']]).'<br>Business ID: '.e($b['registrationId']).($b['vatId']?'<br>VAT / tax ID: '.e($b['vatId']):'').'<br>Contact: '.e($b['contactName']).'<br>'.e($b['email']).($b['poReference']?'<br>PO / reference: '.e($b['poReference']):'').'</td></tr></table>';
 }
 
 function order_table_html(array $order): string {
@@ -98,10 +109,10 @@ function proposal_html(array $order): string {
     $q=$order['quote'];
     $html=document_start($order,'Commercial proposal').parties_html($order).'<h2>Your selected training</h2>'.order_table_html($order);
     $html.='<div class="note"><strong>Dates do not affect the training price.</strong> You can arrange payment before the teaching dates are finalised. Requested dates are provisional and are confirmed with your instructor. End dates include all calendar days, with the start date counted as day 1.</div>';
-    $html.='<p class="small">Full programmes for your selected courses follow. Training inclusions and optional additional courses are listed separately. Software licences are not included. Bank transfer instructions appear in the separate pro forma invoice when payment is available.</p>';
+    $html.=commercial_terms_html($order);
     $selected=array_column($q['courses'],'id');
     foreach($order['catalogue']['courses'] as $course) if(in_array($course['level'],$selected,true)) $html.=programme_html($course,'SELECTED COURSE - included in the order total');
-    $html.='<div class="new-page"><h2>Included in your training</h2><p>Live online instruction with a professional engineer, guided demonstrations and practical exercises appropriate to the chosen duration. The 10-day format includes five training days and five days on your own pilot project. Software preparation is arranged before the first lesson.</p><p>Each participant receives a personalised digital TopEngineer certificate with a unique number after completing the course. Brief follow-up questions can be answered free of charge; more involved technical support is agreed separately at an hourly rate.</p><p>Complete Level 1 before attending Levels 2-4. The advanced courses may be taken in any order.</p>';
+    $html.='<div class="new-page"><h2>Included in your training</h2><p>Live online instruction with a professional engineer, guided demonstrations and practical exercises appropriate to the chosen duration. The 10-day format includes five training days and five days on your own pilot project. Software preparation is arranged before the first lesson.</p><p>Each participant receives a personalised digital TopEngineer certificate with a unique number after completing the course. Brief follow-up questions can be answered free of charge; more involved technical support is agreed separately at an hourly rate.</p><p>Complete Level 1 before attending Levels 2-4. The advanced courses may be taken in any order.</p><p class="small">Software licences are not included. Bank transfer instructions appear in the separate pro forma invoice when payment is available.</p>';
     if($q['otherCourses']) {
         $html.='<h2>Other courses you can add</h2><p>These courses are <strong>not ordered and not included in your invoice</strong>. Prices below are for a group of '.$q['comparisonParticipants'].' participant'.($q['comparisonParticipants']===1?'':'s').' - the largest group size in your current plan.</p><table><thead><tr><th style="width:46%">Additional course</th><th class="amount" style="width:18%">2 days / 16 h</th><th class="amount" style="width:18%">5 days / 40 h</th><th class="amount" style="width:18%">10 days / 80 h</th></tr></thead><tbody>';
         foreach($q['otherCourses'] as $extra) $html.='<tr><td>Level '.$extra['id'].' - '.e($extra['name']).'</td><td class="amount">'.money($extra['prices']['2']).'</td><td class="amount">'.money($extra['prices']['5']).'</td><td class="amount">'.money($extra['prices']['10']).'</td></tr>';
@@ -116,10 +127,10 @@ function invoice_html(array $order): string {
     if($order['bank']) {
         $bank=$order['bank'];
         $html.='<h2>Bank transfer instructions</h2><div class="bank-instructions">';
-        foreach(['Beneficiary'=>$bank['beneficiary'],'IBAN'=>$bank['iban'],'SWIFT / BIC'=>$bank['swift'],'Bank'=>$bank['name'],'Bank address'=>$bank['address'],'Correspondent bank'=>$bank['correspondent'],'Currency'=>'EUR','Payment reference'=>$order['reference']] as $label=>$value) if($value!=='') $html.='<p>'.e($label).': <strong>'.e($value).'</strong></p>';
+        foreach(['Beneficiary'=>$bank['beneficiary'],'IBAN'=>$bank['iban'],'SWIFT / BIC'=>$bank['swift'],'Bank'=>$bank['name'],'Bank address'=>$bank['address'],'Correspondent bank'=>$bank['correspondent'],'Payment reference'=>$order['reference'].' (EUR)'] as $label=>$value) if($value!=='') $html.='<p>'.e($label).': <strong>'.e($value).'</strong></p>';
         $html.='</div><p style="margin-top:6pt">'.e($order['paymentTerm']).'</p><p class="small">Please include the exact reference above. Payment remains pending until funds are received in the supplier bank account.</p>';
-    } else $html.='<div class="notice"><strong>Not valid for payment.</strong> This preview deliberately contains no bank instructions. The supplier must confirm EUR bank details and the applicable tax treatment before a payable pro forma invoice can be issued.</div>';
-    return $html.'<p class="small">Desired training dates are provisional. Paying for the course does not confirm the requested dates; the schedule is agreed separately. Only the selected courses above are included. Optional courses in the commercial proposal are excluded.</p></div></body></html>';
+    } else $html.='<div class="notice"><strong>Not valid for payment.</strong> This preview contains no payment instructions. Required payment settings and the applicable tax treatment must be confirmed before a payable pro forma invoice can be issued.</div>';
+    return $html.commercial_terms_html($order).'<p class="small">Training dates are provisional and agreed separately. Only selected courses are invoiced; optional courses are excluded.</p></div></body></html>';
 }
 
 function agreement_html(array $order): string {
@@ -128,7 +139,8 @@ function agreement_html(array $order): string {
     foreach($clauses as $index=>$clause) $html.='<div class="clause"><h3>'.($index+1).'. '.e($clause['title']).'</h3><p>'.e($clause['text']).'</p></div>';
     $html.='<h2>Order schedule</h2>'.order_table_html($order).'<p>This agreement relates to proposal and pro forma reference <strong>'.e($order['reference']).'</strong>. The selected course programmes in that proposal form the training scope; optional additional courses are excluded.</p>';
     if(!$order['agreementApproved']) $html.='<div class="notice">Template version '.e($order['agreementVersion']).'. This draft requires review and agreement by both parties. No signature or acceptance has been recorded by the website.</div>';
-    return $html.'<table class="signatures"><tr><td><strong>For the supplier</strong><br>Name / position:<br>Signature:<br>Date:</td><td><strong>For the customer</strong><br>Name / position:<br>Signature:<br>Date:</td></tr></table></div></body></html>';
+    $signatory=!empty($order['seller']['director'])?e($order['seller']['director']).', Director':'';
+    return $html.'<table class="signatures"><tr><td><strong>For the supplier</strong><br>Name / position: '.$signatory.'<br>Signature:<br>Date:</td><td><strong>For the customer</strong><br>Name / position:<br>Signature:<br>Date:</td></tr></table></div></body></html>';
 }
 
 function render_pdf(array $order, string $kind): string {

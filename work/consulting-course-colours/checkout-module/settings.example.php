@@ -6,17 +6,18 @@ return [
     'mode' => 'preview',
     'allowed_origins' => ['http://127.0.0.1:8771', 'http://localhost:8771', 'https://top-engineer.com'],
     'seller' => [
-        'legal_name' => 'Topengineer LTD doo Beograd',
-        'address' => 'Kosovska 17, 11000 Beograd (Stari Grad), Serbia',
+        'legal_name' => 'TOPENGINEER LTD DOO',
+        'address' => 'KOSOVSKA 17 sp.5 st.7, BEOGRAD-STARI GRAD, Serbia',
         'registration_number' => '21781592',
         'tax_number' => '112979992',
         'country' => 'RS',
         'email' => 'info@top-engineer.com',
+        'director' => 'Dmitrii Taran',
         'website' => 'https://top-engineer.com',
         'details_confirmed' => false,
     ],
     'bank' => [
-        'beneficiary' => 'Topengineer LTD doo Beograd',
+        'beneficiary' => 'TOPENGINEER LTD DOO',
         'iban' => '',
         'swift' => '',
         'name' => '',
@@ -33,6 +34,13 @@ return [
         'RS' => ['approved' => false, 'mode' => 'unconfigured', 'rate_bps' => 0, 'note' => ''],
     ],
     'agreement_approved' => false,
-    'agreement_version' => 'draft-2026-10-23',
-    'payment_term' => 'Payment is required before training begins. Training dates are agreed separately.',
+    'agreement_version' => 'draft-2026-10-24',
+    'commercial_terms' => [
+        'validity_months' => 6,
+        'rescheduling' => 'Changing the training dates does not change the training fee.',
+        'refunds' => 'If you request a refund, we refund your payment less bank commissions. No other cancellation fee is deducted.',
+    ],
+    // The owner has not yet confirmed a prepayment percentage or incoming bank fee allocation.
+    'payment_terms_approved' => false,
+    'payment_term' => 'Payment terms will be confirmed separately. Training dates are agreed separately.',
 ];

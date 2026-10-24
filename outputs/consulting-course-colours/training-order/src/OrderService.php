@@ -1,6 +1,24 @@
 <?php
 declare(strict_types=1);
 
+function commercial_terms(): array {
+    $terms=settings()['commercial_terms'];
+    if(!is_int($terms['validity_months']) || $terms['validity_months']<1 || $terms['validity_months']>60) throw new RuntimeException('Invalid invoice validity period.');
+    return $terms;
+}
+
+function invoice_valid_until(DateTimeImmutable $issued, int $months): string {
+    // Keep calendar months; 31 August + six months ends on the last day of February.
+    $target=$issued->modify('first day of this month')->modify('+'.$months.' months');
+    $day=min((int)$issued->format('j'),(int)$target->format('t'));
+    return $target->setDate((int)$target->format('Y'),(int)$target->format('n'),$day)->format('Y-m-d');
+}
+
+function order_is_expired(array $order, ?DateTimeImmutable $today=null): bool {
+    $until=$order['validUntil']??'';
+    return $until!=='' && ($today??new DateTimeImmutable('now',new DateTimeZone('Europe/Belgrade')))->format('Y-m-d')>$until;
+}
+
 function bank_ready(array $config): bool {
     $bank = $config['bank'];
     $iban = strtoupper(preg_replace('/\s+/', '', $bank['iban'] ?? ''));
@@ -64,7 +82,7 @@ function make_quote(array $input, string $country = ''): array {
     }
     usort($items,fn($a,$b)=>$a['id']<=>$b['id']);
     $config=settings();
-    $ready=$config['mode']==='live'&&!empty($config['seller']['details_confirmed'])&&bank_ready($config)&&$country!==''&&$tax['approved'];
+    $ready=$config['mode']==='live'&&!empty($config['seller']['details_confirmed'])&&bank_ready($config)&&$country!==''&&$tax['approved']&&!empty($config['payment_terms_approved']);
     $comparisonGroup=max(array_column($items,'participants'));
     $other=[];
     foreach($catalogue['courses'] as $course) if(!isset($seen[$course['level']])) {
@@ -77,6 +95,8 @@ function make_quote(array $input, string $country = ''): array {
         $other[]=['id'=>$course['level'],'name'=>$course['title'],'prices'=>$prices];
     }
     $result=['currency'=>'EUR','courses'=>$items,'courseCount'=>count($items),'days'=>array_sum(array_column($items,'days')),'hours'=>array_sum(array_column($items,'hours')),'subtotalCents'=>$subtotal,'netCents'=>$net,'taxCents'=>$vat,'totalCents'=>$total,'tax'=>$tax,'paymentReady'=>$ready,'comparisonParticipants'=>$comparisonGroup,'otherCourses'=>$other,'needsPrerequisiteConfirmation'=>!isset($seen[1]),'country'=>$country];
+    $result['commercialTerms']=commercial_terms();
+    $result['paymentTerm']=$config['payment_term'];
     $result['quoteFingerprint']=hash('sha256',json_encode([$result,$catalogue['revision']],JSON_UNESCAPED_UNICODE|JSON_THROW_ON_ERROR));
     return $result;
 }
@@ -114,6 +134,8 @@ function create_order(array $body, string $scope, string $key): array {
         $reference=$series.'-'.str_pad((string)$get->fetchColumn(),6,'0',STR_PAD_LEFT);
         $config=settings();
         $snapshot=['token'=>bin2hex(random_bytes(32)),'reference'=>$reference,'createdAt'=>$now->format(DATE_ATOM),'date'=>$now->format('Y-m-d'),'preview'=>!$quote['paymentReady'],'status'=>$quote['paymentReady']?'awaiting_bank_transfer':'preview','customer'=>$customer,'quote'=>$quote,'seller'=>$config['seller'],'bank'=>$quote['paymentReady']?$config['bank']:null,'paymentTerm'=>$config['payment_term'],'agreementApproved'=>!empty($config['agreement_approved']),'agreementVersion'=>$config['agreement_version'],'includeAgreement'=>$includeAgreement,'catalogue'=>catalogue()];
+        $snapshot['commercialTerms']=$quote['commercialTerms'];
+        $snapshot['validUntil']=invoice_valid_until($now,$quote['commercialTerms']['validity_months']);
         $insert=$db->prepare('INSERT INTO orders(token,request_scope,request_key,body_hash,reference,created_at,snapshot) VALUES(?,?,?,?,?,?,?)');
         $insert->execute([$snapshot['token'],$scope,$key,$hash,$reference,$snapshot['createdAt'],json_encode($snapshot,JSON_UNESCAPED_UNICODE|JSON_THROW_ON_ERROR)]);
         $db->exec('COMMIT');
@@ -132,5 +154,6 @@ function get_order(string $token): array {
 function public_order(array $order): array {
     $documents=[['kind'=>'proposal','label'=>'Commercial proposal + all course programmes','filename'=>$order['reference'].'-proposal.pdf'],['kind'=>'invoice','label'=>$order['preview']?'Pro forma invoice preview':'Pro forma invoice','filename'=>$order['reference'].'-proforma.pdf']];
     if($order['includeAgreement']) $documents[]=['kind'=>'agreement','label'=>$order['agreementApproved']?'Training agreement':'Draft training agreement','filename'=>$order['reference'].'-agreement.pdf'];
-    return ['token'=>$order['token'],'reference'=>$order['reference'],'date'=>$order['date'],'preview'=>$order['preview'],'status'=>$order['status'],'customer'=>$order['customer'],'quote'=>$order['quote'],'seller'=>$order['seller'],'bank'=>$order['bank'],'paymentTerm'=>$order['paymentTerm'],'agreementApproved'=>$order['agreementApproved'],'documents'=>$documents];
+    $expired=order_is_expired($order);
+    return ['token'=>$order['token'],'reference'=>$order['reference'],'date'=>$order['date'],'validUntil'=>$order['validUntil']??null,'expired'=>$expired,'commercialTerms'=>$order['commercialTerms']??null,'preview'=>$order['preview'],'status'=>$expired?'expired':$order['status'],'customer'=>$order['customer'],'quote'=>$order['quote'],'seller'=>$order['seller'],'bank'=>$expired?null:$order['bank'],'paymentTerm'=>$order['paymentTerm'],'agreementApproved'=>$order['agreementApproved'],'documents'=>$documents];
 }
