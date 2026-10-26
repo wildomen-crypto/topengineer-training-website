@@ -59,6 +59,9 @@ def run(base):
         check(name + ' excludes old supplier', '7743840108' not in text and 'Стальпроект' not in text)
         check(name + ' contains no bank instructions', 'IBAN' not in text and 'SWIFT' not in text)
         check(name + ' no missing logo', 'Image not found' not in text)
+        check(name + ' final line retained', 'Electronically prepared quotation' in text)
+        spans = [span for block in doc[0].get_text('dict')['blocks'] if 'lines' in block for row in block['lines'] for span in row['spans'] if span['text'].strip()]
+        check(name + ' text inside page', all(20 <= span['bbox'][0] and span['bbox'][2] <= doc[0].rect.width-20 and 10 <= span['bbox'][1] and span['bbox'][3] <= doc[0].rect.height-10 for span in spans))
         (QA / (name + '.pdf')).write_bytes(result.content)
         return doc, text
 
@@ -76,6 +79,25 @@ def run(base):
     doc, text = pdf_check(result, 'proposal-long-customer')
     check('long customer retained', long_customer['companyName'].strip() in text and long_customer['email'] in text.replace(' ', ''))
     doc.close()
+    maximum_customer = {**sample_customer, 'companyName': 'W'*200, 'contactName': 'M'*160, 'email': 'a'*64+'@'+'b'*63+'.'+'c'*63+'.'+'d'*57+'.com', 'country': 'GS'}
+    all_course_cases = [
+        ('all-courses-2-days', 2, 1, sample_customer),
+        ('all-courses-5-days', 5, 1, sample_customer),
+        ('all-courses-10-days', 10, 1, sample_customer),
+        ('all-courses-20-people', 10, 20, sample_customer),
+        ('all-courses-maximum-details', 10, 1, maximum_customer),
+        ('all-courses-maximum-details-and-price', 10, 20, maximum_customer),
+    ]
+    for name, days, people, customer in all_course_cases:
+        courses = [{'id': level, 'days': days, 'participants': people, 'startDate': '2026-12-29'} for level in range(1, 5)]
+        result = post('proposal', {'courses': courses, 'customer': customer})
+        doc, text = pdf_check(result, name)
+        for course in catalogue['courses']:
+            check(name+' includes Level '+str(course['level']), course['title'] in text)
+        if customer is maximum_customer:
+            compact_text = ''.join(text.split())
+            check(name+' all customer details retained', all(customer[field] in compact_text for field in ['companyName','contactName','email']))
+        doc.close()
     post('proposal', {'courses': [line], 'customer': {'email': 'invalid'}}, 422)
     post('proposal', {'courses': [line], 'customer': {'country': 'ZZ'}}, 422)
     post('proposal', {'courses': [{**line, 'days': 3}]}, 422)

@@ -34,7 +34,11 @@ function summary_proposal_html(array $order): string {
     .signoff { margin-top:10pt; } .signoff td { padding:0; vertical-align:middle; }
     .signoff img { width:97pt; height:36pt; } .footer { font-size:6.6pt; color:#607787; margin-top:8pt; border-top:.5pt solid #d3dee6; padding-top:5pt; }
     .compact .parties td { font-size:6.8pt; line-height:1.12; padding:4pt; }
-    .compact h1 { margin-top:12pt; } .compact .signoff { margin-top:6pt; }
+    .compact h1 { margin-top:8pt; } .compact .signoff { margin-top:4pt; }
+    .compact p { margin-bottom:4pt; } .compact .meta { margin-bottom:7pt; }
+    .compact h2 { margin:8pt 0 4pt; }
+    .compact .courses td,.compact .courses th { padding:4pt; }
+    .compact .included { margin:7pt 0; }
     .compact .footer { font-size:6pt; margin-top:5pt; }
     tr { page-break-inside:avoid; } a { color:#054a85; text-decoration:none; }
     </style></head><body'.($longRecipient?' class="compact"':'').' >
