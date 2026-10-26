@@ -15,11 +15,12 @@ def render_certificate_section():
     types = []
     for index, (days, hours, label, description, colour, number) in enumerate(CERTIFICATES):
         asset = f'/assets/topengineer-certificate-{days}-days.png'
-        accessible = f'View the {days}-day certificate sample in full size (opens in a new tab)'
-        sheets.append(f'''<a class="certificate-sheet certificate-{colour}" style="--sheet-index:{index}" href="{asset}" target="_blank" rel="noopener" aria-label="{accessible}">
+        accessible = f'View the {days}-day certificate sample in full size'
+        sheets.append(f'''<a class="certificate-sheet certificate-{colour} portfolio-lightbox" data-gallery="certificateGallery" style="--sheet-index:{index}" href="{asset}" aria-label="{accessible}">
 <img src="{asset.replace('.png', '.webp')}" width="1536" height="1024" loading="lazy" decoding="async" alt="Sample personalised TopEngineer certificate for {days} days and {hours} hours of {description}, with unique number {number}.">
 </a>''')
-        links.append(f'''<a class="certificate-duration certificate-{colour}" href="{asset}" target="_blank" rel="noopener" aria-label="{accessible}"><strong>{days} days</strong><span>{hours} hours <span aria-hidden="true">↗</span></span></a>''')
+        # Separate entry-point groups keep each certificate from appearing twice.
+        links.append(f'''<a class="certificate-duration certificate-{colour} portfolio-lightbox" data-gallery="certificateDurationGallery" href="{asset}" aria-label="{accessible}"><strong>{days} days</strong><span>{hours} hours · View</span></a>''')
         types.append(f'''<li class="certificate-type certificate-{colour}"><h3 class="h6 fw-bold mb-1">{days} days · {hours} hours</h3><p class="mb-0">{label}</p></li>''')
     return f'''<section aria-labelledby="course-certificate-title" class="row px-4 px-md-5 pb-5" id="course-certificate">
 <div class="container">
