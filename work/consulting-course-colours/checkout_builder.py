@@ -10,6 +10,7 @@ def build_checkout(output, html):
     source=HERE/'checkout-module'
     target=output/'training-order'
     shutil.copytree(source,target,dirs_exist_ok=True)
+    shutil.copy2(source/'document-tools.js',output/'assets/document-tools.js')
     page=BeautifulSoup(html,'html.parser')
     data={
         'rates':json.loads(page.select_one('#training-rates').get_text()),

@@ -101,14 +101,28 @@ function make_quote(array $input, string $country = ''): array {
     return $result;
 }
 
-function create_order(array $body, string $scope, string $key): array {
-    if (!preg_match('/^[a-f0-9-]{24,80}$/i',$key)) throw new DomainException('Reload the page and try again.',422);
-    $raw=$body['customer']??[];
+function customer_details(mixed $raw, bool $required): array {
     if (!is_array($raw)) throw new DomainException('Enter company billing details.',422);
     $customer=[];
-    foreach(['companyName'=>[200,true],'registrationId'=>[100,true],'vatId'=>[100,false],'contactName'=>[160,true],'email'=>[254,true],'address'=>[700,true],'city'=>[160,true],'postalCode'=>[40,false],'country'=>[2,true],'phone'=>[80,false],'poReference'=>[120,false]] as $field=>$limits) $customer[$field]=clean_text($raw[$field]??'',$field,$limits[0],$limits[1]);
+    foreach(['companyName'=>[200,true],'registrationId'=>[100,true],'vatId'=>[100,false],'contactName'=>[160,true],'email'=>[254,true],'address'=>[700,true],'city'=>[160,true],'postalCode'=>[40,false],'country'=>[2,true],'phone'=>[80,false],'poReference'=>[120,false]] as $field=>$limits) $customer[$field]=clean_text($raw[$field]??'',$field,$limits[0],$required&&$limits[1]);
     $customer['country']=strtoupper($customer['country']);
-    if(!filter_var($customer['email'],FILTER_VALIDATE_EMAIL)) throw new DomainException('Enter a valid email address.',422);
+    if($customer['email']!==''&&!filter_var($customer['email'],FILTER_VALIDATE_EMAIL)) throw new DomainException('Enter a valid email address.',422);
+    if($customer['country']!==''&&!isset(catalogue()['countries'][$customer['country']])) throw new DomainException('Select a valid company country.',422);
+    return $customer;
+}
+
+function proposal_snapshot(array $body): array {
+    $customer=customer_details($body['customer']??[],false);
+    $quote=make_quote($body,$customer['country']);
+    $now=new DateTimeImmutable('now',new DateTimeZone('Europe/Belgrade'));
+    // A quotation download is not an order and never consumes a pro forma number.
+    $reference='TE-CP-'.$now->format('Ymd').'-'.strtoupper(substr(hash('sha256',json_encode([$quote['quoteFingerprint'],$customer],JSON_UNESCAPED_UNICODE|JSON_THROW_ON_ERROR)),0,8));
+    return ['reference'=>$reference,'createdAt'=>$now->format(DATE_ATOM),'date'=>$now->format('Y-m-d'),'validUntil'=>null,'preview'=>!$quote['tax']['approved'],'customer'=>$customer,'quote'=>$quote,'seller'=>settings()['seller'],'bank'=>null,'commercialTerms'=>commercial_terms(),'catalogue'=>catalogue()];
+}
+
+function create_order(array $body, string $scope, string $key): array {
+    if (!preg_match('/^[a-f0-9-]{24,80}$/i',$key)) throw new DomainException('Reload the page and try again.',422);
+    $customer=customer_details($body['customer']??[],true);
     if(($body['businessAuthorised']??false)!==true) throw new DomainException('Confirm that you are authorised to order for this business.',422);
     $quote=make_quote($body,$customer['country']);
     if(!hash_equals($quote['quoteFingerprint'],(string)($body['quoteFingerprint']??''))) throw new DomainException('The price or tax details have changed. Review the updated total and prepare your documents again.',409);
@@ -152,7 +166,7 @@ function get_order(string $token): array {
 }
 
 function public_order(array $order): array {
-    $documents=[['kind'=>'proposal','label'=>'Commercial proposal + all course programmes','filename'=>$order['reference'].'-proposal.pdf'],['kind'=>'invoice','label'=>$order['preview']?'Pro forma invoice preview':'Pro forma invoice','filename'=>$order['reference'].'-proforma.pdf']];
+    $documents=[['kind'=>'summary','label'=>'Commercial proposal (1 page)','filename'=>$order['reference'].'-summary.pdf'],['kind'=>'proposal','label'=>'Detailed proposal & all course programmes','filename'=>$order['reference'].'-proposal.pdf'],['kind'=>'invoice','label'=>$order['preview']?'Pro forma invoice preview':'Pro forma invoice','filename'=>$order['reference'].'-proforma.pdf']];
     if($order['includeAgreement']) $documents[]=['kind'=>'agreement','label'=>$order['agreementApproved']?'Training agreement':'Draft training agreement','filename'=>$order['reference'].'-agreement.pdf'];
     $expired=order_is_expired($order);
     return ['token'=>$order['token'],'reference'=>$order['reference'],'date'=>$order['date'],'validUntil'=>$order['validUntil']??null,'expired'=>$expired,'commercialTerms'=>$order['commercialTerms']??null,'preview'=>$order['preview'],'status'=>$expired?'expired':$order['status'],'customer'=>$order['customer'],'quote'=>$order['quote'],'seller'=>$order['seller'],'bank'=>$expired?null:$order['bank'],'paymentTerm'=>$order['paymentTerm'],'agreementApproved'=>$order['agreementApproved'],'documents'=>$documents];

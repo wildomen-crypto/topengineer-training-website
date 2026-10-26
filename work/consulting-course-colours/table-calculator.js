@@ -9,6 +9,7 @@
   const currency = cents => new Intl.NumberFormat('en-IE', {style:'currency',currency:'EUR',minimumFractionDigits:2}).format(cents / 100);
   const plural = (number, word) => number + ' ' + word + (number === 1 ? '' : 's');
   const startCheckout = calculator.querySelector('[data-start-checkout]');
+  const proposalButton = calculator.querySelector('[data-download-proposal]');
   let estimate;
 
   function update() {
@@ -42,6 +43,7 @@
     calculator.querySelector('[data-total-meta]').textContent = estimate.courseCount ? plural(estimate.courseCount, 'course') + ' · ' + plural(estimate.days, 'day') + ' · ' + plural(estimate.hours, 'hour') : 'Select at least one course to see your estimate.';
     calculator.querySelector('[data-discuss-plan]').disabled = estimate.courseCount === 0;
     if (startCheckout) startCheckout.disabled = estimate.courseCount === 0;
+    if (proposalButton) proposalButton.disabled = estimate.courseCount === 0 || proposalButton.dataset.busy === 'true';
     calculator.querySelector('[data-clear-selection]').disabled = estimate.courseCount === 0;
   }
   calculator.addEventListener('change', event => {
@@ -128,6 +130,18 @@
       message.textContent = 'Your browser could not save the selected courses for checkout. Please allow session storage and try again.';
       message.hidden = false;
     }
+  });
+  if (proposalButton) proposalButton.addEventListener('click', async () => {
+    if (!estimate || !estimate.courseCount || proposalButton.dataset.busy === 'true') return;
+    const message = document.getElementById('checkout-cart-error');
+    message.hidden = true;
+    const courses = estimate.courses.map(course => ({id:course.id,days:course.days,participants:course.participants,startDate:course.startDate || ''}));
+    try {
+      await TrainingDocuments.downloadProposal(new URL('./training-order/api.php',location.href).href,courses,TrainingDocuments.readCustomer(),proposalButton,document.getElementById('proposal-download-status'));
+    } catch (failure) {
+      message.textContent = failure.message || 'The proposal could not be downloaded. Please try again.';
+      message.hidden = false;
+    } finally { update(); }
   });
   if (new URLSearchParams(location.search).get('editOrder') === '1') {
     try {

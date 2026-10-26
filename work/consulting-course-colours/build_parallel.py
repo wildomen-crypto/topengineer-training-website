@@ -56,9 +56,11 @@ def build():
     html = replace_certificate_section(html)
     theme_link = f'<link rel="stylesheet" href="/assets/{THEME}?v=20261023-1">\n' if THEME else ''
     html = html.replace('</head>', '<link rel="stylesheet" href="/assets/parallel-days.css?v=20261023-1">\n<link rel="stylesheet" href="/assets/course-levels.css?v=20261023-neutral-2">\n<link rel="stylesheet" href="/assets/certificate-gallery.css?v=20261023-3">\n' + theme_link + '</head>', 1)
+    html, count = re.subn(r'<script\b[^>]*\bsrc="/assets/table-calculator\.js[^>]*></script>', lambda match: '<script src="/assets/document-tools.js?v=20261026-1" defer></script>\n'+match[0], html, count=1)
+    assert count == 1
     html = re.sub(r'table-calculator\.css\?v=[^"\s]+', 'table-calculator.css?v=20261023-compact-prices-1', html)
     html = re.sub(r'course-programme(s?)\.js\?v=[^"\s]+', r'course-programme\1.js?v=20261023-parts-1', html)
-    html = re.sub(r'table-calculator\.js\?v=[^"\s]+', 'table-calculator.js?v=20261023-checkout-1', html)
+    html = re.sub(r'table-calculator\.js\?v=[^"\s]+', 'table-calculator.js?v=20261026-proposal-1', html)
     html = re.sub(r'<title>.*?</title>', '<title>' + SETTINGS['title'] + '</title>', html, count=1, flags=re.S)
     for name in ['course-programmes.js', 'course-programme.js', 'parallel-days.css', 'table-calculator.js', 'table-calculator.css', 'course-levels.css', 'certificate-gallery.css'] + ([THEME] if THEME else []):
         shutil.copy2(HERE / name, OUT / 'assets' / name)
@@ -121,7 +123,7 @@ PROJECT_CONTEXT.md и README.md. Старые версии и прежний к�
     base.select_one('link[href^="/assets/table-calculator.css"]')['href'] = soup.select_one('link[href^="/assets/table-calculator.css"]')['href']
     for script in base.select('script[src]'):
         script['src'] = re.sub(r'course-programme(s?)\.js\?v=[^"\s]+', r'course-programme\1.js?v=20261023-parts-1', script['src'])
-        script['src'] = re.sub(r'table-calculator\.js\?v=[^"\s]+', 'table-calculator.js?v=20261023-checkout-1', script['src'])
+        script['src'] = re.sub(r'table-calculator\.js\?v=[^"\s]+', 'table-calculator.js?v=20261026-proposal-1', script['src'])
     # Ignore whitespace around the single added stylesheet when comparing the rest.
     comparable = BeautifulSoup(html, 'html.parser')
     comparable.select_one('link[href^="/assets/parallel-days.css"]').decompose()
@@ -129,6 +131,7 @@ PROJECT_CONTEXT.md и README.md. Старые версии и прежний к�
     comparable.select_one('link[href^="/assets/certificate-gallery.css"]').decompose()
     if THEME:
         comparable.select_one(f'link[href^="/assets/{THEME}"]').decompose()
+    comparable.select_one('script[src^="/assets/document-tools.js"]').decompose()
     normalise = lambda page: re.sub(r'>\s+<', '><', str(page))
     assert normalise(base) == normalise(comparable), 'Unrelated page content changed'
     assert hashes(ORIGINAL) == before, 'Previous site was modified'

@@ -12,6 +12,7 @@ return [
         'tax_number' => '112979992',
         'country' => 'RS',
         'email' => 'info@top-engineer.com',
+        'phone' => '+381 61 6139370',
         'director' => 'Dmitrii Taran',
         'website' => 'https://top-engineer.com',
         'details_confirmed' => false,

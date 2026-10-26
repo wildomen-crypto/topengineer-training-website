@@ -20,6 +20,11 @@
     $('order-error').focus();
   }
   function clearError() { $('order-error').hidden = true; }
+  function saveBillingDraft() {
+    const customer = Object.fromEntries(new FormData($('billing-form')));
+    TrainingDocuments.saveCustomer(customer);
+    return customer;
+  }
   function renderTerms(terms, target) {
     const list = $(target);
     list.replaceChildren();
@@ -60,7 +65,7 @@
     renderTerms(data.commercialTerms,'quote-terms');
     $('prerequisite-area').hidden = !data.needsPrerequisiteConfirmation;
     $('prerequisiteConfirmed').required = data.needsPrerequisiteConfirmation;
-    $('prepare-order').textContent = data.paymentReady ? 'Prepare proposal & invoice' : 'Prepare preview documents';
+    $('prepare-order').textContent = data.paymentReady ? 'Prepare invoice & documents' : 'Prepare preview documents';
     $('preview-banner').hidden = data.paymentReady || (config.mode === 'live' && !$('country').value);
     if (config.mode === 'live' && !data.paymentReady && $('country').value) $('preview-banner').textContent = 'A payable invoice is not yet available for this billing country. You can prepare a proposal and an invoice preview.';
   }
@@ -141,20 +146,26 @@
     } catch (failure) { error(failure.message || 'The download could not be prepared.'); $('download-status').textContent = ''; }
     finally { button.disabled = false; button.textContent = original; }
   }
-  $('billing-form').addEventListener('input', () => { if (!busy) requestKey = key(); });
-  $('country').addEventListener('change', () => { requestKey = key(); refreshQuote().catch(failure => error(failure.message)); });
+  $('billing-form').addEventListener('input', () => { if (!busy) { requestKey = key(); saveBillingDraft(); } });
+  $('country').addEventListener('change', () => { requestKey = key(); saveBillingDraft(); refreshQuote().catch(failure => error(failure.message)); });
+  $('download-proposal-preview').addEventListener('click', async () => {
+    if (busy || !cart || $('download-proposal-preview').dataset.busy === 'true') return;
+    clearError();
+    try { await TrainingDocuments.downloadProposal(apiUrl,cart.courses,saveBillingDraft(),$('download-proposal-preview'),$('proposal-status')); }
+    catch (failure) { error(failure.message || 'The proposal could not be prepared.'); }
+  });
   $('billing-form').addEventListener('submit', async event => {
     event.preventDefault();
     if (busy || !quote) return;
     clearError(); busy = true;
-    const customer = Object.fromEntries(new FormData($('billing-form')));
+    const customer = saveBillingDraft();
     const body = {courses:cart.courses,customer,quoteFingerprint:quote.quoteFingerprint,includeAgreement:$('includeAgreement').checked,businessAuthorised:$('businessAuthorised').checked,prerequisiteConfirmed:$('prerequisiteConfirmed').checked};
     const controls = [...$('billing-form').elements];
     controls.forEach(control => { control.disabled = true; });
     $('prepare-order').textContent = 'Preparing your order…';
     try { showOrder(await api('order',body)); }
     catch (failure) { error(failure.message); await refreshQuote().catch(() => {}); }
-    finally { busy = false; controls.forEach(control => { control.disabled = false; }); $('prepare-order').disabled = !quote; if (quote) $('prepare-order').textContent = quote.paymentReady ? 'Prepare proposal & invoice' : 'Prepare preview documents'; }
+    finally { busy = false; controls.forEach(control => { control.disabled = false; }); $('prepare-order').disabled = !quote; if (quote) $('prepare-order').textContent = quote.paymentReady ? 'Prepare invoice & documents' : 'Prepare preview documents'; }
   });
   $('download-pack').addEventListener('click', () => download('pack',order.reference+'-documents.zip',$('download-pack')));
   $('resume-order').addEventListener('click', async () => { try { showOrder(await api('resume')); } catch (failure) { error(failure.message); } });
@@ -169,6 +180,10 @@
       $('resume-area').hidden = !config.resumeAvailable;
       Object.entries(config.countries).sort((a,b)=>a[1].localeCompare(b[1])).forEach(([code,name]) => {
         const option=element('option',name); option.value=code; $('country').append(option);
+      });
+      Object.entries(TrainingDocuments.readCustomer()).forEach(([name,value]) => {
+        const control = $('billing-form').elements.namedItem(name);
+        if (control) control.value = value;
       });
       if (config.agreementApproved) $('agreement-label').textContent='Include a training agreement (optional)';
       try { cart = JSON.parse(sessionStorage.getItem(cartKey)); } catch { cart = null; }

@@ -55,14 +55,19 @@ def calculator_markup(markup):
     question['class'] = ['btn', 'btn-outline-primary']
     question.clear()
     question.string = 'Ask a question'
-    buttons = soup.new_tag('div', attrs={'class': 'd-flex flex-wrap gap-2 justify-content-end'})
+    buttons = soup.new_tag('div', attrs={'class': 'd-flex flex-wrap gap-2 justify-content-end flex-shrink-0'})
     question.replace_with(buttons)
     checkout = soup.new_tag('button', attrs={'type': 'button', 'class': 'training-quote__discuss', 'data-start-checkout': ''})
-    checkout.string = 'Get proposal & invoice'
+    checkout.string = 'Get invoice'
+    proposal = soup.new_tag('button', attrs={'type': 'button', 'class': 'btn btn-outline-primary', 'data-download-proposal': ''})
+    proposal.string = 'Download proposal PDF'
     buttons.append(question)
+    buttons.append(proposal)
     buttons.append(checkout)
     error = soup.new_tag('p', attrs={'id': 'checkout-cart-error', 'class': 'small text-danger mt-2', 'role': 'alert', 'hidden': ''})
     actions.insert_after(error)
+    status = soup.new_tag('p', attrs={'id': 'proposal-download-status', 'class': 'small text-muted mt-2 mb-0', 'role': 'status', 'aria-live': 'polite', 'hidden': ''})
+    error.insert_after(status)
     return str(soup)
 
 

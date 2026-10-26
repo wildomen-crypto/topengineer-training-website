@@ -8,7 +8,7 @@ header('X-Content-Type-Options: nosniff');
 header('Referrer-Policy: no-referrer');
 try {
     $action=$_GET['action']??'config';
-    if(in_array($action,['config','quote','order','resume'],true)) $session=checkout_session();
+    if(in_array($action,['config','quote','proposal','order','resume'],true)) $session=checkout_session();
     if($action==='config') {
         if(($_SERVER['REQUEST_METHOD']??'GET')!=='GET') throw new DomainException('Method not allowed.',405);
         $config=settings();
@@ -32,13 +32,21 @@ try {
         $order=create_order($body,$session['scope'],$key);
         json_reply(public_order($order),201);
     }
+    if($action==='proposal') {
+        $body=request_json($session);limit_requests('document');
+        $proposal=proposal_snapshot($body);
+        $content=render_pdf($proposal,'summary');
+        header('Content-Type: application/pdf');
+        header('Content-Disposition: attachment; filename="'.$proposal['reference'].'-proposal.pdf"');
+        header('Content-Length: '.strlen($content));echo $content;exit;
+    }
     if($action==='document') {
         if(($_SERVER['REQUEST_METHOD']??'GET')!=='GET') throw new DomainException('Method not allowed.',405);
         $auth=$_SERVER['HTTP_AUTHORIZATION']??'';
         $order=get_order(str_starts_with($auth,'Bearer ')?substr($auth,7):'');
         limit_requests('document');
         $kind=$_GET['kind']??'';
-        if(!in_array($kind,['proposal','invoice','agreement','pack'],true)) throw new DomainException('Document not found.',404);
+        if(!in_array($kind,['summary','proposal','invoice','agreement','pack'],true)) throw new DomainException('Document not found.',404);
         $content=$kind==='pack'?render_pack($order):render_pdf($order,$kind);
         header('Content-Type: '.($kind==='pack'?'application/zip':'application/pdf'));
         header('Content-Disposition: attachment; filename="'.$order['reference'].'-'.$kind.($kind==='pack'?'.zip':'.pdf').'"');

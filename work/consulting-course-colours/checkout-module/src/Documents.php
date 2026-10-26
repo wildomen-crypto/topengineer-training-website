@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+require_once __DIR__.'/Proposal.php';
 
 function e(string|int $text): string {
     return htmlspecialchars(str_replace(["\u{2011}","\u{2013}","\u{2014}"],'-',(string)$text),ENT_QUOTES|ENT_SUBSTITUTE,'UTF-8');
@@ -145,7 +146,7 @@ function agreement_html(array $order): string {
 
 function render_pdf(array $order, string $kind): string {
     require_once dirname(__DIR__).'/vendor/dompdf/autoload.inc.php';
-    $html=match($kind) {'proposal'=>proposal_html($order),'invoice'=>invoice_html($order),'agreement'=>$order['includeAgreement']?agreement_html($order):throw new DomainException('No agreement was requested.',404),default=>throw new DomainException('Document not found.',404)};
+    $html=match($kind) {'summary'=>summary_proposal_html($order),'proposal'=>proposal_html($order),'invoice'=>invoice_html($order),'agreement'=>$order['includeAgreement']?agreement_html($order):throw new DomainException('No agreement was requested.',404),default=>throw new DomainException('Document not found.',404)};
     $options=new \Dompdf\Options();
     $options->set('isRemoteEnabled',false);
     $options->set('isPhpEnabled',false);
