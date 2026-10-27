@@ -14,6 +14,7 @@
 .env.*
 !.env.example
 **/settings.php
+!**/vendor/sabberworm/php-css-parser/src/Settings.php
 **/settings.local.php
 **/private/
 *.pem

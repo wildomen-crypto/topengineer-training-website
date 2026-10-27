@@ -1,0 +1,1 @@
+Independent interactive-lesson version. Preview: http://127.0.0.1:8776/#how-training-works. Run tools/Start-Interactive-Lesson.ps1 from the repository root. Source: work/consulting-interactive-lesson. Build: python -X utf8 work/consulting-interactive-lesson/build_interactive.py.

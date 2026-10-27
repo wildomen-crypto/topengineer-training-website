@@ -1,0 +1,12 @@
+{
+  "id": "tekla-guide-set",
+  "name": "Tekla Structures modelling guide",
+  "description": "Electronic set of three English-language volumes",
+  "format": "Electronic",
+  "volumes": 3,
+  "language": "English",
+  "currency": "EUR",
+  "unitPriceCents": 8900,
+  "maxQuantity": 20,
+  "pricingNote": "Owner's USD 100 converted using ECB EUR/USD 1.1188 (26 October 2026), rounded to the nearest whole euro. Fixed selling price: EUR 89 per set."
+}

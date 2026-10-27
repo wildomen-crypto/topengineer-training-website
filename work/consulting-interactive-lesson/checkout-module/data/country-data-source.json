@@ -1,0 +1,7 @@
+{
+  "package": "pycountry",
+  "version": "26.2.16",
+  "url": "https://files.pythonhosted.org/packages/9c/42/7703bd45b62fecd44cd7d3495423097e2f7d28bc2e99e7c1af68892ab157/pycountry-26.2.16-py3-none-any.whl",
+  "sha256": "115c4baf7cceaa30f59a4694d79483c9167dbce7a9de4d3d571c5f3ea77c305a",
+  "use": "ISO country names and alpha-2 identifiers only"
+}
