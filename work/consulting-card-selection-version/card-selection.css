@@ -6,4 +6,6 @@
 #course-descriptions .course-card-choice { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; vertical-align: middle; margin: 0 4px 0 0; cursor: pointer; }
 #course-descriptions .course-card-choice input { width: 20px; height: 20px; margin: 0; accent-color: #fff; cursor: pointer; }
 #course-descriptions .course-card-choice input:focus-visible { outline: 3px solid #ffbc00; outline-offset: 3px; }
+#training-books { scroll-margin-top: 76px; }
+.training-books__cover { width: 100%; max-width: 700px; aspect-ratio: 1.52 / 1; object-fit: cover; object-position: center; }
 @media (prefers-reduced-motion: reduce) { #course-descriptions [data-selectable-card] { transition: none; } }
