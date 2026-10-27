@@ -14,7 +14,7 @@ OUT = build_parallel.OUT
 def build():
     build_parallel.build()
     page = BeautifulSoup((OUT / 'index.html').read_text(encoding='utf-8'), 'html.parser')
-    page.head.append(BeautifulSoup('<link rel="stylesheet" href="/assets/usability.css?v=3">', 'html.parser'))
+    page.head.append(BeautifulSoup('<link rel="stylesheet" href="/assets/usability.css?v=5">', 'html.parser'))
     page.body.append(BeautifulSoup('<script src="/assets/usability.js?v=3" defer></script>', 'html.parser'))
 
     intro = page.select_one('.training-intro__copy > div')
@@ -44,6 +44,7 @@ def build():
         actions.append(button)
 
     calc = page.select_one('#training-calculator')
+    calc.select_one('.training-quote__actions p').string = 'For 5- and 10-day courses: minimum fee for 3 participants, even if only 1 or 2 attend. The 10-day fee is twice the 5-day fee. All prices are per group.'
     calc.select_one('[data-start-checkout]').string = 'Prepare order documents'
     calc.select_one('[data-download-proposal]').insert_before(BeautifulSoup('<span class="proposal-hint">No company details needed for the proposal.</span>', 'html.parser'))
     for th in calc.select('thead th'):

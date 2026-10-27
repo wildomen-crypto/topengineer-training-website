@@ -11,7 +11,12 @@
 .programme-jumps button { border: 1px solid #0c66b0; border-radius: 3px; background: #fff; color: #07599d; padding: 5px 10px; min-height: 36px; }
 .programme-download { color: #05579e; text-decoration: underline; font-size: 14px; }
 .mobile-quote-bar { display: none; }
-@media (max-width: 1199px) {
+@media (min-width: 1600px) {
+  #training-calculator .training-quote__actions { margin-top: 6px; gap: 12px 20px; }
+  #training-calculator .training-quote__actions p { max-width: none; flex: 1 1 auto; }
+  #training-calculator #proposal-download-status { margin-top: 4px !important; }
+}
+@media (max-width: 1599px) {
   #training-calculator .training-quote__actions { flex-direction: column; align-items: stretch; gap: 14px; }
   #training-calculator .training-quote__actions > div { width: 100%; min-width: 0; justify-content: flex-start !important; }
   #training-calculator .training-quote__actions .proposal-hint { flex-basis: 100%; order: -1; }
