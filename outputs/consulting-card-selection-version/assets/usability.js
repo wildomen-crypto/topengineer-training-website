@@ -53,6 +53,11 @@
             row.querySelector('[data-start-date]').value = course.startDate || '';
           }
         });
+        const bookRow = calculator.querySelector('[data-book-row]');
+        if (bookRow && Number.isInteger(cart.bookQuantity) && cart.bookQuantity >= 0 && cart.bookQuantity <= 20) {
+          bookRow.querySelector('[data-book-selected]').checked = cart.bookQuantity > 0;
+          bookRow.querySelector('[data-book-quantity]').value = String(cart.bookQuantity || 1);
+        }
         sessionStorage.removeItem('TE-usability-return');
       }
     } catch (_) { /* Keep the visible controls if session storage is unavailable. */ }

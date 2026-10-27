@@ -21,7 +21,7 @@
     document.body.append(link); link.click(); link.remove();
     setTimeout(() => URL.revokeObjectURL(url),60000);
   }
-  async function downloadProposal(apiUrl, courses, customer, button, status) {
+  async function downloadProposal(apiUrl, courses, customer, button, status, bookQuantity = 0) {
     const original = button.textContent;
     button.disabled = true; button.dataset.busy = 'true';
     button.textContent = 'Preparing PDF…';
@@ -33,7 +33,7 @@
       const response = await fetch(apiUrl+'?action=proposal',{
         method:'POST',credentials:'same-origin',
         headers:{'Content-Type':'application/json','X-CSRF-Token':config.csrf},
-        body:JSON.stringify({courses,customer:customerOnly(customer)}),signal:AbortSignal.timeout(90000)
+        body:JSON.stringify({courses,bookQuantity,customer:customerOnly(customer)}),signal:AbortSignal.timeout(90000)
       });
       if (!response.ok || !(response.headers.get('Content-Type')||'').includes('application/pdf')) {
         const data = await response.json().catch(() => ({}));
@@ -41,7 +41,7 @@
       }
       const filename = response.headers.get('Content-Disposition')?.match(/filename="([A-Za-z0-9_.-]+)"/)?.[1] || 'TopEngineer-training-proposal.pdf';
       saveBlob(await response.blob(),filename);
-      status.textContent = 'Proposal downloaded. You can prepare an invoice using the same courses and company details.';
+      status.textContent = 'Proposal downloaded. You can prepare an invoice using the same selected items and company details.';
     } catch (failure) { status.textContent = ''; throw failure; }
     finally { button.disabled = false; button.dataset.busy = 'false'; button.textContent = original; }
   }

@@ -2063,5 +2063,17 @@
       "text": "This template is a draft for review. The parties must confirm the final legal terms, applicable law and dispute-resolution provisions before signature. The website does not sign this document on behalf of either party. The customer’s request to prepare documents is not acceptance of an unsigned draft agreement."
     }
   ],
-  "revision": "2300040fd9206ae7acbc59768e13aa4ed6ae453c8dc9a10672cc212c8dcab1f9"
+  "bookProduct": {
+    "id": "tekla-guide-set",
+    "name": "Tekla Structures modelling guide",
+    "description": "Electronic set of three English-language volumes",
+    "format": "Electronic",
+    "volumes": 3,
+    "language": "English",
+    "currency": "EUR",
+    "unitPriceCents": 8900,
+    "maxQuantity": 20,
+    "pricingNote": "Owner's USD 100 converted using ECB EUR/USD 1.1188 (26 October 2026), rounded to the nearest whole euro. Fixed selling price: EUR 89 per set."
+  },
+  "revision": "a012916bc40a4cc15581f154ee1a396374fcf190b1a196f1f82e462f0d9b5c5e"
 }

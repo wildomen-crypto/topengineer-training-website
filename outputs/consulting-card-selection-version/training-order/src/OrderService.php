@@ -29,13 +29,14 @@ function bank_ready(array $config): bool {
     return $remainder === 1 && preg_match('/^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$/', strtoupper($bank['swift'] ?? '')) && !empty($bank['name']) && !empty($bank['beneficiary']) && ($bank['currency'] ?? '') === 'EUR';
 }
 
-function tax_rule(string $country): array {
+function tax_rule(string $country, string $category='training'): array {
     $config = settings();
-    $rule = $config['tax_rules'][$country] ?? ($country !== 'RS' ? ($config['tax_rules']['foreign_business'] ?? []) : []);
+    $rules = $category==='books' ? ($config['book_tax_rules']??[]) : $config['tax_rules'];
+    $rule = $rules[$country] ?? ($country !== 'RS' ? ($rules['foreign_business'] ?? []) : []);
     $mode = $rule['mode'] ?? 'unconfigured';
     $rate = $rule['rate_bps'] ?? 0;
     $ready = !empty($rule['approved']) && in_array($mode,['outside_scope','exempt','exclusive','inclusive'],true) && is_int($rate) && $rate >= 0 && $rate <= 10000 && !empty($rule['note']);
-    return ['approved' => $ready, 'mode' => $ready ? $mode : 'unconfigured', 'rate_bps' => $ready ? $rate : 0, 'note' => $ready ? $rule['note'] : 'Tax treatment has not yet been confirmed. This is an indicative training price.'];
+    return ['approved' => $ready, 'mode' => $ready ? $mode : 'unconfigured', 'rate_bps' => $ready ? $rate : 0, 'note' => $ready ? $rule['note'] : ($category==='books' ? 'Tax treatment for electronic books has not yet been confirmed. Book prices are indicative.' : 'Tax treatment has not yet been confirmed. This is an indicative training price.')];
 }
 
 function tax_amounts(int $price, array $tax): array {
@@ -54,10 +55,14 @@ function tax_amounts(int $price, array $tax): array {
 function make_quote(array $input, string $country = ''): array {
     $catalogue = catalogue();
     $rates = $catalogue['rates'];
+    $product = $catalogue['bookProduct'];
+    $bookQuantity = $input['bookQuantity']??0;
+    if(!is_int($bookQuantity)||$bookQuantity<0||$bookQuantity>$product['maxQuantity']) throw new DomainException('Choose between 1 and '.$product['maxQuantity'].' book sets, or remove the books.',422);
     $source = $input['courses'] ?? null;
-    if (!is_array($source) || !array_is_list($source) || count($source)<1 || count($source)>4) throw new DomainException('Select one to four courses.',422);
+    if (!is_array($source) || !array_is_list($source) || count($source)>4 || (count($source)===0 && $bookQuantity===0)) throw new DomainException('Select a course or an electronic book set.',422);
     if ($country !== '' && !isset($catalogue['countries'][$country])) throw new DomainException('Select a valid company country.',422);
-    $tax = tax_rule($country);
+    $trainingTax = tax_rule($country);
+    $tax = $trainingTax;
     $items=[]; $seen=[]; $subtotal=0; $net=0; $vat=0; $total=0;
     foreach ($source as $line) {
         if (!is_array($line)) throw new DomainException('Invalid course selection.',422);
@@ -81,20 +86,29 @@ function make_quote(array $input, string $country = ''): array {
         $subtotal+=$price; $net+=$amounts['netCents']; $vat+=$amounts['taxCents']; $total+=$amounts['totalCents'];
     }
     usort($items,fn($a,$b)=>$a['id']<=>$b['id']);
+    $bookSet=null;
+    if($bookQuantity>0) {
+        $bookTax=tax_rule($country,'books');
+        $price=$product['unitPriceCents']*$bookQuantity;
+        $amounts=tax_amounts($price,$bookTax);
+        $bookSet=array_merge(['id'=>$product['id'],'name'=>$product['name'],'description'=>$product['description'],'quantity'=>$bookQuantity,'unitPriceCents'=>$product['unitPriceCents'],'priceCents'=>$price],$amounts);
+        $subtotal+=$price; $net+=$amounts['netCents']; $vat+=$amounts['taxCents']; $total+=$amounts['totalCents'];
+        $tax=$items ? ['approved'=>$trainingTax['approved']&&$bookTax['approved'],'mode'=>'mixed','rate_bps'=>0,'note'=>$trainingTax['note'].' '.$bookTax['note']] : $bookTax;
+    }
     $config=settings();
     $ready=$config['mode']==='live'&&!empty($config['seller']['details_confirmed'])&&bank_ready($config)&&$country!==''&&$tax['approved']&&!empty($config['payment_terms_approved']);
-    $comparisonGroup=max(array_column($items,'participants'));
+    $comparisonGroup=$items ? max(array_column($items,'participants')) : 1;
     $other=[];
     foreach($catalogue['courses'] as $course) if(!isset($seen[$course['level']])) {
         $prices=[];
         foreach([2,5,10] as $days) {
             $bill=max($comparisonGroup,$rates['minimumBillableParticipants'][(string)$days]);
             $base=$rates['totalsCents'][(string)$days][(string)$bill];
-            $prices[(string)$days]=tax_amounts($base,$tax)['totalCents'];
+            $prices[(string)$days]=tax_amounts($base,$trainingTax)['totalCents'];
         }
         $other[]=['id'=>$course['level'],'name'=>$course['title'],'prices'=>$prices];
     }
-    $result=['currency'=>'EUR','courses'=>$items,'courseCount'=>count($items),'days'=>array_sum(array_column($items,'days')),'hours'=>array_sum(array_column($items,'hours')),'subtotalCents'=>$subtotal,'netCents'=>$net,'taxCents'=>$vat,'totalCents'=>$total,'tax'=>$tax,'paymentReady'=>$ready,'comparisonParticipants'=>$comparisonGroup,'otherCourses'=>$other,'needsPrerequisiteConfirmation'=>!isset($seen[1]),'country'=>$country];
+    $result=['currency'=>'EUR','courses'=>$items,'bookSet'=>$bookSet,'courseCount'=>count($items),'days'=>array_sum(array_column($items,'days')),'hours'=>array_sum(array_column($items,'hours')),'subtotalCents'=>$subtotal,'netCents'=>$net,'taxCents'=>$vat,'totalCents'=>$total,'tax'=>$tax,'paymentReady'=>$ready,'comparisonParticipants'=>$comparisonGroup,'otherCourses'=>$other,'needsPrerequisiteConfirmation'=>count($items)>0&&!isset($seen[1]),'country'=>$country];
     $result['commercialTerms']=commercial_terms();
     $result['paymentTerm']=$config['payment_term'];
     $result['quoteFingerprint']=hash('sha256',json_encode([$result,$catalogue['revision']],JSON_UNESCAPED_UNICODE|JSON_THROW_ON_ERROR));
@@ -128,7 +142,8 @@ function create_order(array $body, string $scope, string $key): array {
     if(!hash_equals($quote['quoteFingerprint'],(string)($body['quoteFingerprint']??''))) throw new DomainException('The price or tax details have changed. Review the updated total and prepare your documents again.',409);
     if($quote['needsPrerequisiteConfirmation']&&($body['prerequisiteConfirmed']??false)!==true) throw new DomainException('Confirm that participants have completed Level 1.',422);
     $includeAgreement=($body['includeAgreement']??false)===true;
-    $payload=['customer'=>$customer,'courses'=>$quote['courses'],'includeAgreement'=>$includeAgreement,'businessAuthorised'=>true,'prerequisiteConfirmed'=>($body['prerequisiteConfirmed']??false)===true];
+    if($includeAgreement && $quote['courseCount']===0) throw new DomainException('A training agreement requires at least one training course.',422);
+    $payload=['customer'=>$customer,'courses'=>$quote['courses'],'bookSet'=>$quote['bookSet'],'includeAgreement'=>$includeAgreement,'businessAuthorised'=>true,'prerequisiteConfirmed'=>($body['prerequisiteConfirmed']??false)===true];
     $hash=hash('sha256',json_encode($payload,JSON_UNESCAPED_UNICODE|JSON_THROW_ON_ERROR));
     $db=database();
     $db->exec('BEGIN IMMEDIATE');

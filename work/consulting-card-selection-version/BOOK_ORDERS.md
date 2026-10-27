@@ -1,0 +1,10 @@
+# Electronic guide in the selectable-card version
+
+- The optional product is a complete electronic set of three English-language volumes. Fixed price: EUR 89 per set, authorised by the owner from USD 100 rounded to a whole euro. The reference conversion is recorded in `book-product.json`.
+- `book-product.json` is the price source for the calculator, book section and generated order catalogue. Rebuild with `python -X utf8 work/consulting-card-selection-version/build_card_selection.py` after changing it.
+- The initial selection remains Level 1, two days, one participant; books are unchecked. A customer may add 1–20 sets or order the books without a course. Books never change course hours or dates and are not silently multiplied by the participant count.
+- The cart and all API requests use `bookQuantity` (integer, 0–20). The server calculates the price from its catalogue and snapshots the book line in the order. The same quantity travels through quotation downloads, checkout, editing, invoice, detailed proposal and the optional training agreement.
+- Training agreements are offered only when a training course is selected. Existing order snapshots without a book line remain readable.
+- Digital book sales can require a different tax treatment from training. Before enabling payable book orders, approve the separate `book_tax_rules` in the private settings, using the same country/mode/rate/note structure as `tax_rules`. Unconfigured book taxes keep an order in preview even when training is enabled. No private bank details are added to source control.
+- This change adds ordering/document generation, not automatic delivery of the book files. Delivery automation requires the actual protected files and agreed access arrangements.
+- Run `python tests/test_book_orders.py` against the local preview at port 8774. It checks price calculations, all 16 course combinations with books, books-only orders, limits, data inheritance, idempotency, PDF page counts and text boundaries. Synthetic QA PDFs and rendered pages stay in ignored `.runtime/qa-books`.

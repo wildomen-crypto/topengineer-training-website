@@ -11,7 +11,8 @@ function date_label(string $date): string { return $date ? (new DateTimeImmutabl
 function commercial_terms_html(array $order): string {
     $terms=$order['commercialTerms']??null;
     if(!$terms) return '';
-    return '<p class="small"><strong>Invoice terms:</strong> Valid for '.e($terms['validity_months']).' calendar months from issue. '.e($terms['rescheduling']).' '.e($terms['refunds']).'</p>';
+    $schedule=$order['quote']['courseCount'] ? e($terms['rescheduling']).' ' : '';
+    return '<p class="small"><strong>Invoice terms:</strong> Valid for '.e($terms['validity_months']).' calendar months from issue. '.$schedule.e($terms['refunds']).'</p>';
 }
 
 function document_start(array $order, string $title, bool $draft = false): string {
@@ -59,6 +60,10 @@ function document_start(array $order, string $title, bool $draft = false): strin
     .invoice .totals td { padding: 2pt 3pt; }
     .invoice .totals { margin-left: 44%; }
     .invoice .parties td { font-size: 7.5pt; padding: 5pt; }
+    .invoice--compact .parties td { font-size: 6.8pt; line-height: 1.12; padding: 4pt; width: 64%; }
+    .invoice--compact .parties td:first-child { width: 36%; }
+    .invoice--compact .small { font-size: 7pt; }
+    .invoice--compact .notice { font-size: 7pt; padding: 5pt; }
     .invoice p { margin-bottom: 3pt; }
     .invoice h2 { font-size: 13pt; margin: 8pt 0 5pt; }
     .bank-instructions { background: #edf5fb; padding: 7pt; font-size: 8pt; }
@@ -72,15 +77,17 @@ function parties_html(array $order): string {
 }
 
 function order_table_html(array $order): string {
-    $html='<table><thead><tr><th style="width:48%">Selected course</th><th style="width:17%">Duration</th><th style="width:13%">Group</th><th class="amount" style="width:22%">Group price</th></tr></thead><tbody>';
+    $html='<table><thead><tr><th style="width:48%">Selected course / item</th><th style="width:17%">Duration / format</th><th style="width:13%">People / sets</th><th class="amount" style="width:22%">Price</th></tr></thead><tbody>';
     foreach($order['quote']['courses'] as $course) {
         $schedule=$course['startDate']?date_label($course['startDate']).' to '.date_label($course['endDate']):'Dates to be agreed';
         $minimum=$course['billedParticipants']>$course['participants']?'<br><span class="small">Minimum fee for '.$course['billedParticipants'].'</span>':'';
         $html.='<tr><td><strong>Level '.$course['id'].' - '.e($course['name']).'</strong><br><span class="small">'.e($schedule).' (provisional)</span></td><td>'.$course['days'].' days<br>'.$course['hours'].' hours</td><td>'.$course['participants'].' attending'.$minimum.'</td><td class="amount">'.money($course['totalCents']).'</td></tr>';
     }
     $q=$order['quote'];
+    $book=$q['bookSet']??null;
+    if($book) $html.='<tr><td><strong>'.e($book['name']).'</strong><br><span class="small">'.e($book['description']).'<br>Unit price: '.money($book['unitPriceCents']).' per set</span></td><td>Electronic</td><td>'.$book['quantity'].' set'.($book['quantity']===1?'':'s').'</td><td class="amount">'.money($book['totalCents']).'</td></tr>';
     $taxValue=$q['tax']['approved']?money($q['taxCents']):'Not confirmed';
-    return $html.'</tbody></table><table class="totals"><tr><td>Training subtotal</td><td class="amount">'.money($q['netCents']).'</td></tr><tr><td>'.($q['tax']['approved']?'Tax / VAT':'Tax treatment').'</td><td class="amount">'.$taxValue.'</td></tr><tr class="grand"><td>'.($order['preview']?'Indicative total':'Amount payable').'</td><td class="amount">'.money($q['totalCents']).'</td></tr></table><p class="small">'.e($q['tax']['note']).'</p>';
+    return $html.'</tbody></table><table class="totals"><tr><td>Order subtotal</td><td class="amount">'.money($q['netCents']).'</td></tr><tr><td>'.($q['tax']['approved']?'Tax / VAT':'Tax treatment').'</td><td class="amount">'.$taxValue.'</td></tr><tr class="grand"><td>'.($order['preview']?'Indicative total':'Amount payable').'</td><td class="amount">'.money($q['totalCents']).'</td></tr></table><p class="small">'.e($q['tax']['note']).'</p>';
 }
 
 function programme_html(array $course, string $context): string {
@@ -132,12 +139,13 @@ function render_course_programme_pdf(array $course): string {
 
 function proposal_html(array $order): string {
     $q=$order['quote'];
-    $html=document_start($order,'Commercial proposal').parties_html($order).'<h2>Your selected training</h2>'.order_table_html($order);
-    $html.='<div class="note"><strong>Dates do not affect the training price.</strong> You can arrange payment before the teaching dates are finalised. Requested dates are provisional and are confirmed with your instructor. End dates include all calendar days, with the start date counted as day 1.</div>';
+    $html=document_start($order,'Commercial proposal').parties_html($order).'<h2>Your selected items</h2>'.order_table_html($order);
+    if($q['courseCount']) $html.='<div class="note"><strong>Dates do not affect the training price.</strong> You can arrange payment before the teaching dates are finalised. Requested dates are provisional and are confirmed with your instructor. End dates include all calendar days, with the start date counted as day 1.</div>';
     $html.=commercial_terms_html($order);
     $selected=array_column($q['courses'],'id');
     foreach($order['catalogue']['courses'] as $course) if(in_array($course['level'],$selected,true)) $html.=programme_html($course,'SELECTED COURSE - included in the order total');
-    $html.='<div class="new-page"><h2>Included in your training</h2><p>Live online instruction with a professional engineer, guided demonstrations and practical exercises appropriate to the chosen duration. The 10-day format includes five training days and five days on your own pilot project. Software preparation is arranged before the first lesson.</p><p>Each participant receives a personalised digital TopEngineer certificate with a unique number after completing the course. Brief follow-up questions can be answered free of charge; more involved technical support is agreed separately at an hourly rate.</p><p>Complete Level 1 before attending Levels 2-4. The advanced courses may be taken in any order.</p><p class="small">Software licences are not included. Bank transfer instructions appear in the separate pro forma invoice when payment is available.</p>';
+    $html.='<div class="new-page">';
+    if($q['courseCount']) $html.='<h2>Included in your training</h2><p>Live online instruction with a professional engineer, guided demonstrations and practical exercises appropriate to the chosen duration. The 10-day format includes five training days and five days on your own pilot project. Software preparation is arranged before the first lesson.</p><p>Each participant receives a personalised digital TopEngineer certificate with a unique number after completing the course. Brief follow-up questions can be answered free of charge; more involved technical support is agreed separately at an hourly rate.</p><p>Complete Level 1 before attending Levels 2-4. The advanced courses may be taken in any order.</p><p class="small">Software licences are not included. Bank transfer instructions appear in the separate pro forma invoice when payment is available.</p>';
     if($q['otherCourses']) {
         $html.='<h2>Other courses you can add</h2><p>These courses are <strong>not ordered and not included in your invoice</strong>. Prices below are for a group of '.$q['comparisonParticipants'].' participant'.($q['comparisonParticipants']===1?'':'s').' - the largest group size in your current plan.</p><table><thead><tr><th style="width:46%">Additional course</th><th class="amount" style="width:18%">2 days / 16 h</th><th class="amount" style="width:18%">5 days / 40 h</th><th class="amount" style="width:18%">10 days / 80 h</th></tr></thead><tbody>';
         foreach($q['otherCourses'] as $extra) $html.='<tr><td>Level '.$extra['id'].' - '.e($extra['name']).'</td><td class="amount">'.money($extra['prices']['2']).'</td><td class="amount">'.money($extra['prices']['5']).'</td><td class="amount">'.money($extra['prices']['10']).'</td></tr>';
@@ -148,14 +156,15 @@ function proposal_html(array $order): string {
 }
 
 function invoice_html(array $order): string {
-    $html=document_start($order,'Pro forma invoice').'<div class="invoice"><p class="small">Payment request for live online Tekla Structures training. This document is not a tax invoice or proof of payment.</p>'.parties_html($order).order_table_html($order);
+    $longCustomer=mb_strlen(implode(' ',$order['customer']))>500;
+    $html=document_start($order,'Pro forma invoice').'<div class="invoice'.($longCustomer?' invoice--compact':'').'"><p class="small">Payment request for the selected training and/or electronic books. This document is not a tax invoice or proof of payment.</p>'.parties_html($order).order_table_html($order);
     if($order['bank']) {
         $bank=$order['bank'];
         $html.='<h2>Bank transfer instructions</h2><div class="bank-instructions">';
         foreach(['Beneficiary'=>$bank['beneficiary'],'IBAN'=>$bank['iban'],'SWIFT / BIC'=>$bank['swift'],'Bank'=>$bank['name'],'Bank address'=>$bank['address'],'Correspondent bank'=>$bank['correspondent'],'Payment reference'=>$order['reference'].' (EUR)'] as $label=>$value) if($value!=='') $html.='<p>'.e($label).': <strong>'.e($value).'</strong></p>';
         $html.='</div><p style="margin-top:6pt">'.e($order['paymentTerm']).'</p><p class="small">Please include the exact reference above. Payment remains pending until funds are received in the supplier bank account.</p>';
     } else $html.='<div class="notice"><strong>Not valid for payment.</strong> This preview contains no payment instructions. Required payment settings and the applicable tax treatment must be confirmed before a payable pro forma invoice can be issued.</div>';
-    return $html.commercial_terms_html($order).'<p class="small">Training dates are provisional and agreed separately. Only selected courses are invoiced; optional courses are excluded.</p></div></body></html>';
+    return $html.commercial_terms_html($order).'<p class="small">Training dates, where applicable, are provisional and agreed separately. Only selected items are invoiced; optional courses are excluded.</p></div></body></html>';
 }
 
 function agreement_html(array $order): string {

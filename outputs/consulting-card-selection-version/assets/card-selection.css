@@ -6,6 +6,24 @@
 #course-descriptions .course-card-choice { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; vertical-align: middle; margin: 0 4px 0 0; cursor: pointer; }
 #course-descriptions .course-card-choice input { width: 20px; height: 20px; margin: 0; accent-color: #fff; cursor: pointer; }
 #course-descriptions .course-card-choice input:focus-visible { outline: 3px solid #ffbc00; outline-offset: 3px; }
+#training-calculator .training-quote__book-content { display: flex; justify-content: space-between; align-items: center; gap: 12px 24px; min-width: 0; }
+#training-calculator .training-quote__book-quantity { flex: 0 0 140px; }
+#training-calculator .training-quote__book-quantity label { display: block; margin-bottom: 4px; }
+#training-calculator .training-quote__books > * { background: #f7f9fb; }
+#training-calculator .training-quote__books.is-selected > * { background: #e5f0fa; }
+@media (max-width: 1399px) {
+  #training-calculator .training-quote__books { display: grid; grid-template-columns: 44px minmax(0,1fr) auto; gap: 12px 18px; padding: 16px; border-top: 1px solid #d4dfe8; background: #f7f9fb; }
+  #training-calculator .training-quote__books.is-selected { background: #e5f0fa; }
+  #training-calculator .training-quote__books .training-quote__select { grid-row: 1 / span 2; }
+  #training-calculator .training-quote__books .training-quote__price { grid-column: 3; grid-row: 1; }
+  #training-calculator .training-quote__books:not(.is-selected) :is(.training-quote__book-quantity, .training-quote__price) { display: none; }
+  #training-calculator .training-quote__books:not(.is-selected) .training-quote__book-details { grid-column: 2 / -1; }
+}
+@media (max-width: 767px) {
+  #training-calculator .training-quote__books { grid-template-columns: 32px minmax(0,1fr); gap: 12px; padding: 14px 12px; }
+  #training-calculator .training-quote__book-content { flex-wrap: wrap; }
+  #training-calculator .training-quote__books .training-quote__price { grid-column: 2; grid-row: 2; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+}
 #training-books { scroll-margin-top: 76px; }
 #training-books .training-books__artwork { display: flex; }
 #training-books .training-books__gallery { display: flex; flex-direction: column; width: 100%; max-width: 820px; margin-inline: auto; min-width: 0; container-type: inline-size; }

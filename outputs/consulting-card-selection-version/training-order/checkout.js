@@ -57,6 +57,15 @@
       item.append(element('p', currency(course.totalCents), 'fw-bold text-primary mb-0'));
       lines.append(item);
     });
+    if (data.bookSet) {
+      const book = data.bookSet;
+      const item = element('div', undefined, 'order-line');
+      item.append(element('p',book.name,'fw-bold mb-1'),element('p',book.description,'small mb-1'),element('p',book.quantity + (book.quantity === 1 ? ' set' : ' sets') + ' × ' + currency(book.unitPriceCents),'small mb-1'),element('p',currency(book.totalCents),'fw-bold text-primary mb-0'));
+      lines.append(item);
+    }
+    const agreement = $('includeAgreement');
+    agreement.closest('.form-check').hidden = data.courseCount === 0;
+    if (!data.courseCount) agreement.checked = false;
     $('quote-subtotal').textContent = currency(data.netCents);
     $('quote-tax').textContent = data.tax.approved ? currency(data.taxCents) : 'To confirm';
     $('quote-total').textContent = currency(data.totalCents);
@@ -74,7 +83,7 @@
     $('prepare-order').disabled = true;
     quote = null;
     try {
-      const data = await api('quote', {courses:cart.courses,country:$('country').value});
+      const data = await api('quote', {courses:cart.courses,bookQuantity:cart.bookQuantity || 0,country:$('country').value});
       if (version !== quoteRequest) return;
       quote = data;
       renderQuote(data);
@@ -151,7 +160,7 @@
   $('download-proposal-preview').addEventListener('click', async () => {
     if (busy || !cart || $('download-proposal-preview').dataset.busy === 'true') return;
     clearError();
-    try { await TrainingDocuments.downloadProposal(apiUrl,cart.courses,saveBillingDraft(),$('download-proposal-preview'),$('proposal-status')); }
+    try { await TrainingDocuments.downloadProposal(apiUrl,cart.courses,saveBillingDraft(),$('download-proposal-preview'),$('proposal-status'),cart.bookQuantity || 0); }
     catch (failure) { error(failure.message || 'The proposal could not be prepared.'); }
   });
   $('billing-form').addEventListener('submit', async event => {
@@ -159,7 +168,7 @@
     if (busy || !quote) return;
     clearError(); busy = true;
     const customer = saveBillingDraft();
-    const body = {courses:cart.courses,customer,quoteFingerprint:quote.quoteFingerprint,includeAgreement:$('includeAgreement').checked,businessAuthorised:$('businessAuthorised').checked,prerequisiteConfirmed:$('prerequisiteConfirmed').checked};
+    const body = {courses:cart.courses,bookQuantity:cart.bookQuantity || 0,customer,quoteFingerprint:quote.quoteFingerprint,includeAgreement:$('includeAgreement').checked,businessAuthorised:$('businessAuthorised').checked,prerequisiteConfirmed:$('prerequisiteConfirmed').checked};
     const controls = [...$('billing-form').elements];
     controls.forEach(control => { control.disabled = true; });
     $('prepare-order').textContent = 'Preparing your order…';
@@ -187,7 +196,7 @@
       });
       if (config.agreementApproved) $('agreement-label').textContent='Include a training agreement (optional)';
       try { cart = JSON.parse(sessionStorage.getItem(cartKey)); } catch { cart = null; }
-      if (!cart || !Array.isArray(cart.courses) || !cart.courses.length) { $('empty-cart').hidden=false; return; }
+      if (!cart || !Array.isArray(cart.courses) || (!cart.courses.length && !cart.bookQuantity)) { $('empty-cart').hidden=false; return; }
       await refreshQuote();
       $('checkout-layout').hidden=false;
     } catch (failure) { error(failure.message || 'The order page could not be loaded. Please try again.'); }

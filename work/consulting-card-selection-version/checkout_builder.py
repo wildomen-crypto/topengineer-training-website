@@ -18,6 +18,7 @@ def build_checkout(output, html):
         'formats':json.loads((HERE/'training-formats.json').read_text(encoding='utf-8'))['formats'],
         'countries':json.loads((source/'data/countries.json').read_text(encoding='utf-8')),
         'agreementClauses':json.loads((source/'agreement-clauses.json').read_text(encoding='utf-8')),
+        'bookProduct':json.loads((HERE/'book-product.json').read_text(encoding='utf-8')),
     }
     data['revision']=hashlib.sha256(json.dumps(data,sort_keys=True,ensure_ascii=False).encode()).hexdigest()
     (target/'data').mkdir(exist_ok=True)

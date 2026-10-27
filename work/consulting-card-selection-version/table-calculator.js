@@ -4,6 +4,9 @@
   if (!calculator) return;
   const rates = JSON.parse(document.querySelector('#training-rates').textContent);
   const rows = Array.from(calculator.querySelectorAll('[data-course]'));
+  const bookData = document.querySelector('#training-book-product');
+  const bookProduct = bookData ? JSON.parse(bookData.textContent) : null;
+  const bookRow = calculator.querySelector('[data-book-row]');
   const formatData = document.querySelector('#training-formats-data');
   const formats = new Map((formatData ? JSON.parse(formatData.textContent).formats : []).map(format => [format.days, format]));
   const currency = cents => new Intl.NumberFormat('en-IE', {style:'currency',currency:'EUR',minimumFractionDigits:2}).format(cents / 100);
@@ -11,6 +14,9 @@
   const startCheckout = calculator.querySelector('[data-start-checkout]');
   const proposalButton = calculator.querySelector('[data-download-proposal]');
   let estimate;
+  function cartPayload() {
+    return {courses:estimate.courses.map(course => ({id:course.id,days:course.days,participants:course.participants,startDate:course.startDate || ''})),bookQuantity:estimate.bookQuantity};
+  }
 
   function update() {
     const courses = rows.map(row => {
@@ -39,17 +45,34 @@
       return course;
     });
     estimate = CoursePricing.summarize(courses, rates);
+    estimate.bookQuantity = 0;
+    if (bookRow && bookProduct) {
+      const selected = bookRow.querySelector('[data-book-selected]').checked;
+      const quantity = bookRow.querySelector('[data-book-quantity]');
+      const count = Number(quantity.value);
+      if (!Number.isInteger(count) || count < 1 || count > bookProduct.maxQuantity) quantity.value = '1';
+      estimate.bookQuantity = selected ? Number(quantity.value) : 0;
+      estimate.bookTotalCents = estimate.bookQuantity * bookProduct.unitPriceCents;
+      estimate.totalCents += estimate.bookTotalCents;
+      quantity.disabled = !selected;
+      bookRow.classList.toggle('is-selected', selected);
+      bookRow.querySelector('[data-book-price]').textContent = selected ? currency(estimate.bookTotalCents) : '—';
+    }
+    const hasItems = estimate.courseCount > 0 || estimate.bookQuantity > 0;
     calculator.querySelector('[data-quote-total]').textContent = currency(estimate.totalCents);
-    calculator.querySelector('[data-total-meta]').textContent = estimate.courseCount ? plural(estimate.courseCount, 'course') + ' · ' + plural(estimate.days, 'day') + ' · ' + plural(estimate.hours, 'hour') : 'Select at least one course to see your estimate.';
-    calculator.querySelector('[data-discuss-plan]').disabled = estimate.courseCount === 0;
-    if (startCheckout) startCheckout.disabled = estimate.courseCount === 0;
-    if (proposalButton) proposalButton.disabled = estimate.courseCount === 0 || proposalButton.dataset.busy === 'true';
-    calculator.querySelector('[data-clear-selection]').disabled = estimate.courseCount === 0;
+    const meta = [];
+    if (estimate.courseCount) meta.push(plural(estimate.courseCount, 'course'), plural(estimate.days, 'day'), plural(estimate.hours, 'hour'));
+    if (estimate.bookQuantity) meta.push(plural(estimate.bookQuantity, 'book set'));
+    calculator.querySelector('[data-total-meta]').textContent = hasItems ? meta.join(' · ') : 'Select a course or book set to see your estimate.';
+    calculator.querySelector('[data-discuss-plan]').disabled = !hasItems;
+    if (startCheckout) startCheckout.disabled = !hasItems;
+    if (proposalButton) proposalButton.disabled = !hasItems || proposalButton.dataset.busy === 'true';
+    calculator.querySelector('[data-clear-selection]').disabled = !hasItems;
   }
   calculator.addEventListener('change', event => {
     // Adding a course starts with the smallest group and duration. An existing
     // start date is retained; update() recalculates its end date and group fee.
-    if (event.target.matches('.training-quote__checkbox') && event.target.checked) {
+    if (event.target.matches('[data-course] .training-quote__checkbox') && event.target.checked) {
       const row = event.target.closest('[data-course]');
       row.querySelector('[data-days]').value = '2';
       row.querySelector('[data-participants]').value = '1';
@@ -61,6 +84,7 @@
   });
   calculator.querySelector('[data-clear-selection]').addEventListener('click', () => {
     rows.forEach(row => { row.querySelector('input[type="checkbox"]').checked = false; });
+    if (bookRow) bookRow.querySelector('[data-book-selected]').checked = false;
     update();
   });
 
@@ -94,14 +118,17 @@
   const planDialog = document.querySelector('#training-plan-dialog');
   const summary = planDialog.querySelector('textarea');
   calculator.querySelector('[data-discuss-plan]').addEventListener('click', () => {
-    if (!estimate.courseCount) return;
+    if (!estimate.courseCount && !estimate.bookQuantity) return;
     const lines = ['Tekla Structures training enquiry', ''];
     estimate.courses.forEach(course => {
       lines.push('Level ' + course.id + ': ' + course.name, plural(course.days, 'day') + ' / ' + plural(course.hours, 'hour') + ' (8 hours per day)', plural(course.participants, 'participant') + (course.billedParticipants > course.participants ? ' — minimum fee for ' + course.billedParticipants : ''), 'Desired start date: ' + (CourseSchedule.formatDate(course.startDate) || 'To be agreed'), 'Calculated end date: ' + (CourseSchedule.formatDate(course.endDate) || 'To be agreed'), 'Group price: ' + currency(course.totalCents), '');
       const format = formats.get(course.days);
       if (format) lines.splice(lines.length - 1, 0, 'Training format: ' + format.enquiry);
     });
-    lines.push('Total for selected courses: ' + currency(estimate.totalCents), plural(estimate.days, 'day') + ' / ' + plural(estimate.hours, 'hour'), '', 'End dates count all calendar days, including the start date. Dates are provisional, subject to confirmation with the tutor.', '', 'I would like to discuss the schedule and training goals.');
+    if (estimate.bookQuantity) lines.push(bookProduct.name, bookProduct.description, plural(estimate.bookQuantity, 'set') + ' × ' + currency(bookProduct.unitPriceCents) + ' = ' + currency(estimate.bookTotalCents), '');
+    lines.push('Total for selected items: ' + currency(estimate.totalCents));
+    if (estimate.courseCount) lines.push(plural(estimate.days, 'day') + ' / ' + plural(estimate.hours, 'hour'), '', 'End dates count all calendar days, including the start date. Dates are provisional, subject to confirmation with the tutor.');
+    lines.push('', 'I would like to ask about this order.');
     summary.value = lines.join('\n');
     planDialog.querySelector('[data-email-plan]').href = 'mailto:info@top-engineer.com?subject=' + encodeURIComponent('Tekla Structures training plan') + '&body=' + encodeURIComponent(summary.value);
     planDialog.querySelector('[data-copy-status]').textContent = '';
@@ -120,10 +147,9 @@
     }
   });
   if (startCheckout) startCheckout.addEventListener('click', () => {
-    if (!estimate || !estimate.courseCount) return;
+    if (!estimate || (!estimate.courseCount && !estimate.bookQuantity)) return;
     try {
-      const courses = estimate.courses.map(course => ({id:course.id,days:course.days,participants:course.participants,startDate:course.startDate || ''}));
-      sessionStorage.setItem('TE-training-cart-v1', JSON.stringify({courses}));
+      sessionStorage.setItem('TE-training-cart-v1', JSON.stringify(cartPayload()));
       location.href = new URL('./training-order/', location.href).href;
     } catch {
       const message = document.getElementById('checkout-cart-error');
@@ -132,12 +158,12 @@
     }
   });
   if (proposalButton) proposalButton.addEventListener('click', async () => {
-    if (!estimate || !estimate.courseCount || proposalButton.dataset.busy === 'true') return;
+    if (!estimate || (!estimate.courseCount && !estimate.bookQuantity) || proposalButton.dataset.busy === 'true') return;
     const message = document.getElementById('checkout-cart-error');
     message.hidden = true;
-    const courses = estimate.courses.map(course => ({id:course.id,days:course.days,participants:course.participants,startDate:course.startDate || ''}));
+    const cart = cartPayload();
     try {
-      await TrainingDocuments.downloadProposal(new URL('./training-order/api.php',location.href).href,courses,TrainingDocuments.readCustomer(),proposalButton,document.getElementById('proposal-download-status'));
+      await TrainingDocuments.downloadProposal(new URL('./training-order/api.php',location.href).href,cart.courses,TrainingDocuments.readCustomer(),proposalButton,document.getElementById('proposal-download-status'),cart.bookQuantity);
     } catch (failure) {
       message.textContent = failure.message || 'The proposal could not be downloaded. Please try again.';
       message.hidden = false;
@@ -156,8 +182,20 @@
             row.querySelector('[data-start-date]').value = course.startDate || '';
           }
         });
+        if (bookRow && Number.isInteger(cart.bookQuantity) && cart.bookQuantity >= 0 && cart.bookQuantity <= bookProduct.maxQuantity) {
+          bookRow.querySelector('[data-book-selected]').checked = cart.bookQuantity > 0;
+          bookRow.querySelector('[data-book-quantity]').value = String(cart.bookQuantity || 1);
+        }
       }
     } catch { /* A new visit keeps the existing Level 1 / one-person defaults. */ }
   }
+  document.querySelectorAll('[data-add-book-set]').forEach(button => button.addEventListener('click', () => {
+    if (!bookRow) return;
+    const checkbox = bookRow.querySelector('[data-book-selected]');
+    checkbox.checked = true;
+    checkbox.dispatchEvent(new Event('change', {bubbles:true}));
+    bookRow.scrollIntoView({behavior:'smooth',block:'center'});
+    checkbox.focus({preventScroll:true});
+  }));
   update();
 })();
