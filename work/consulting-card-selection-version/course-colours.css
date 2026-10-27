@@ -1,0 +1,49 @@
+/* Each course has one colour identity across its card, quote row and programme.
+   Numbered labels and checkboxes carry meaning independently of colour. */
+:is(#original-course-level-1, #training-calculator [data-course="1"], #inline-course-tab-1, #inline-course-panel-1, #course-programme-dialog [data-dialogue-course="1"]) {
+  --course-ink: #255f91; --course-paper: #e7f1fb; --course-selected: #d3e5f7; --course-edge: #b9d0e7; --course-footer: #dce9f6;
+}
+:is(#original-course-level-2, #training-calculator [data-course="2"], #inline-course-tab-2, #inline-course-panel-2, #course-programme-dialog [data-dialogue-course="2"]) {
+  --course-ink: #286b5d; --course-paper: #e6f3ee; --course-selected: #cee8db; --course-edge: #b6d8c8; --course-footer: #d9ece3;
+}
+:is(#original-course-level-3, #training-calculator [data-course="3"], #inline-course-tab-3, #inline-course-panel-3, #course-programme-dialog [data-dialogue-course="3"]) {
+  --course-ink: #70518a; --course-paper: #f1eaf7; --course-selected: #e3d5ef; --course-edge: #d3c0e2; --course-footer: #e7dbef;
+}
+:is(#original-course-level-4, #training-calculator [data-course="4"], #inline-course-tab-4, #inline-course-panel-4, #course-programme-dialog [data-dialogue-course="4"]) {
+  --course-ink: #8a6329; --course-paper: #faf0df; --course-selected: #f1dfbd; --course-edge: #e2c99f; --course-footer: #f1e2c8;
+}
+
+/* The entire card is tinted; headings and buttons provide a stronger landmark. */
+#course-descriptions .box { background: var(--course-paper); border: 1px solid var(--course-edge); box-shadow: 0 1px 5px rgba(25, 45, 65, .09); }
+#course-descriptions .box > h3 { background: var(--course-ink); color: #fff; }
+#course-descriptions .box > .text-primary { color: var(--course-ink) !important; }
+#course-descriptions .box li > i { color: var(--course-ink); }
+#course-descriptions .box .btn-wrap { background: var(--course-footer); }
+#course-descriptions .box .btn-buy, #course-descriptions .box .advanced { background: var(--course-ink); color: #fff; }
+#course-descriptions .box .btn-buy:hover { filter: brightness(.91); }
+
+/* Course colour remains visible before selection. A checked box, deeper tint
+   and dark left edge identify selected rows, rather than a second colour code. */
+#training-calculator .training-quote__table tbody > [data-course] > * { background: var(--course-paper); border-color: var(--course-edge); }
+#training-calculator .training-quote__table tbody > [data-course].is-selected > * { background: var(--course-selected); }
+#training-calculator .training-quote__table tbody > [data-course].is-selected > :first-child { box-shadow: inset 4px 0 0 var(--course-ink); }
+#training-calculator [data-course] .course-level { color: var(--course-ink); }
+#training-calculator [data-course] .training-quote__checkbox { accent-color: var(--course-ink); }
+#training-calculator [data-course] .training-quote__programme-link { color: var(--course-ink); }
+#training-calculator [data-course].is-selected .training-quote__price output { color: var(--course-ink); }
+#training-calculator [data-course] :is(select, input[type="date"]):disabled { background-color: rgba(255, 255, 255, .62); }
+
+/* The course picker repeats the same four colours; topic lists stay white. */
+#course-programmes [role="tab"] { background: var(--course-paper); border-color: var(--course-edge); color: var(--course-ink); }
+#course-programmes [role="tab"]:hover { background: var(--course-selected); border-color: var(--course-ink); color: var(--course-ink); }
+#course-programmes [role="tab"][aria-selected="true"] { background: var(--course-ink); border-color: var(--course-ink); color: #fff; }
+:is(#course-programmes, .course-programme--parallel) .parallel-day__header { background: var(--course-paper); border-top-color: var(--course-ink); }
+:is(#course-programmes, .course-programme--parallel) .parallel-day__number { color: var(--course-ink); }
+
+/* Below the existing table breakpoint each row becomes a mobile card. */
+@media (max-width: 1399px) {
+  #training-calculator .training-quote__course { background: var(--course-paper); border-color: var(--course-edge); border-left: 4px solid var(--course-edge); }
+  #training-calculator .training-quote__course.is-selected { background: var(--course-selected); border-left-color: var(--course-ink); }
+  #training-calculator .training-quote__table tbody > [data-course] > * { background: transparent; }
+  #training-calculator .training-quote__table tbody > [data-course].is-selected > :first-child { box-shadow: none; }
+}

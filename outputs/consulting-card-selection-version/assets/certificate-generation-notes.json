@@ -1,0 +1,32 @@
+{
+  "mode": "Built-in image_gen; three independent raster generation calls using the previous certificate as a style reference.",
+  "reference": "outputs/consulting-course-colours/assets/topengineer-certificate-sample.png",
+  "prompts": [
+    {
+      "days": 2,
+      "prompt": "Use case: productivity-visual. Create ONE finished landscape certificate artwork for the TopEngineer training website. The supplied image is a STYLE REFERENCE, not an item to copy unchanged. Keep its professional navy typography, thin engineering border, orange corner accents and faint steel frame technical drawing. Single certificate only, flat straight-on 3:2 rectangular sheet, entire artwork reaches all four image edges; NO surrounding desk/background, NO perspective, NO shadows, NO folded corners, NO frame outside the sheet. White paper, crisp extremely legible typesetting. A generous upper right coloured duration badge must remain legible at thumbnail scale. Large pale diagonal SAMPLE watermark. No external accreditation logos or signatures. Text must be exact English, no extra invented text. Place TopEngineer at top left, certificate title under it, recipient large in centre-left, training type and duration underneath, certificate number and issuer at bottom.\nUse navy blue as this certificate's distinguishing accent; retain navy body typography and small orange brand accents. Badge text: \"2 DAYS\" and \"16 HOURS\".\nText, verbatim:\n\"TOPENGINEER\"\n\"CERTIFICATE OF COMPLETION\"\n\"This certifies that\"\n\"ALEX MORGAN\"\n\"has completed Tekla Structures training with TopEngineer\"\n\"ESSENTIAL TRAINING\"\n\"2 days / 16 hours\"\n\"Certificate No. TE-SAMPLE-002\"\n\"Issued by TopEngineer\"\n\"top-engineer.com\"\n\"SAMPLE\"."
+    },
+    {
+      "days": 5,
+      "prompt": "Use case: productivity-visual. Create ONE finished landscape certificate artwork for the TopEngineer training website. The supplied image is a STYLE REFERENCE, not an item to copy unchanged. Keep its professional navy typography, thin engineering border, orange corner accents and faint steel frame technical drawing. Single certificate only, flat straight-on 3:2 rectangular sheet, entire artwork reaches all four image edges; NO surrounding desk/background, NO perspective, NO shadows, NO folded corners, NO frame outside the sheet. White paper, crisp extremely legible typesetting. A generous upper right coloured duration badge must remain legible at thumbnail scale. Large pale diagonal SAMPLE watermark. No external accreditation logos or signatures. Text must be exact English, no extra invented text. Place TopEngineer at top left, certificate title under it, recipient large in centre-left, training type and duration underneath, certificate number and issuer at bottom.\nUse deep teal as this certificate's distinguishing accent; retain navy body typography and small orange brand accents. Badge text: \"5 DAYS\" and \"40 HOURS\".\nText, verbatim:\n\"TOPENGINEER\"\n\"CERTIFICATE OF COMPLETION\"\n\"This certifies that\"\n\"ALEX MORGAN\"\n\"has completed Tekla Structures training with TopEngineer\"\n\"IN-DEPTH TRAINING\"\n\"5 days / 40 hours\"\n\"Certificate No. TE-SAMPLE-005\"\n\"Issued by TopEngineer\"\n\"top-engineer.com\"\n\"SAMPLE\"."
+    },
+    {
+      "days": 10,
+      "prompt": "Use case: productivity-visual. Create ONE finished landscape certificate artwork for the TopEngineer training website. The supplied image is a STYLE REFERENCE, not an item to copy unchanged. Keep its professional navy typography, thin engineering border, orange corner accents and faint steel frame technical drawing. Single certificate only, flat straight-on 3:2 rectangular sheet, entire artwork reaches all four image edges; NO surrounding desk/background, NO perspective, NO shadows, NO folded corners, NO frame outside the sheet. White paper, crisp extremely legible typesetting. A generous upper right coloured duration badge must remain legible at thumbnail scale. Large pale diagonal SAMPLE watermark. No external accreditation logos or signatures. Text must be exact English, no extra invented text. Place TopEngineer at top left, certificate title under it, recipient large in centre-left, training type and duration underneath, certificate number and issuer at bottom.\nUse muted bronze as this certificate's distinguishing accent; retain navy body typography and small orange brand accents. Badge text: \"10 DAYS\" and \"80 HOURS\".\nText, verbatim:\n\"TOPENGINEER\"\n\"CERTIFICATE OF COMPLETION\"\n\"This certifies that\"\n\"ALEX MORGAN\"\n\"has completed Tekla Structures training with TopEngineer\"\n\"TRAINING + YOUR PILOT PROJECT\"\n\"10 days / 80 hours\"\n\"5 days of training + 5 days on your own project\"\n\"Certificate No. TE-SAMPLE-010\"\n\"Issued by TopEngineer\"\n\"top-engineer.com\"\n\"SAMPLE\"."
+    }
+  ],
+  "assets": [
+    {
+      "days": 2,
+      "file": "topengineer-certificate-2-days.png"
+    },
+    {
+      "days": 5,
+      "file": "topengineer-certificate-5-days.png"
+    },
+    {
+      "days": 10,
+      "file": "topengineer-certificate-10-days.png"
+    }
+  ]
+}

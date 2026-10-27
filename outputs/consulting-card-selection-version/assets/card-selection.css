@@ -1,0 +1,10 @@
+#course-descriptions [data-selectable-card] { cursor: pointer; transition: box-shadow .18s ease, outline-color .18s ease, transform .18s ease; outline: 3px solid transparent; outline-offset: -3px; }
+@media (hover: hover) {
+  #course-descriptions [data-selectable-card]:hover { box-shadow: 0 6px 20px rgba(26,65,100,.22); outline-color: var(--course-ink, #05579e); transform: translateY(-3px); }
+}
+#course-descriptions [data-selectable-card].course-card-selected { outline-color: var(--course-ink, #05579e); box-shadow: 0 4px 15px rgba(26,65,100,.18); }
+#course-descriptions .course-card-choice { align-self: center; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 5px 10px; margin: 0 auto 14px; min-height: 40px; color: #234c70; font-weight: 600; cursor: pointer; }
+#course-descriptions .course-card-choice input { width: 20px; height: 20px; accent-color: var(--course-ink, #05579e); cursor: pointer; }
+#course-descriptions .course-card-selected .course-card-choice { color: var(--course-ink, #05579e); }
+#course-descriptions .course-card-choice input:focus-visible { outline: 3px solid #ffbc00; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { #course-descriptions [data-selectable-card] { transition: none; } }

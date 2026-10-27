@@ -1,0 +1,9 @@
+/* Only page layout; cards, forms, colours and buttons come from the original Bootstrap bundle. */
+.order-shell { max-width: 1320px; margin: 0 auto; }
+.order-summary { position: sticky; top: 20px; }
+.order-summary .order-line + .order-line { border-top: 1px solid #dee2e6; padding-top: 12px; margin-top: 12px; }
+.order-main-title { color: #054a85; }
+.order-document-list button { text-align: left; }
+.order-payment-details dd { overflow-wrap: anywhere; }
+[hidden] { display: none !important; }
+@media (max-width: 1199px) { .order-summary { position: static; } }

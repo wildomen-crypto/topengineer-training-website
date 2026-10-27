@@ -1,0 +1,41 @@
+{
+  "hoursPerDay": 8,
+  "heading": "Choose your training format",
+  "introduction": "Hands-on practice makes the difference when introducing Tekla Structures into your company’s real project work.",
+  "formats": [
+    {
+      "days": 2,
+      "shortLabel": "Essentials",
+      "title": "Essentials · minimum practice",
+      "paragraphs": [
+        "The shortest and most affordable format, well suited to individual engineers and students working with a very limited budget.",
+        "Also recommended when you need to learn a specific tool or a narrowly defined topic without covering the full course programme.",
+        "Practice is kept to a minimum: focused demonstrations and short exercises help you get started quickly."
+      ],
+      "enquiry": "2 days of compact training with minimum practice, covering the essentials or specific topics agreed with your instructor."
+    },
+    {
+      "days": 5,
+      "shortLabel": "Practice",
+      "title": "In-depth training · more practice",
+      "paragraphs": [
+        "Recommended for companies that need to train their engineers even though training was not planned and no dedicated budget was set aside.",
+        "Five days allow a more thorough study of your chosen course, with substantially more guided practice, repetition and instructor feedback than the 2-day option. A practical choice when the full 10-day training and implementation programme is beyond the available budget."
+      ],
+      "enquiry": "5 days of in-depth training with substantially more guided practice than the 2-day format."
+    },
+    {
+      "days": 10,
+      "shortLabel": "Your pilot",
+      "title": "Training + your own pilot project",
+      "split": "5 days of training + 5 days of guided project work",
+      "paragraphs": [
+        "Designed for a full rollout of Tekla Structures in an engineering or detailing department. Your team works on a real project of your own and produces project drawings and other documentation with your instructor’s guidance.",
+        "The longer format allows topics to be explored in greater depth, with substantially more hands-on practice and time to resolve issues on your first project.",
+        "During the five-day pilot project, your instructor can also give additional lessons on specific topics relevant to your work, tailoring the training to your team’s needs."
+      ],
+      "popularity": "Around 95% of our clients choose training with a pilot project.",
+      "enquiry": "5 days of in-depth training + 5 days on the customer’s own pilot project, producing project documentation with instructor support and additional targeted lessons as needed."
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "output": "outputs/consulting-card-selection-version",
+  "port": 8774,
+  "title": "TopEngineer | Training - selectable course cards",
+  "label": "ВЕРСИЯ С ВЫБОРОМ КУРСОВ КАРТОЧКАМИ",
+  "theme": "course-colours.css"
+}

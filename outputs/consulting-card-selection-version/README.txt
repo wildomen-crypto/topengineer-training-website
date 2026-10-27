@@ -1,0 +1,1 @@
+Independent selectable-course-cards variant. Start from project root with tools/Start-Card-Selection.ps1. Source: work/consulting-card-selection-version. Rebuild: python -X utf8 work/consulting-card-selection-version/build_card_selection.py.

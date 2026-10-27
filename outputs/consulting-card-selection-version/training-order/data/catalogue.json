@@ -1,0 +1,2067 @@
+{
+  "rates": {
+    "currency": "EUR",
+    "hoursPerDay": 8,
+    "days": [
+      2,
+      5,
+      10
+    ],
+    "maxParticipants": 20,
+    "minimumBillableParticipants": {
+      "2": 1,
+      "5": 3,
+      "10": 3
+    },
+    "totalsCents": {
+      "2": {
+        "1": 45000,
+        "2": 60000,
+        "3": 75000,
+        "4": 85000,
+        "5": 95000,
+        "6": 100000,
+        "7": 110000,
+        "8": 120000,
+        "9": 130000,
+        "10": 140000,
+        "11": 150000,
+        "12": 160000,
+        "13": 170000,
+        "14": 180000,
+        "15": 190000,
+        "16": 200000,
+        "17": 210000,
+        "18": 220000,
+        "19": 230000,
+        "20": 240000
+      },
+      "5": {
+        "3": 175000,
+        "4": 200000,
+        "5": 220000,
+        "6": 240000,
+        "7": 260000,
+        "8": 280000,
+        "9": 300000,
+        "10": 400000,
+        "11": 420000,
+        "12": 440000,
+        "13": 460000,
+        "14": 480000,
+        "15": 500000,
+        "16": 520000,
+        "17": 540000,
+        "18": 560000,
+        "19": 580000,
+        "20": 600000
+      },
+      "10": {
+        "3": 350000,
+        "4": 400000,
+        "5": 440000,
+        "6": 480000,
+        "7": 520000,
+        "8": 560000,
+        "9": 600000,
+        "10": 800000,
+        "11": 840000,
+        "12": 880000,
+        "13": 920000,
+        "14": 960000,
+        "15": 1000000,
+        "16": 1040000,
+        "17": 1080000,
+        "18": 1120000,
+        "19": 1160000,
+        "20": 1200000
+      }
+    },
+    "source": "https://docs.google.com/spreadsheets/d/1OXJCYJOVf4lFeD9aB64Fyh17PpONTn-8G2UBpMU-D5Y/edit",
+    "confirmedRules": [
+      "Two-day and five-day group totals match the user-supplied pricing screenshots.",
+      "Five-day and ten-day courses have a minimum fee for three participants, including when one or two attend.",
+      "The ten-day price is twice the five-day price for the billable group size.",
+      "Each selected course has its own duration and actual participant count. Group fees are added without a bundle discount."
+    ]
+  },
+  "courses": [
+    {
+      "level": 1,
+      "title": "Tekla Structures basic course",
+      "days": [
+        {
+          "day": 1,
+          "label": "Modelling",
+          "sections": [
+            {
+              "title": "Getting started and navigating the model",
+              "topics": [
+                [
+                  "1.1",
+                  "Introduction to Tekla Structures and an overview of its capabilities"
+                ],
+                [
+                  "1.2",
+                  "Starting Tekla Structures"
+                ],
+                [
+                  "1.3",
+                  "Selecting environments and model templates"
+                ],
+                [
+                  "1.4",
+                  "Creating a new model"
+                ],
+                [
+                  "1.5",
+                  "Understanding the structure of a new model"
+                ],
+                [
+                  "1.6",
+                  "Understanding the view work area"
+                ],
+                [
+                  "1.7",
+                  "Rotating and navigating the model"
+                ],
+                [
+                  "1.8",
+                  "Switching to the view plane"
+                ],
+                [
+                  "1.9",
+                  "Working with model grids"
+                ]
+              ]
+            },
+            {
+              "title": "Creating and editing structural objects",
+              "topics": [
+                [
+                  "1.10",
+                  "Creating columns"
+                ],
+                [
+                  "1.11",
+                  "Creating beams"
+                ],
+                [
+                  "1.12",
+                  "Creating contour plates"
+                ],
+                [
+                  "1.13",
+                  "Creating polybeams"
+                ],
+                [
+                  "1.14",
+                  "Creating twin profiles"
+                ],
+                [
+                  "1.15",
+                  "Part representation modes: Ctrl+1–5"
+                ],
+                [
+                  "1.16",
+                  "Corner points and chamfer properties"
+                ],
+                [
+                  "1.17",
+                  "Selecting object handles"
+                ],
+                [
+                  "1.18",
+                  "Using construction geometry"
+                ],
+                [
+                  "1.19",
+                  "Snapping to points and objects"
+                ],
+                [
+                  "1.20",
+                  "Using selection switches for different object types"
+                ],
+                [
+                  "1.21",
+                  "Fitting part ends"
+                ],
+                [
+                  "1.22",
+                  "Cutting parts with a line"
+                ],
+                [
+                  "1.23",
+                  "Cutting parts with a polygon"
+                ],
+                [
+                  "1.24",
+                  "Cutting a part with another part"
+                ],
+                [
+                  "1.25",
+                  "Creating bolted connections"
+                ]
+              ]
+            },
+            {
+              "title": "Assemblies, views and work planes",
+              "topics": [
+                [
+                  "1.26",
+                  "Understanding assemblies"
+                ],
+                [
+                  "1.27",
+                  "Creating welds"
+                ],
+                [
+                  "1.28",
+                  "Creating basic model views"
+                ],
+                [
+                  "1.29",
+                  "Creating views along grid lines"
+                ],
+                [
+                  "1.30",
+                  "Understanding the view plane"
+                ],
+                [
+                  "1.31",
+                  "Setting and using the work plane"
+                ]
+              ]
+            },
+            {
+              "title": "Introduction to components and AI",
+              "topics": [
+                [
+                  "1.32",
+                  "Understanding components"
+                ],
+                [
+                  "1.33",
+                  "Creating a simple custom component"
+                ],
+                [
+                  "1.34",
+                  "Introduction to the Custom Component Editor"
+                ],
+                [
+                  "1.35",
+                  "Binding component objects to planes"
+                ],
+                [
+                  "1.36",
+                  "Creating formulas in the Custom Component Editor"
+                ],
+                [
+                  "1.37",
+                  "Defining custom variables"
+                ],
+                [
+                  "1.38",
+                  "Modifying object properties in the component browser"
+                ],
+                [
+                  "1.39",
+                  "Introduction to more complex parametric custom components"
+                ],
+                [
+                  "1.40",
+                  "Introductory practice with different custom components"
+                ],
+                [
+                  "1.41",
+                  "Working with component catalogues"
+                ],
+                [
+                  "1.42",
+                  "Transferring components between projects"
+                ],
+                [
+                  "1.43",
+                  "Overview of creating common custom components"
+                ],
+                [
+                  "1.44",
+                  "Overview of using AI with Tekla Structures"
+                ]
+              ],
+              "note": "Components are introduced at an overview level in this basic course. Detailed component development and parameterisation are covered in Level 2."
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "label": "Drawings and model checks",
+          "sections": [
+            {
+              "title": "Drawing fundamentals and manual editing",
+              "topics": [
+                [
+                  "2.1",
+                  "Preparing the model for drawing creation"
+                ],
+                [
+                  "2.2",
+                  "Understanding the main drawing types"
+                ],
+                [
+                  "2.3",
+                  "Managing drawings in Document Manager / Drawing List"
+                ],
+                [
+                  "2.4",
+                  "Configuring settings before creating general arrangement drawings"
+                ],
+                [
+                  "2.5",
+                  "Creating general arrangement drawings"
+                ],
+                [
+                  "2.6",
+                  "Opening an existing drawing"
+                ],
+                [
+                  "2.7",
+                  "Saving drawings and saving the model"
+                ],
+                [
+                  "2.8",
+                  "Understanding drawing properties"
+                ],
+                [
+                  "2.9",
+                  "Understanding drawing view properties"
+                ],
+                [
+                  "2.10",
+                  "Modifying the properties of a selected drawing object"
+                ],
+                [
+                  "2.11",
+                  "Setting mark properties in drawings"
+                ],
+                [
+                  "2.12",
+                  "Controlling object representation in drawings"
+                ],
+                [
+                  "2.13",
+                  "Shortening parts in drawing views"
+                ],
+                [
+                  "2.14",
+                  "Setting drawing view label properties"
+                ],
+                [
+                  "2.15",
+                  "Creating dimensions"
+                ],
+                [
+                  "2.16",
+                  "Modifying dimensions by adding and removing dimension points"
+                ],
+                [
+                  "2.17",
+                  "Creating basic drawing views"
+                ],
+                [
+                  "2.18",
+                  "Creating section views in drawings"
+                ]
+              ]
+            },
+            {
+              "title": "Drawing types, dimensioning and output",
+              "topics": [
+                [
+                  "2.19",
+                  "Configuring settings before creating single-part drawings"
+                ],
+                [
+                  "2.20",
+                  "Creating single-part drawings"
+                ],
+                [
+                  "2.21",
+                  "Applying dimensioning rules to single-part drawings"
+                ],
+                [
+                  "2.22",
+                  "Configuring settings before creating assembly drawings"
+                ],
+                [
+                  "2.23",
+                  "Creating assembly drawings"
+                ],
+                [
+                  "2.24",
+                  "Applying dimensioning rules to assembly drawings"
+                ],
+                [
+                  "2.25",
+                  "Configuring settings before creating cast unit drawings"
+                ],
+                [
+                  "2.26",
+                  "Creating cast unit drawings"
+                ],
+                [
+                  "2.27",
+                  "Applying dimensioning rules to cast unit drawings"
+                ],
+                [
+                  "2.28",
+                  "Configuring settings before creating multidrawings"
+                ],
+                [
+                  "2.29",
+                  "Creating multidrawings"
+                ],
+                [
+                  "2.30",
+                  "Cloning drawings"
+                ],
+                [
+                  "2.31",
+                  "Cloning drawings from another model"
+                ],
+                [
+                  "2.32",
+                  "Working in the Drawing Editor"
+                ],
+                [
+                  "2.33",
+                  "Printing drawings and producing PDF files"
+                ],
+                [
+                  "2.34",
+                  "Exporting drawings to DWG"
+                ]
+              ]
+            },
+            {
+              "title": "Catalogues, reports and model checks",
+              "topics": [
+                [
+                  "2.35",
+                  "Overview of editing the profile catalogue"
+                ],
+                [
+                  "2.36",
+                  "Overview of editing the material catalogue"
+                ],
+                [
+                  "2.37",
+                  "Overview of Template Editor for reports"
+                ],
+                [
+                  "2.38",
+                  "Setting up a multi-user model"
+                ],
+                [
+                  "2.39",
+                  "Working in multi-user mode"
+                ],
+                [
+                  "2.40",
+                  "Configuring advanced project options"
+                ],
+                [
+                  "2.41",
+                  "Creating reports from the model"
+                ],
+                [
+                  "2.42",
+                  "Checking the model for clashes"
+                ],
+                [
+                  "2.43",
+                  "Checking and correcting numbering"
+                ],
+                [
+                  "2.44",
+                  "Overview of using AI to configure drawing settings"
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "title": "Custom components in Tekla Structures",
+      "days": [
+        {
+          "day": 1,
+          "label": "Parametric connections",
+          "sections": [
+            {
+              "title": "Custom component fundamentals",
+              "topics": [
+                [
+                  "1.1",
+                  "Understanding the purpose and capabilities of system components"
+                ],
+                [
+                  "1.2",
+                  "Exploring the capabilities of custom components"
+                ],
+                [
+                  "1.3",
+                  "Understanding the component workflow in Tekla Structures"
+                ],
+                [
+                  "1.4",
+                  "Non-parametric and parametric custom components"
+                ],
+                [
+                  "1.5",
+                  "Following the custom component creation workflow"
+                ],
+                [
+                  "1.6",
+                  "Understanding custom component types and their insertion methods"
+                ]
+              ]
+            },
+            {
+              "title": "Connections, bindings and stiffeners",
+              "topics": [
+                [
+                  "1.7",
+                  "Creating a non-parametric column base component"
+                ],
+                [
+                  "1.8",
+                  "Creating a non-parametric beam-to-column-flange end plate connection"
+                ],
+                [
+                  "1.9",
+                  "Creating a non-parametric beam-to-column-web end plate connection"
+                ],
+                [
+                  "1.10",
+                  "Creating a non-parametric beam-to-beam end plate connection"
+                ],
+                [
+                  "1.11",
+                  "Creating a non-parametric beam-to-beam fin plate connection"
+                ],
+                [
+                  "1.12",
+                  "Creating a parametric beam-to-column-flange connection"
+                ],
+                [
+                  "1.13",
+                  "Understanding parametric connections: binding points to planes"
+                ],
+                [
+                  "1.14",
+                  "Understanding every field in the Variables dialog"
+                ],
+                [
+                  "1.15",
+                  "Binding a point to the top of a beam and defining its behaviour"
+                ],
+                [
+                  "1.16",
+                  "Binding a point to the bottom of a beam and defining its behaviour"
+                ],
+                [
+                  "1.17",
+                  "Binding points to the left and right sides of a beam"
+                ],
+                [
+                  "1.18",
+                  "Creating and parameterising column stiffeners"
+                ]
+              ]
+            },
+            {
+              "title": "Variables and connection properties",
+              "topics": [
+                [
+                  "1.19",
+                  "Adding a Yes/No variable to control whether an object is created"
+                ],
+                [
+                  "1.20",
+                  "Adding a variable for object class and colour"
+                ],
+                [
+                  "1.21",
+                  "Adding a variable for material grade"
+                ],
+                [
+                  "1.22",
+                  "Adding a variable for chamfer type"
+                ],
+                [
+                  "1.23",
+                  "Adding a variable for chamfer size"
+                ],
+                [
+                  "1.24",
+                  "Adding a variable for profile selection"
+                ],
+                [
+                  "1.25",
+                  "Adding a variable for bolt standard"
+                ],
+                [
+                  "1.26",
+                  "Adding a variable for bolt diameter"
+                ],
+                [
+                  "1.27",
+                  "Coordinating bolt standard and bolt diameter selection"
+                ],
+                [
+                  "1.28",
+                  "Adding a variable for weld type"
+                ],
+                [
+                  "1.29",
+                  "Adding a variable for weld size"
+                ],
+                [
+                  "1.30",
+                  "Controlling bolt quantities through spacing lists"
+                ],
+                [
+                  "1.31",
+                  "Retrieving the current dimensions of beam and column profiles"
+                ]
+              ]
+            },
+            {
+              "title": "Formulas, bolt layouts and testing",
+              "topics": [
+                [
+                  "1.32",
+                  "Using the mid() string function"
+                ],
+                [
+                  "1.33",
+                  "Using the find() string function"
+                ],
+                [
+                  "1.34",
+                  "Using the length() string function"
+                ],
+                [
+                  "1.35",
+                  "Using the round() function"
+                ],
+                [
+                  "1.36",
+                  "Using the ceil() function"
+                ],
+                [
+                  "1.37",
+                  "Using the int() conversion function"
+                ],
+                [
+                  "1.38",
+                  "Saving, importing and exporting components between models"
+                ],
+                [
+                  "1.39",
+                  "Automatically setting the vertical offset to the first bolt"
+                ],
+                [
+                  "1.40",
+                  "Automatically setting horizontal bolt spacing"
+                ],
+                [
+                  "1.41",
+                  "Adapting bolt layouts to the beam profile"
+                ],
+                [
+                  "1.42",
+                  "Testing different profile sizes and correcting bolt layout errors"
+                ],
+                [
+                  "1.43",
+                  "Checking that dependent variables update when the beam profile changes"
+                ],
+                [
+                  "1.44",
+                  "Debugging parameter saving and custom component reuse"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "label": "Automation and component dialogs",
+          "sections": [
+            {
+              "title": "Developing and testing reusable connections",
+              "topics": [
+                [
+                  "2.1",
+                  "Creating a non-parametric component ready for parameterisation"
+                ],
+                [
+                  "2.2",
+                  "Reviewing the practical assignment"
+                ],
+                [
+                  "2.3",
+                  "Building a test model with different beam and column combinations"
+                ],
+                [
+                  "2.4",
+                  "Creating the connection for the first profile combination"
+                ],
+                [
+                  "2.5",
+                  "Parameterising the first example for use with other profile combinations"
+                ],
+                [
+                  "2.6",
+                  "Testing the connection across the full test model"
+                ],
+                [
+                  "2.7",
+                  "Configuring several connections in the prepared test model"
+                ]
+              ]
+            },
+            {
+              "title": "Lookup tables and data-driven components",
+              "topics": [
+                [
+                  "2.8",
+                  "Preparing tabular data for use by custom components"
+                ],
+                [
+                  "2.9",
+                  "Understanding common errors when reading lookup tables"
+                ],
+                [
+                  "2.10",
+                  "Understanding how components retrieve data from lookup tables"
+                ],
+                [
+                  "2.11",
+                  "Practical exercise: using a real design table in a component"
+                ],
+                [
+                  "2.12",
+                  "Turning a non-parametric component into a fully automated component"
+                ],
+                [
+                  "2.13",
+                  "Defining priorities in the component’s parametric logic"
+                ],
+                [
+                  "2.14",
+                  "Handling profile combinations that are not included in the lookup table"
+                ],
+                [
+                  "2.15",
+                  "Using AI to populate lookup tables from PDF documents"
+                ],
+                [
+                  "2.16",
+                  "Understanding the limitations of reading data from Excel"
+                ]
+              ]
+            },
+            {
+              "title": "Ladders, stairs and nested components",
+              "topics": [
+                [
+                  "2.17",
+                  "Creating a handrail component"
+                ],
+                [
+                  "2.18",
+                  "Creating a fixed steel access ladder component with a safety cage"
+                ],
+                [
+                  "2.19",
+                  "Creating a stair flight component"
+                ],
+                [
+                  "2.20",
+                  "Creating custom seams"
+                ],
+                [
+                  "2.21",
+                  "Creating reference distances in a custom component"
+                ],
+                [
+                  "2.22",
+                  "Creating a component that switches between sub-component types"
+                ]
+              ]
+            },
+            {
+              "title": "Component dialogs and deployment",
+              "topics": [
+                [
+                  "2.23",
+                  "Understanding custom component dialog design"
+                ],
+                [
+                  "2.24",
+                  "Adding a tab to a custom component dialog"
+                ],
+                [
+                  "2.25",
+                  "Organising variables across dialog tabs"
+                ],
+                [
+                  "2.26",
+                  "Arranging variable controls within each tab"
+                ],
+                [
+                  "2.27",
+                  "Adding images to a custom component dialog"
+                ],
+                [
+                  "2.28",
+                  "Updating images in a custom component dialog"
+                ],
+                [
+                  "2.29",
+                  "Creating a drop-down list without images"
+                ],
+                [
+                  "2.30",
+                  "Creating a picture drop-down list"
+                ],
+                [
+                  "2.31",
+                  "Creating a beam-to-column-web connection component"
+                ],
+                [
+                  "2.32",
+                  "Building a 3D test model from AutoCAD files"
+                ],
+                [
+                  "2.33",
+                  "Applying the developed components to a real project model"
+                ],
+                [
+                  "2.34",
+                  "Correcting component errors and resolving clashes"
+                ],
+                [
+                  "2.35",
+                  "Understanding component export and import into a new model"
+                ],
+                [
+                  "2.36",
+                  "Reusing Tekla’s built-in bolt dialog images and interface elements"
+                ],
+                [
+                  "2.37",
+                  "Testing the component on actual bolted connections"
+                ]
+              ]
+            },
+            {
+              "title": "AutoConnection and AI-assisted C# connections",
+              "topics": [
+                [
+                  "2.38",
+                  "Working with AutoConnection"
+                ],
+                [
+                  "2.39",
+                  "Automating the placement of suitable connections in the 3D model"
+                ],
+                [
+                  "2.40",
+                  "Developing bracing connections"
+                ],
+                [
+                  "2.41",
+                  "Exploring the capabilities and advantages of C# connections with AI assistance"
+                ],
+                [
+                  "2.42",
+                  "Creating a custom C# connection with AI assistance"
+                ],
+                [
+                  "2.43",
+                  "Testing an AI-assisted C# connection with different profile combinations"
+                ],
+                [
+                  "2.44",
+                  "Comparing a custom component with an AI-assisted C# connection"
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "title": "Tekla Structures Advanced Training",
+      "days": [
+        {
+          "day": 1,
+          "label": "Advanced model and drawing workflows",
+          "sections": [
+            {
+              "title": "Workflow review and modelling automation",
+              "topics": [
+                [
+                  "1.1",
+                  "Assessing your current knowledge of Tekla Structures"
+                ],
+                [
+                  "1.2",
+                  "Reviewing your approach to 3D modelling"
+                ],
+                [
+                  "1.3",
+                  "Reviewing your approach to drawing production"
+                ],
+                [
+                  "1.4",
+                  "Reviewing the plugins and supporting software you use"
+                ],
+                [
+                  "1.5",
+                  "Identifying key areas for improving model and drawing workflows"
+                ],
+                [
+                  "1.6",
+                  "Exploring newer modelling tools in Tekla Structures"
+                ],
+                [
+                  "1.7",
+                  "Exploring newer drawing creation tools in Tekla Structures"
+                ],
+                [
+                  "1.8",
+                  "Using supporting applications to generate drawings"
+                ],
+                [
+                  "1.9",
+                  "Exploring additional plugins and software for 3D modelling"
+                ],
+                [
+                  "1.10",
+                  "Comparing approaches to modelling bracing connections"
+                ],
+                [
+                  "1.11",
+                  "Automating handrail modelling"
+                ],
+                [
+                  "1.12",
+                  "Automating fixed steel access ladders with safety cages"
+                ],
+                [
+                  "1.13",
+                  "Automating stair modelling"
+                ],
+                [
+                  "1.14",
+                  "Automating floor grating and decking"
+                ],
+                [
+                  "1.15",
+                  "Automating common connection details"
+                ],
+                [
+                  "1.16",
+                  "Automating no-paint areas on structural parts"
+                ]
+              ]
+            },
+            {
+              "title": "Project structure and catalogues",
+              "topics": [
+                [
+                  "1.17",
+                  "Understanding the structure of Tekla Structures projects"
+                ],
+                [
+                  "1.18",
+                  "Understanding the purpose of model files"
+                ],
+                [
+                  "1.19",
+                  "Understanding the search order for model, environment and settings files"
+                ],
+                [
+                  "1.20",
+                  "Creating parametric profiles in Tekla Structures"
+                ],
+                [
+                  "1.21",
+                  "Creating parametric profiles with a cross-section that varies along the part"
+                ],
+                [
+                  "1.22",
+                  "Creating and editing rules in the profile catalogue tree"
+                ],
+                [
+                  "1.23",
+                  "Creating a custom bolt catalogue"
+                ],
+                [
+                  "1.24",
+                  "Creating a custom bolt assembly catalogue"
+                ],
+                [
+                  "1.25",
+                  "Creating a material catalogue"
+                ],
+                [
+                  "1.26",
+                  "Overview of Template Editor for reports"
+                ]
+              ]
+            },
+            {
+              "title": "Numbering, model checks and data exchange",
+              "topics": [
+                [
+                  "1.27",
+                  "Using Shift to change how modelling commands operate"
+                ],
+                [
+                  "1.28",
+                  "Working with part numbering"
+                ],
+                [
+                  "1.29",
+                  "Defining numbering series"
+                ],
+                [
+                  "1.30",
+                  "Working with advanced options"
+                ],
+                [
+                  "1.31",
+                  "Using Clash Check Manager"
+                ],
+                [
+                  "1.32",
+                  "Configuring clash check tolerances"
+                ],
+                [
+                  "1.33",
+                  "Understanding model import options and limitations"
+                ],
+                [
+                  "1.34",
+                  "Understanding model export options and limitations"
+                ]
+              ]
+            },
+            {
+              "title": "Drawing settings, cloning and reference models",
+              "topics": [
+                [
+                  "1.35",
+                  "Working with complex components"
+                ],
+                [
+                  "1.36",
+                  "Configuring and optimising drawing cloning"
+                ],
+                [
+                  "1.37",
+                  "Controlling neighbour parts in drawings"
+                ],
+                [
+                  "1.38",
+                  "Understanding drawing, view and object-level settings"
+                ],
+                [
+                  "1.39",
+                  "Preparing drawing settings before drawing creation"
+                ],
+                [
+                  "1.40",
+                  "Fine-tuning automatic drawing view placement"
+                ],
+                [
+                  "1.41",
+                  "Understanding the hierarchy of drawing view settings"
+                ],
+                [
+                  "1.42",
+                  "Understanding the hierarchy of mark settings"
+                ],
+                [
+                  "1.43",
+                  "Displaying linked 2D and 3D DWG reference models and controlling layer visibility"
+                ],
+                [
+                  "1.44",
+                  "Using additional Tekla Structures environments effectively"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "label": "Environments, reports and automation",
+          "sections": [
+            {
+              "title": "Environments, UDAs and drawing management",
+              "topics": [
+                [
+                  "2.1",
+                  "Understanding Tekla Structures environments"
+                ],
+                [
+                  "2.2",
+                  "Exploring the files and settings that make up an environment"
+                ],
+                [
+                  "2.3",
+                  "Understanding the structure of objects.inp"
+                ],
+                [
+                  "2.4",
+                  "Defining additional user-defined attributes in the environment"
+                ],
+                [
+                  "2.5",
+                  "Adding user-defined attributes to steel beams"
+                ],
+                [
+                  "2.6",
+                  "Adding user-defined attributes to concrete beams"
+                ],
+                [
+                  "2.7",
+                  "Adding user-defined attributes to bolt groups"
+                ],
+                [
+                  "2.8",
+                  "Customising Document Manager / Drawing List columns"
+                ],
+                [
+                  "2.9",
+                  "Using Rebar Shape Manager to define custom reinforcing bar shapes"
+                ]
+              ]
+            },
+            {
+              "title": "Reports, formulas and component variables",
+              "topics": [
+                [
+                  "2.10",
+                  "Introduction to Template Editor for reports"
+                ],
+                [
+                  "2.11",
+                  "Modifying existing report templates"
+                ],
+                [
+                  "2.12",
+                  "Creating a simple report template"
+                ],
+                [
+                  "2.13",
+                  "Working with string values and variables"
+                ],
+                [
+                  "2.14",
+                  "Using mathematical functions"
+                ],
+                [
+                  "2.15",
+                  "Using conditional expressions"
+                ],
+                [
+                  "2.16",
+                  "Understanding the variable list in the Custom Component Editor"
+                ],
+                [
+                  "2.17",
+                  "HTML fundamentals for more complex reports and tables"
+                ],
+                [
+                  "2.18",
+                  "Creating HTML reports"
+                ],
+                [
+                  "2.19",
+                  "Creating XLS (Excel) reports"
+                ],
+                [
+                  "2.20",
+                  "Including custom environment attributes in reports"
+                ]
+              ]
+            },
+            {
+              "title": "Layouts, integrations and model-specific resources",
+              "topics": [
+                [
+                  "2.21",
+                  "Creating and modifying drawing layouts"
+                ],
+                [
+                  "2.22",
+                  "Integrating Tekla Structures with structural analysis software"
+                ],
+                [
+                  "2.23",
+                  "Integrating Tekla Structures with cutting and nesting software"
+                ],
+                [
+                  "2.24",
+                  "Integrating Tekla Structures with other 3D modelling software"
+                ],
+                [
+                  "2.25",
+                  "Designing custom component dialogs"
+                ],
+                [
+                  "2.26",
+                  "Storing report and drawing table templates in the model folder"
+                ],
+                [
+                  "2.27",
+                  "Storing material catalogue files in the model folder"
+                ],
+                [
+                  "2.28",
+                  "Storing bolt and bolt assembly catalogue files in the model folder"
+                ],
+                [
+                  "2.29",
+                  "Storing symbol files in the model folder"
+                ],
+                [
+                  "2.30",
+                  "Storing custom graphical mark templates from Template Editor in the model folder"
+                ],
+                [
+                  "2.31",
+                  "Storing DWG files in the model folder"
+                ]
+              ]
+            },
+            {
+              "title": "Collaboration, orientation and AI-assisted workflows",
+              "topics": [
+                [
+                  "2.32",
+                  "Working with local multi-user models"
+                ],
+                [
+                  "2.33",
+                  "Working with Tekla Model Sharing for cloud-based collaboration"
+                ],
+                [
+                  "2.34",
+                  "Planning further workflow automation"
+                ],
+                [
+                  "2.35",
+                  "Understanding part orientation"
+                ],
+                [
+                  "2.36",
+                  "Understanding component orientation"
+                ],
+                [
+                  "2.37",
+                  "Working around known Tekla Structures issues"
+                ],
+                [
+                  "2.38",
+                  "Understanding how Tekla Structures applications are developed"
+                ],
+                [
+                  "2.39",
+                  "Understanding model locking during saving"
+                ],
+                [
+                  "2.40",
+                  "Introduction to AI agents: installation and setup"
+                ],
+                [
+                  "2.41",
+                  "Using AI agents for 3D modelling"
+                ],
+                [
+                  "2.42",
+                  "Using AI agents to work with drawings"
+                ],
+                [
+                  "2.43",
+                  "Developing plugins with AI assistance"
+                ],
+                [
+                  "2.44",
+                  "Reviewing progress and planning improvements to your company’s workflows"
+                ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "level": 4,
+      "title": "System customisation and template creation",
+      "days": [
+        {
+          "day": 1,
+          "label": "Template Editor fundamentals",
+          "sections": [
+            {
+              "title": "Template Editor, file formats and file locations",
+              "topics": [
+                [
+                  "1.1",
+                  "Understanding the role of Template Editor (TplEd) in Tekla Structures"
+                ],
+                [
+                  "1.2",
+                  "Distinguishing report templates, drawing tables and mark templates"
+                ],
+                [
+                  "1.3",
+                  "Understanding textual (.rpt) and graphical (.tpl) templates"
+                ],
+                [
+                  "1.4",
+                  "Overview of .html.rpt and .xlsx.rpt report formats"
+                ],
+                [
+                  "1.5",
+                  "Opening Template Editor from Tekla Structures"
+                ],
+                [
+                  "1.6",
+                  "Exploring the interface: work area, Content Browser and toolbars"
+                ],
+                [
+                  "1.7",
+                  "Setting editor preferences and file locations"
+                ],
+                [
+                  "1.8",
+                  "Making working copies of system templates safely"
+                ],
+                [
+                  "1.9",
+                  "Finding templates in model, project, firm and environment folders"
+                ]
+              ]
+            },
+            {
+              "title": "Template structure and page layout",
+              "topics": [
+                [
+                  "1.10",
+                  "Creating a new textual template"
+                ],
+                [
+                  "1.11",
+                  "Creating a new graphical template"
+                ],
+                [
+                  "1.12",
+                  "Saving templates and choosing file names"
+                ],
+                [
+                  "1.13",
+                  "Setting page size, margins and measurement units"
+                ],
+                [
+                  "1.14",
+                  "Configuring the work area and snapping settings"
+                ],
+                [
+                  "1.15",
+                  "Understanding template structure: Header, Page Header, Row, Page Footer and Footer"
+                ],
+                [
+                  "1.16",
+                  "Creating a report Header"
+                ],
+                [
+                  "1.17",
+                  "Creating a Page Header"
+                ],
+                [
+                  "1.18",
+                  "Creating a data Row"
+                ],
+                [
+                  "1.19",
+                  "Creating a report Footer for overall totals"
+                ],
+                [
+                  "1.20",
+                  "Creating a Page Footer"
+                ],
+                [
+                  "1.21",
+                  "Adding static text and column headings"
+                ],
+                [
+                  "1.22",
+                  "Positioning and aligning template objects"
+                ],
+                [
+                  "1.23",
+                  "Modifying row width, height and properties"
+                ],
+                [
+                  "1.24",
+                  "Understanding row content types"
+                ]
+              ]
+            },
+            {
+              "title": "Row content types and template attributes",
+              "topics": [
+                [
+                  "1.25",
+                  "Using PART rows to report part information"
+                ],
+                [
+                  "1.26",
+                  "Using ASSEMBLY rows to report assembly information"
+                ],
+                [
+                  "1.27",
+                  "Using BOLT rows to report bolt information"
+                ],
+                [
+                  "1.28",
+                  "Using DRAWING rows to report drawing information"
+                ],
+                [
+                  "1.29",
+                  "Exploring content types for concrete, reinforcement and other objects"
+                ],
+                [
+                  "1.30",
+                  "Adding a value field and selecting a data attribute"
+                ],
+                [
+                  "1.31",
+                  "Using standard Tekla Structures template attributes"
+                ],
+                [
+                  "1.32",
+                  "Outputting part position, name, profile and material"
+                ],
+                [
+                  "1.33",
+                  "Outputting geometric properties and weight"
+                ],
+                [
+                  "1.34",
+                  "Displaying project information in the report header"
+                ],
+                [
+                  "1.35",
+                  "Outputting user-defined attributes (UDAs)"
+                ]
+              ]
+            },
+            {
+              "title": "Value field formatting and a practical part list",
+              "topics": [
+                [
+                  "1.36",
+                  "Setting a value field’s name and length"
+                ],
+                [
+                  "1.37",
+                  "Choosing data types: text, whole numbers and decimal numbers"
+                ],
+                [
+                  "1.38",
+                  "Setting measurement units and decimal places"
+                ],
+                [
+                  "1.39",
+                  "Formatting length, area, volume and weight values"
+                ],
+                [
+                  "1.40",
+                  "Setting alignment and multiline output"
+                ],
+                [
+                  "1.41",
+                  "Writing simple formulas with GetValue()"
+                ],
+                [
+                  "1.42",
+                  "Handling empty and zero values"
+                ],
+                [
+                  "1.43",
+                  "Practical exercise: creating a part list from scratch"
+                ],
+                [
+                  "1.44",
+                  "Checking reports for selected objects and for the entire model"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "label": "Rules, drawing tables and report export",
+          "sections": [
+            {
+              "title": "Sorting, combining rows and totals",
+              "topics": [
+                [
+                  "2.1",
+                  "Reviewing Part 1 results and checking the part list for errors"
+                ],
+                [
+                  "2.2",
+                  "Understanding row sort types: None, Combine and Distinct"
+                ],
+                [
+                  "2.3",
+                  "Sorting value fields in ascending and descending order"
+                ],
+                [
+                  "2.4",
+                  "Setting the sorting priority of multiple value fields"
+                ],
+                [
+                  "2.5",
+                  "Combining identical rows and preventing duplicate output"
+                ],
+                [
+                  "2.6",
+                  "Calculating quantities and total weights for combined rows"
+                ],
+                [
+                  "2.7",
+                  "Using hidden fields for sorting and supporting calculations"
+                ],
+                [
+                  "2.8",
+                  "Using Sum(), Total() and Count() for summaries"
+                ],
+                [
+                  "2.9",
+                  "Creating group subtotals and overall totals"
+                ],
+                [
+                  "2.10",
+                  "Working with ASSEMBLY rows and nested PART rows"
+                ],
+                [
+                  "2.11",
+                  "Modifying and checking the row hierarchy"
+                ]
+              ]
+            },
+            {
+              "title": "Row rules and conditional output",
+              "topics": [
+                [
+                  "2.12",
+                  "Controlling row output with row rules"
+                ],
+                [
+                  "2.13",
+                  "Creating rules with Rule Wizard"
+                ],
+                [
+                  "2.14",
+                  "Writing conditional expressions with if / then / else / endif"
+                ],
+                [
+                  "2.15",
+                  "Using comparison operators and logical conditions"
+                ],
+                [
+                  "2.16",
+                  "Filtering parts by profile and material"
+                ],
+                [
+                  "2.17",
+                  "Controlling row processing with Output(), StepOver() and StepOut()"
+                ],
+                [
+                  "2.18",
+                  "Identifying the first and last rows with IsFirst() and IsLast()"
+                ],
+                [
+                  "2.19",
+                  "Comparing adjacent rows with PreviousValue() and NextValue()"
+                ],
+                [
+                  "2.20",
+                  "Outputting subtotals when a group changes"
+                ],
+                [
+                  "2.21",
+                  "Saving and reusing row rules (.pdr)"
+                ]
+              ]
+            },
+            {
+              "title": "Formulas, formatting and additional UDAs",
+              "topics": [
+                [
+                  "2.22",
+                  "Checking formula syntax and data types in the formula editor"
+                ],
+                [
+                  "2.23",
+                  "Working with strings using find(), mid() and length()"
+                ],
+                [
+                  "2.24",
+                  "Finding text with FindAny() in Tekla Structures 2026"
+                ],
+                [
+                  "2.25",
+                  "Concatenating strings to build composite identifiers"
+                ],
+                [
+                  "2.26",
+                  "Converting numeric strings and using them in calculations"
+                ],
+                [
+                  "2.27",
+                  "Rounding and formatting calculated values"
+                ],
+                [
+                  "2.28",
+                  "Changing measurement unit formatting conditionally"
+                ],
+                [
+                  "2.29",
+                  "Making additional UDAs available through objects.inp and contentattributes_*.lst"
+                ]
+              ]
+            },
+            {
+              "title": "Practical reports and graphical drawing tables",
+              "topics": [
+                [
+                  "2.30",
+                  "Controlling report headers, footers and page breaks"
+                ],
+                [
+                  "2.31",
+                  "Creating an assembly list with a breakdown of its parts"
+                ],
+                [
+                  "2.32",
+                  "Creating a bolt and fastener list"
+                ],
+                [
+                  "2.33",
+                  "Creating a drawing list with drawing identifiers and dates"
+                ],
+                [
+                  "2.34",
+                  "Using graphical tables in drawing layouts"
+                ],
+                [
+                  "2.35",
+                  "Creating a title block and a revision table"
+                ],
+                [
+                  "2.36",
+                  "Adding a graphical template to a drawing layout"
+                ],
+                [
+                  "2.37",
+                  "Adding logos, lines, symbols and other graphics"
+                ],
+                [
+                  "2.38",
+                  "Using graphical templates in drawing marks"
+                ]
+              ]
+            },
+            {
+              "title": "HTML, Excel and the final project",
+              "topics": [
+                [
+                  "2.39",
+                  "Creating an HTML report (.html.rpt)"
+                ],
+                [
+                  "2.40",
+                  "Preparing an Excel layout template (.xltx) in Microsoft Excel for Tekla Structures 2026"
+                ],
+                [
+                  "2.41",
+                  "Defining an Excel report’s data structure in an .xlsx.rpt template"
+                ],
+                [
+                  "2.42",
+                  "Mapping columns and exporting the final .xlsx file"
+                ],
+                [
+                  "2.43",
+                  "Checking Cyrillic text and UTF-8 encoding, and transferring templates between models"
+                ],
+                [
+                  "2.44",
+                  "Final project: producing a set of reports, checking the results and troubleshooting with AI assistance"
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "note": "This programme includes features introduced in Tekla Structures 2026. Availability depends on the version used for training."
+    }
+  ],
+  "formats": [
+    {
+      "days": 2,
+      "shortLabel": "Essentials",
+      "title": "Essentials · minimum practice",
+      "paragraphs": [
+        "The shortest and most affordable format, well suited to individual engineers and students working with a very limited budget.",
+        "Also recommended when you need to learn a specific tool or a narrowly defined topic without covering the full course programme.",
+        "Practice is kept to a minimum: focused demonstrations and short exercises help you get started quickly."
+      ],
+      "enquiry": "2 days of compact training with minimum practice, covering the essentials or specific topics agreed with your instructor."
+    },
+    {
+      "days": 5,
+      "shortLabel": "Practice",
+      "title": "In-depth training · more practice",
+      "paragraphs": [
+        "Recommended for companies that need to train their engineers even though training was not planned and no dedicated budget was set aside.",
+        "Five days allow a more thorough study of your chosen course, with substantially more guided practice, repetition and instructor feedback than the 2-day option. A practical choice when the full 10-day training and implementation programme is beyond the available budget."
+      ],
+      "enquiry": "5 days of in-depth training with substantially more guided practice than the 2-day format."
+    },
+    {
+      "days": 10,
+      "shortLabel": "Your pilot",
+      "title": "Training + your own pilot project",
+      "split": "5 days of training + 5 days of guided project work",
+      "paragraphs": [
+        "Designed for a full rollout of Tekla Structures in an engineering or detailing department. Your team works on a real project of your own and produces project drawings and other documentation with your instructor’s guidance.",
+        "The longer format allows topics to be explored in greater depth, with substantially more hands-on practice and time to resolve issues on your first project.",
+        "During the five-day pilot project, your instructor can also give additional lessons on specific topics relevant to your work, tailoring the training to your team’s needs."
+      ],
+      "popularity": "Around 95% of our clients choose training with a pilot project.",
+      "enquiry": "5 days of in-depth training + 5 days on the customer’s own pilot project, producing project documentation with instructor support and additional targeted lessons as needed."
+    }
+  ],
+  "countries": {
+    "AW": "Aruba",
+    "AF": "Afghanistan",
+    "AO": "Angola",
+    "AI": "Anguilla",
+    "AX": "Åland Islands",
+    "AL": "Albania",
+    "AD": "Andorra",
+    "AE": "United Arab Emirates",
+    "AR": "Argentina",
+    "AM": "Armenia",
+    "AS": "American Samoa",
+    "AQ": "Antarctica",
+    "TF": "French Southern Territories",
+    "AG": "Antigua and Barbuda",
+    "AU": "Australia",
+    "AT": "Austria",
+    "AZ": "Azerbaijan",
+    "BI": "Burundi",
+    "BE": "Belgium",
+    "BJ": "Benin",
+    "BQ": "Bonaire, Sint Eustatius and Saba",
+    "BF": "Burkina Faso",
+    "BD": "Bangladesh",
+    "BG": "Bulgaria",
+    "BH": "Bahrain",
+    "BS": "Bahamas",
+    "BA": "Bosnia and Herzegovina",
+    "BL": "Saint Barthélemy",
+    "BY": "Belarus",
+    "BZ": "Belize",
+    "BM": "Bermuda",
+    "BO": "Bolivia, Plurinational State of",
+    "BR": "Brazil",
+    "BB": "Barbados",
+    "BN": "Brunei Darussalam",
+    "BT": "Bhutan",
+    "BV": "Bouvet Island",
+    "BW": "Botswana",
+    "CF": "Central African Republic",
+    "CA": "Canada",
+    "CC": "Cocos (Keeling) Islands",
+    "CH": "Switzerland",
+    "CL": "Chile",
+    "CN": "China",
+    "CI": "Côte d'Ivoire",
+    "CM": "Cameroon",
+    "CD": "Congo, The Democratic Republic of the",
+    "CG": "Congo",
+    "CK": "Cook Islands",
+    "CO": "Colombia",
+    "KM": "Comoros",
+    "CV": "Cabo Verde",
+    "CR": "Costa Rica",
+    "CU": "Cuba",
+    "CW": "Curaçao",
+    "CX": "Christmas Island",
+    "KY": "Cayman Islands",
+    "CY": "Cyprus",
+    "CZ": "Czechia",
+    "DE": "Germany",
+    "DJ": "Djibouti",
+    "DM": "Dominica",
+    "DK": "Denmark",
+    "DO": "Dominican Republic",
+    "DZ": "Algeria",
+    "EC": "Ecuador",
+    "EG": "Egypt",
+    "ER": "Eritrea",
+    "EH": "Western Sahara",
+    "ES": "Spain",
+    "EE": "Estonia",
+    "ET": "Ethiopia",
+    "FI": "Finland",
+    "FJ": "Fiji",
+    "FK": "Falkland Islands (Malvinas)",
+    "FR": "France",
+    "FO": "Faroe Islands",
+    "FM": "Micronesia, Federated States of",
+    "GA": "Gabon",
+    "GB": "United Kingdom",
+    "GE": "Georgia",
+    "GG": "Guernsey",
+    "GH": "Ghana",
+    "GI": "Gibraltar",
+    "GN": "Guinea",
+    "GP": "Guadeloupe",
+    "GM": "Gambia",
+    "GW": "Guinea-Bissau",
+    "GQ": "Equatorial Guinea",
+    "GR": "Greece",
+    "GD": "Grenada",
+    "GL": "Greenland",
+    "GT": "Guatemala",
+    "GF": "French Guiana",
+    "GU": "Guam",
+    "GY": "Guyana",
+    "HK": "Hong Kong",
+    "HM": "Heard Island and McDonald Islands",
+    "HN": "Honduras",
+    "HR": "Croatia",
+    "HT": "Haiti",
+    "HU": "Hungary",
+    "ID": "Indonesia",
+    "IM": "Isle of Man",
+    "IN": "India",
+    "IO": "British Indian Ocean Territory",
+    "IE": "Ireland",
+    "IR": "Iran, Islamic Republic of",
+    "IQ": "Iraq",
+    "IS": "Iceland",
+    "IL": "Israel",
+    "IT": "Italy",
+    "JM": "Jamaica",
+    "JE": "Jersey",
+    "JO": "Jordan",
+    "JP": "Japan",
+    "KZ": "Kazakhstan",
+    "KE": "Kenya",
+    "KG": "Kyrgyzstan",
+    "KH": "Cambodia",
+    "KI": "Kiribati",
+    "KN": "Saint Kitts and Nevis",
+    "KR": "Korea, Republic of",
+    "KW": "Kuwait",
+    "LA": "Lao People's Democratic Republic",
+    "LB": "Lebanon",
+    "LR": "Liberia",
+    "LY": "Libya",
+    "LC": "Saint Lucia",
+    "LI": "Liechtenstein",
+    "LK": "Sri Lanka",
+    "LS": "Lesotho",
+    "LT": "Lithuania",
+    "LU": "Luxembourg",
+    "LV": "Latvia",
+    "MO": "Macao",
+    "MF": "Saint Martin (French part)",
+    "MA": "Morocco",
+    "MC": "Monaco",
+    "MD": "Moldova, Republic of",
+    "MG": "Madagascar",
+    "MV": "Maldives",
+    "MX": "Mexico",
+    "MH": "Marshall Islands",
+    "MK": "North Macedonia",
+    "ML": "Mali",
+    "MT": "Malta",
+    "MM": "Myanmar",
+    "ME": "Montenegro",
+    "MN": "Mongolia",
+    "MP": "Northern Mariana Islands",
+    "MZ": "Mozambique",
+    "MR": "Mauritania",
+    "MS": "Montserrat",
+    "MQ": "Martinique",
+    "MU": "Mauritius",
+    "MW": "Malawi",
+    "MY": "Malaysia",
+    "YT": "Mayotte",
+    "NA": "Namibia",
+    "NC": "New Caledonia",
+    "NE": "Niger",
+    "NF": "Norfolk Island",
+    "NG": "Nigeria",
+    "NI": "Nicaragua",
+    "NU": "Niue",
+    "NL": "Netherlands",
+    "NO": "Norway",
+    "NP": "Nepal",
+    "NR": "Nauru",
+    "NZ": "New Zealand",
+    "OM": "Oman",
+    "PK": "Pakistan",
+    "PA": "Panama",
+    "PN": "Pitcairn",
+    "PE": "Peru",
+    "PH": "Philippines",
+    "PW": "Palau",
+    "PG": "Papua New Guinea",
+    "PL": "Poland",
+    "PR": "Puerto Rico",
+    "KP": "Korea, Democratic People's Republic of",
+    "PT": "Portugal",
+    "PY": "Paraguay",
+    "PS": "Palestine, State of",
+    "PF": "French Polynesia",
+    "QA": "Qatar",
+    "RE": "Réunion",
+    "RO": "Romania",
+    "RU": "Russian Federation",
+    "RW": "Rwanda",
+    "SA": "Saudi Arabia",
+    "SD": "Sudan",
+    "SN": "Senegal",
+    "SG": "Singapore",
+    "GS": "South Georgia and the South Sandwich Islands",
+    "SH": "Saint Helena, Ascension and Tristan da Cunha",
+    "SJ": "Svalbard and Jan Mayen",
+    "SB": "Solomon Islands",
+    "SL": "Sierra Leone",
+    "SV": "El Salvador",
+    "SM": "San Marino",
+    "SO": "Somalia",
+    "PM": "Saint Pierre and Miquelon",
+    "RS": "Serbia",
+    "SS": "South Sudan",
+    "ST": "Sao Tome and Principe",
+    "SR": "Suriname",
+    "SK": "Slovakia",
+    "SI": "Slovenia",
+    "SE": "Sweden",
+    "SZ": "Eswatini",
+    "SX": "Sint Maarten (Dutch part)",
+    "SC": "Seychelles",
+    "SY": "Syrian Arab Republic",
+    "TC": "Turks and Caicos Islands",
+    "TD": "Chad",
+    "TG": "Togo",
+    "TH": "Thailand",
+    "TJ": "Tajikistan",
+    "TK": "Tokelau",
+    "TM": "Turkmenistan",
+    "TL": "Timor-Leste",
+    "TO": "Tonga",
+    "TT": "Trinidad and Tobago",
+    "TN": "Tunisia",
+    "TR": "Türkiye",
+    "TV": "Tuvalu",
+    "TW": "Taiwan, Province of China",
+    "TZ": "Tanzania, United Republic of",
+    "UG": "Uganda",
+    "UA": "Ukraine",
+    "UM": "United States Minor Outlying Islands",
+    "UY": "Uruguay",
+    "US": "United States",
+    "UZ": "Uzbekistan",
+    "VA": "Holy See (Vatican City State)",
+    "VC": "Saint Vincent and the Grenadines",
+    "VE": "Venezuela, Bolivarian Republic of",
+    "VG": "Virgin Islands, British",
+    "VI": "Virgin Islands, U.S.",
+    "VN": "Viet Nam",
+    "VU": "Vanuatu",
+    "WF": "Wallis and Futuna",
+    "WS": "Samoa",
+    "YE": "Yemen",
+    "ZA": "South Africa",
+    "ZM": "Zambia",
+    "ZW": "Zimbabwe"
+  },
+  "agreementClauses": [
+    {
+      "title": "Service and scope",
+      "text": "The supplier provides live online training in Tekla Structures for the customer’s nominated participants. The selected courses, group sizes, durations and fees are recorded in the order schedule. The selected course programmes attached to the commercial proposal define the training scope. Courses listed as optional are excluded."
+    },
+    {
+      "title": "Training format",
+      "text": "Each training day represents eight teaching hours. A two-day format concentrates on essential or agreed focused topics with minimum practice. A five-day format provides substantially more guided practice. A ten-day format combines five days of training with five days of guided work on the customer’s own pilot project, including further focused explanations where needed."
+    },
+    {
+      "title": "Dates and delivery",
+      "text": "Training is delivered online using Zoom, Google Meet or another agreed service. Desired start and end dates in the order are provisional. The parties confirm the teaching schedule, time zone and connection method separately in writing. Agreement of dates does not change the fees for the purchased course duration and group size."
+    },
+    {
+      "title": "Fees and payment",
+      "text": "Payment is made by bank transfer against the supplier’s pro forma invoice. The agreed amount, currency, tax treatment and payment reference are stated in that document. The invoice is valid for six calendar months from its issue date; the expiry date is printed on the document. Payment terms are agreed separately. A downloaded pro forma invoice is not proof that payment has been received."
+    },
+    {
+      "title": "Preparation and customer responsibilities",
+      "text": "Before the first lesson, the customer ensures that each participant has a suitable computer, a working connection and the required legally licensed software. The supplier helps with preparation in advance so paid lesson time is used for learning. The customer arranges any internal IT permissions and shared folders. Software licences are not included in the training fee."
+    },
+    {
+      "title": "Pilot project and professional decisions",
+      "text": "Where pilot-project work is included, the customer supplies its own project materials and confirms that these may be used during training. The instructor helps the participants apply Tekla Structures workflows and prepare project documentation. The customer retains responsibility for engineering decisions, project checks and formal approval of the documentation."
+    },
+    {
+      "title": "Certificates and follow-up support",
+      "text": "After completing the training, each participant receives a personalised electronic TopEngineer certificate with a unique number and the course duration. Participants may print their own paper copies. Brief follow-up questions that do not require substantial instructor time may be answered free of charge. More involved assistance is a separate service, with the task and hourly rate agreed before work starts."
+    },
+    {
+      "title": "Confidential materials",
+      "text": "The parties use project files and business information supplied for training only for delivering and administering the agreed service, unless another use is authorised in writing. Customer project materials are not used for public promotion without the customer’s consent."
+    },
+    {
+      "title": "Changes, cancellation and rescheduling",
+      "text": "Rescheduling the training does not change the training fee. If the customer requests a refund, the supplier refunds the payment less bank commissions. No other cancellation fee is deducted. Changes to the selected courses, duration or group size require an updated quotation."
+    },
+    {
+      "title": "Final review and execution",
+      "text": "This template is a draft for review. The parties must confirm the final legal terms, applicable law and dispute-resolution provisions before signature. The website does not sign this document on behalf of either party. The customer’s request to prepare documents is not acceptance of an unsigned draft agreement."
+    }
+  ],
+  "revision": "2300040fd9206ae7acbc59768e13aa4ed6ae453c8dc9a10672cc212c8dcab1f9"
+}
