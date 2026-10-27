@@ -8,8 +8,9 @@
 #course-descriptions .course-card-choice input:focus-visible { outline: 3px solid #ffbc00; outline-offset: 3px; }
 #training-books { scroll-margin-top: 76px; }
 #training-books .training-books__gallery { width: 100%; max-width: 820px; margin-inline: auto; min-width: 0; container-type: inline-size; }
-#training-books .training-books__deck { --book-width: min(90cqw, clamp(145px, (100cqw - 24px) / 3, 300px)); position: relative; isolation: isolate; height: calc(var(--book-width) * 920 / 574); }
-#training-books .training-books__volume { position: absolute; overflow: hidden; width: var(--book-width); height: 100%; top: 0; left: calc((100% - var(--book-width)) * var(--book-index) / 2); z-index: calc(3 - var(--book-index)); transition: transform .18s ease; }
-#training-books .training-books__volume img { position: absolute; height: 100%; width: auto; max-width: none; left: -30%; top: 0; }
+#training-books .training-books__deck { --book-width: min(60cqw, clamp(190px, (100cqw - 24px) / 3, 300px)); position: relative; isolation: isolate; height: calc(var(--book-width) * 920 / 600); }
+#training-books .training-books__volume { position: absolute; overflow: hidden; width: var(--book-width); height: 100%; top: 0; left: calc((100% - var(--book-width)) * var(--book-index) / 2); z-index: calc(3 - var(--book-index)); filter: drop-shadow(3px 3px 3px rgba(24,45,62,.25)); transition: transform .18s ease; }
+/* Follow the book silhouette: the original JPG's white surround must not cover the next volume. */
+#training-books .training-books__volume img { position: absolute; height: 100%; width: auto; max-width: none; left: -28%; top: 0; clip-path: polygon(21% 2.5%, 27.7% .5%, 31.8% .8%, 90.6% 5.6%, 90.6% 93.7%, 31.8% 98.5%, 27.7% 98.6%, 21% 96.5%); }
 @media (hover: hover) { #training-books .training-books__volume:hover { z-index: 5; transform: translateY(-4px); } }
 @media (prefers-reduced-motion: reduce) { #course-descriptions [data-selectable-card], #training-books .training-books__volume { transition: none; } }

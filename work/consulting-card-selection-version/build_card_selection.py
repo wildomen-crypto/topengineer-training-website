@@ -13,7 +13,7 @@ OUT = build_parallel.OUT
 def build():
     build_usability.build()
     page = BeautifulSoup((OUT / 'index.html').read_text(encoding='utf8'), 'html.parser')
-    page.head.append(BeautifulSoup('<link rel="stylesheet" href="/assets/card-selection.css?v=6">', 'html.parser'))
+    page.head.append(BeautifulSoup('<link rel="stylesheet" href="/assets/card-selection.css?v=7">', 'html.parser'))
     page.body.append(BeautifulSoup('<script src="/assets/card-selection.js?v=2" defer></script>', 'html.parser'))
     books = BeautifulSoup((HERE / 'training-books.html').read_text(encoding='utf8'), 'html.parser')
     page.select_one('#training-formats').insert_before(books)
