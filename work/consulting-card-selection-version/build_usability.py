@@ -14,7 +14,7 @@ OUT = build_parallel.OUT
 def build():
     build_parallel.build()
     page = BeautifulSoup((OUT / 'index.html').read_text(encoding='utf-8'), 'html.parser')
-    page.head.append(BeautifulSoup('<link rel="stylesheet" href="/assets/usability.css?v=2">', 'html.parser'))
+    page.head.append(BeautifulSoup('<link rel="stylesheet" href="/assets/usability.css?v=3">', 'html.parser'))
     page.body.append(BeautifulSoup('<script src="/assets/usability.js?v=3" defer></script>', 'html.parser'))
 
     intro = page.select_one('.training-intro__copy > div')

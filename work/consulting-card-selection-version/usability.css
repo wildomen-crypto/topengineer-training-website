@@ -11,11 +11,20 @@
 .programme-jumps button { border: 1px solid #0c66b0; border-radius: 3px; background: #fff; color: #07599d; padding: 5px 10px; min-height: 36px; }
 .programme-download { color: #05579e; text-decoration: underline; font-size: 14px; }
 .mobile-quote-bar { display: none; }
+@media (max-width: 1199px) {
+  #training-calculator .training-quote__actions { flex-direction: column; align-items: stretch; gap: 14px; }
+  #training-calculator .training-quote__actions > div { width: 100%; min-width: 0; justify-content: flex-start !important; }
+  #training-calculator .training-quote__actions .proposal-hint { flex-basis: 100%; order: -1; }
+}
 @media (max-width: 1399px) {
   #training-calculator .training-quote__course:not(.is-selected) .training-quote__setting,
   #training-calculator .training-quote__course:not(.is-selected) .training-quote__price { display: none; }
   #training-calculator .training-quote__course:not(.is-selected) .training-quote__select { grid-row: 1; }
   #training-calculator .training-quote__course:not(.is-selected) .training-quote__course-name { grid-column: 2 / -1; }
+}
+@media (max-width: 991px) {
+  /* The widget may already be loaded if a desktop window is resized. */
+  .b24-widget-button-wrapper, .b24-widget-button-shadow { display: none !important; }
 }
 @media (max-width: 767px) {
   .course-details > summary { display: list-item; color: #07599d; font-weight: 600; cursor: pointer; padding: 8px 0 12px; }
@@ -29,4 +38,7 @@
   .course-programme__footer { gap: 8px; }
   .course-programme__footer > span { display: none; }
   .programme-jumps button { min-height: 44px; }
+}
+@media (max-width: 575px) {
+  #training-calculator .training-quote__actions > div > button { flex: 1 1 auto; }
 }
