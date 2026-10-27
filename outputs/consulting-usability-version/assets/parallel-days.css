@@ -1,0 +1,47 @@
+/* This file changes only the course programmes in this independent version. */
+#course-programmes { scroll-margin-top: 76px; padding-top: 0; }
+#course-programmes [hidden], .course-programme--parallel [hidden] { display: none !important; }
+.parallel-days { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; align-items: start; }
+.parallel-day { min-width: 0; padding: 0; }
+.parallel-day__header { display: flex; justify-content: space-between; align-items: center; gap: 12px; border-top: 3px solid #0785e3; background: #edf6fc; padding: 12px 16px; margin-bottom: 10px; }
+.parallel-day__number { color: #05579e; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; margin: 0 0 3px; }
+.parallel-day__header h4 { color: #263b50; font-size: 18px; line-height: 1.4; font-weight: 600; margin: 0; }
+.parallel-day__meta { margin: 0; flex-shrink: 0; color: #526175; font-size: 12px; line-height: 1.5; }
+.parallel-course-heading { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 16px; }
+.parallel-course-heading > div { min-width: 0; }
+.parallel-course-heading > button { flex-shrink: 0; min-height: 40px; }
+.parallel-days .course-programme__section summary { padding: 8px 12px; min-height: 44px; gap: 10px; }
+.parallel-days .course-programme__section summary > span { flex: 1; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; min-width: 0; }
+.parallel-days .course-programme__section summary small { flex-shrink: 0; margin: 0; }
+.parallel-days .course-programme__section-content { padding: 0 12px 4px; }
+.parallel-days .course-programme__section ol { grid-template-columns: minmax(0, 1fr); column-gap: 18px; }
+.parallel-days .course-programme__section li { grid-template-columns: 32px minmax(0, 1fr); gap: 6px; padding: 4px 0; overflow-wrap: anywhere; }
+.parallel-days .course-programme__section-note { margin-bottom: 8px; }
+#course-programmes [role="tab"]:focus-visible, #course-programmes summary:focus-visible, #course-programmes button:focus-visible { outline: 3px solid #ffbc00; outline-offset: 2px; }
+.course-programme--parallel { width: min(2440px, calc(100% - 48px)); max-width: none; }
+
+/* Four topic columns, grouped into two clearly labelled training days. */
+@media (min-width: 1600px) {
+  .parallel-days .course-programme__section ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Tablets use the full width for each day; medium desktops keep two days. */
+@media (min-width: 768px) and (max-width: 991px) {
+  .parallel-days .course-programme__section ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 991px) {
+  .parallel-days { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+}
+@media (max-width: 767px) {
+  .parallel-course-heading { align-items: flex-start; flex-wrap: wrap; gap: 10px; }
+  .parallel-course-heading h3 { font-size: 20px; }
+  .parallel-day__header { padding: 10px 12px; align-items: flex-start; }
+  .parallel-day__header h4 { font-size: 17px; }
+  .parallel-day__meta { white-space: nowrap; }
+  .parallel-days .course-programme__section summary > span { display: block; }
+  .parallel-days .course-programme__section summary small { margin-top: 3px; }
+  .course-programme--parallel { width: calc(100% - 24px); }
+}
+@media (max-width: 479px) {
+  .parallel-day__header { flex-wrap: wrap; gap: 5px; }
+}

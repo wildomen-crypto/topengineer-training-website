@@ -1,0 +1,1 @@
+Independent usability variant. Start using tools/Start-Usability.ps1 from the repository root. Source: work/consulting-usability-version. Rebuild: python -X utf8 work/consulting-usability-version/build_usability.py.

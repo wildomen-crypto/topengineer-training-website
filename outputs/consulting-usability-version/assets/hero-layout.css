@@ -1,0 +1,50 @@
+/* Only the introductory training row is adjusted. Bootstrap and site CSS stay intact. */
+#consulting .training-intro {
+  row-gap: 24px;
+}
+
+#consulting .training-intro__copy > div > :last-child,
+#consulting .training-intro__facts table {
+  margin-bottom: 0;
+}
+
+#consulting .training-intro__media {
+  display: flex;
+}
+
+#consulting .training-intro__photo {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+#consulting .training-intro__photo > a {
+  display: block;
+  width: 100%;
+}
+
+#consulting .training-intro__photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 992px) {
+  /* The text and table determine the row height; the photo fills that space. */
+  #consulting .training-intro__photo {
+    min-height: 352px;
+  }
+
+  #consulting .training-intro__photo > a {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  #consulting .training-intro__photo img {
+    height: 100%;
+    object-fit: cover;
+    /* Keep the instructor's head and the Tekla screen in the visible crop. */
+    object-position: 75% 0%;
+  }
+}

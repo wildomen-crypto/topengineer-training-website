@@ -1,0 +1,32 @@
+.training-intro__offer { color: #174d79; font-weight: 600; margin: 16px 0 12px; }
+.training-intro__actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.training-intro__actions .btn { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+#header.header-scrolled { background: #05579e; }
+.course-details > summary { display: none; }
+#course-descriptions .course-choose { display: block; margin: 10px auto 0; min-height: 44px; }
+.proposal-hint { align-self: center; font-size: 12px; color: #425770; }
+.minimum-fee-note { display: block; margin-top: 5px; color: #465b70; font-size: 12px; line-height: 1.35; font-weight: 400; white-space: normal; }
+.minimum-fee-note[hidden], .mobile-quote-bar[hidden] { display: none !important; }
+.programme-jumps { display: flex; gap: 8px; }
+.programme-jumps button { border: 1px solid #0c66b0; border-radius: 3px; background: #fff; color: #07599d; padding: 5px 10px; min-height: 36px; }
+.programme-download { color: #05579e; text-decoration: underline; font-size: 14px; }
+.mobile-quote-bar { display: none; }
+@media (max-width: 1399px) {
+  #training-calculator .training-quote__course:not(.is-selected) .training-quote__setting,
+  #training-calculator .training-quote__course:not(.is-selected) .training-quote__price { display: none; }
+  #training-calculator .training-quote__course:not(.is-selected) .training-quote__select { grid-row: 1; }
+  #training-calculator .training-quote__course:not(.is-selected) .training-quote__course-name { grid-column: 2 / -1; }
+}
+@media (max-width: 767px) {
+  .course-details > summary { display: list-item; color: #07599d; font-weight: 600; cursor: pointer; padding: 8px 0 12px; }
+  #course-descriptions .box .btn-wrap { padding: 14px; }
+  .mobile-quote-bar:not([hidden]) { position: fixed; z-index: 800; display: flex; bottom: 0; left: 0; right: 0; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 16px max(10px, env(safe-area-inset-bottom)); background: #fff; box-shadow: 0 -2px 10px #17395533; border-top: 1px solid #d2e0ed; }
+  .mobile-quote-bar span, .mobile-quote-bar strong { display: block; }
+  .mobile-quote-bar span { font-size: 12px; color: #40566b; }
+  .mobile-quote-bar strong { color: #05579e; font-size: 21px; line-height: 1.2; }
+  .mobile-quote-bar button { min-height: 44px; }
+  .course-programme__toolbar { flex-wrap: wrap; }
+  .course-programme__footer { gap: 8px; }
+  .course-programme__footer > span { display: none; }
+  .programme-jumps button { min-height: 44px; }
+}
