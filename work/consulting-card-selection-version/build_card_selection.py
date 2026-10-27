@@ -13,8 +13,8 @@ OUT = build_parallel.OUT
 def build():
     build_usability.build()
     page = BeautifulSoup((OUT / 'index.html').read_text(encoding='utf8'), 'html.parser')
-    page.head.append(BeautifulSoup('<link rel="stylesheet" href="/assets/card-selection.css?v=1">', 'html.parser'))
-    page.body.append(BeautifulSoup('<script src="/assets/card-selection.js?v=1" defer></script>', 'html.parser'))
+    page.head.append(BeautifulSoup('<link rel="stylesheet" href="/assets/card-selection.css?v=2">', 'html.parser'))
+    page.body.append(BeautifulSoup('<script src="/assets/card-selection.js?v=2" defer></script>', 'html.parser'))
     intro = page.select_one('#course-descriptions .section-title p')
     intro.string = 'Select the courses you need. Complete Level 1 first, then take Levels 2–4 in any order to suit your work.'
     for level in range(1, 5):
@@ -22,8 +22,8 @@ def build():
         card['data-selectable-card'] = str(level)
         card.select_one('[data-choose-course]').decompose()
         initial = ' checked' if level == 1 else ''
-        control = BeautifulSoup(f'''<label class="course-card-choice"><input type="checkbox" data-card-choice="{level}" aria-label="Select Level {level} course"{initial}><span data-card-choice-label>{'Selected' if level == 1 else 'Select course'}</span></label>''', 'html.parser')
-        card.select_one('.text-start').insert_before(control)
+        control = BeautifulSoup(f'''<label class="course-card-choice"><input type="checkbox" data-card-choice="{level}" aria-label="Select Level {level} course"{initial}></label>''', 'html.parser')
+        card.select_one('h3 .course-level').insert_before(control)
         if level == 1: card['class'].append('course-card-selected')
     (OUT / 'index.html').write_text(str(page), encoding='utf8')
     for name in ['card-selection.css', 'card-selection.js']:

@@ -9,7 +9,6 @@
       const selected = calculator.querySelector('[data-course="' + level + '"] .training-quote__checkbox').checked;
       card.classList.toggle('course-card-selected', selected);
       card.querySelector('[data-card-choice]').checked = selected;
-      card.querySelector('[data-card-choice-label]').textContent = selected ? 'Selected' : 'Select course';
     });
   }
   function setCourse(card, selected) {
