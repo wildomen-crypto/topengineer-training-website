@@ -1,6 +1,7 @@
 # Electronic guide in the selectable-card version
 
 - The optional product is a complete electronic set of three English-language volumes. Fixed price: EUR 89 per set, authorised by the owner from USD 100 rounded to a whole euro. The reference conversion is recorded in `book-product.json`.
+- The guide is also available in Spanish, Chinese and other languages, as confirmed by the owner. This availability is stated in the book section; the existing calculator and payment documents explicitly describe the English-language edition.
 - `book-product.json` is the price source for the calculator, book section and generated order catalogue. Rebuild with `python -X utf8 work/consulting-card-selection-version/build_card_selection.py` after changing it.
 - The initial selection remains Level 1, two days, one participant; books are unchecked. A customer may add 1–20 sets or order the books without a course. Books never change course hours or dates and are not silently multiplied by the participant count.
 - The cart and all API requests use `bookQuantity` (integer, 0–20). The server calculates the price from its catalogue and snapshots the book line in the order. The same quantity travels through quotation downloads, checkout, editing, invoice, detailed proposal and the optional training agreement.
