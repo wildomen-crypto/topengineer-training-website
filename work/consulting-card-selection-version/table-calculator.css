@@ -23,7 +23,6 @@
 #training-calculator .training-quote__col-start { width: 15%; }
 #training-calculator .training-quote__col-end { width: 12%; }
 #training-calculator .training-quote__col-price { width: 11%; }
-#training-calculator .training-quote__table thead { background: #f0f5f8; }
 #training-calculator .training-quote__table thead th { text-align: left; font-weight: 700; font-size: 14px; padding: 13px 12px; border-top: 1px solid #d4dfe8; border-right: 1px solid #d4dfe8; }
 #training-calculator .training-quote__table thead th span { font-weight: 400; }
 #training-calculator .training-quote__table thead th:last-child { border-right: 0; text-align: center; }
@@ -46,14 +45,17 @@
 #training-calculator .training-quote__price output { color: #0563b9; font-size: 22px; line-height: 1.3; font-weight: 700; white-space: nowrap; }
 #training-calculator .training-quote__course:not(.is-selected) .training-quote__price output { color: #586879; font-weight: 400; }
 #training-calculator .training-quote__mobile-label { display: none; }
-#training-calculator tfoot td { background: #edf7fe; border-top: 1px solid #d4dfe8; padding: 18px 22px; }
+#training-calculator .training-quote__summary { display: grid; grid-template-columns: minmax(0,1fr) auto; grid-template-areas: "notes total"; align-items: center; gap: 12px 32px; padding-top: 16px; }
+#training-calculator .training-quote__summary > .training-quote__total { grid-area: total; min-width: 0; }
+#training-calculator .training-quote__notes { grid-area: notes; min-width: 0; }
+#training-calculator .training-quote__notes p { margin: 0; color: #526175; font-size: 13px; line-height: 1.5; }
+#training-calculator .training-quote__notes p + p { margin-top: 4px; }
 #training-calculator .training-quote__total { display: flex; justify-content: flex-end; align-items: center; gap: 24px; }
 #training-calculator .training-quote__total > div { text-align: right; }
 #training-calculator .training-quote__total strong { display: block; font-size: 14px; color: #243b56; }
 #training-calculator .training-quote__total span { display: block; margin-top: 4px; font-size: 14px; color: #52667b; }
 #training-calculator .training-quote__total > output { border-left: 1px solid #b9d2e6; padding-left: 28px; font-size: 36px; line-height: 1.25; font-weight: 700; color: #0563b9; white-space: nowrap; }
-#training-calculator .training-quote__actions { display: flex; justify-content: space-between; align-items: center; gap: 20px 32px; margin-top: 22px; }
-#training-calculator .training-quote__actions p { font-size: 13px; color: #526175; margin: 0; max-width: 960px; line-height: 1.6; }
+#training-calculator .training-quote__actions { display: flex; justify-content: flex-end; align-items: center; gap: 20px 32px; margin-top: 22px; }
 #training-calculator .training-quote__discuss { flex-shrink: 0; display: inline-flex; align-items: center; gap: 24px; border: 1px solid #0563b9; background: #0563b9; color: #fff; border-radius: 3px; padding: 12px 20px; font-size: 14px; font-weight: 600; }
 #training-calculator .training-quote__discuss:disabled { background: #687c8c; border-color: #687c8c; cursor: default; }
 #training-calculator button:focus-visible, #training-calculator input:focus-visible, #training-calculator select:focus-visible, #training-calculator a:focus-visible { outline: 3px solid #ffbc00; outline-offset: 3px; box-shadow: none; }
@@ -94,7 +96,7 @@
 @media (max-width: 1399px) {
   #training-calculator .training-quote__table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   #training-calculator .training-quote__table colgroup { display: none; }
-  #training-calculator .training-quote__table, #training-calculator tbody, #training-calculator tfoot, #training-calculator tfoot tr, #training-calculator tfoot td { display: block; width: 100%; }
+  #training-calculator .training-quote__table, #training-calculator tbody { display: block; width: 100%; }
   #training-calculator .training-quote__course { display: grid; grid-template-columns: 44px repeat(4,minmax(0,1fr)); gap: 12px 18px; padding: 16px; border-top: 1px solid #d4dfe8; }
   #training-calculator .training-quote__course.is-selected { background: #eaf5fd; }
   #training-calculator .training-quote__table tbody > tr > * { padding: 0; border: 0; background: transparent; }
@@ -107,6 +109,9 @@
   #training-calculator .form-select, #training-calculator .training-quote__date, #training-calculator .training-quote__end-date { min-height: 44px; }
   #training-calculator .training-quote__title { font-size: 16px; }
   #training-calculator .training-quote__total > output { font-size: 30px; }
+}
+@media (max-width: 1199px) {
+  #training-calculator .training-quote__summary { grid-template-columns: minmax(0,1fr); grid-template-areas: "total" "notes"; }
 }
 @media (max-width: 991px) {
   #training-calculator .training-quote__course { grid-template-columns: 44px minmax(0,1fr) minmax(0,1fr); }
@@ -124,7 +129,6 @@
   #training-calculator .training-quote__setting { grid-column: 2; }
   #training-calculator .training-quote__price { grid-row: 6; }
   #training-calculator .training-quote__course:not(.is-selected) .training-quote__setting, #training-calculator .training-quote__course:not(.is-selected) .training-quote__price { display: none; }
-  #training-calculator tfoot td { padding: 16px 14px; }
   #training-calculator .training-quote__total { display: block; }
   #training-calculator .training-quote__total > div { text-align: left; }
   #training-calculator .training-quote__total > output { display: block; padding-left: 0; border-left: 0; margin-top: 10px; }

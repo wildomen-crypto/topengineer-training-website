@@ -46,7 +46,6 @@ def build():
     calc = page.select_one('#training-calculator')
     calc.select_one('.training-quote__actions p').string = 'For 5- and 10-day courses: minimum fee for 3 participants, even if only 1 or 2 attend. The 10-day fee is twice the 5-day fee. All prices are per group.'
     calc.select_one('[data-start-checkout]').string = 'Prepare order documents'
-    calc.select_one('[data-download-proposal]').insert_before(BeautifulSoup('<span class="proposal-hint">No company details needed for the proposal.</span>', 'html.parser'))
     for th in calc.select('thead th'):
         if th.get_text(strip=True) == 'Desired start date': th.string = 'Preferred start date (optional)'
     for row in calc.select('[data-course]'):

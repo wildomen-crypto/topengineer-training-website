@@ -15,7 +15,7 @@
 <link href="/local/templates/top_com/assets/img/favicon.webp" rel="icon"/> <!-- Favicons -->
 <link href="/local/templates/top_com/assets/img/apple-touch-icon.webp" rel="apple-touch-icon"/> <!-- Favicons -->
 <link href="/assets/hero-layout.css?v=20261020-2" rel="stylesheet"/>
-<link href="/assets/table-calculator.css?v=20261023-compact-prices-1" rel="stylesheet"/>
+<link href="/assets/table-calculator.css?v=20261027-white-header-1" rel="stylesheet"/>
 <link href="/assets/course-programme.css?v=20261021-3" rel="stylesheet"/>
 <link href="/assets/parallel-days.css?v=20261023-1" rel="stylesheet"/>
 <link href="/assets/course-levels.css?v=20261023-neutral-2" rel="stylesheet"/>
@@ -1195,8 +1195,8 @@
 </section><section aria-labelledby="training-calculator-title" class="row px-4 px-md-5 training-calculator" id="training-calculator">
 <div class="container">
 <div class="section-title pt-4"><h2 id="training-calculator-title">Course calculator</h2><p>Select your courses, duration and group size. Add an electronic book set if you need one.</p></div>
-<div class="training-quote">
-<div class="training-quote__heading"><div class="training-quote__tools ms-auto"><button data-clear-selection="" type="button">Clear selection</button><button aria-haspopup="dialog" data-open-price-table="" type="button"><i aria-hidden="true" class="bi bi-file-earmark-text"></i> View price table</button></div></div>
+<div class="training-quote__heading"><div class="training-quote__tools ms-auto"><button data-clear-selection="" type="button">Clear selection</button><button aria-haspopup="dialog" data-open-price-table="" type="button"><i aria-hidden="true" class="bi bi-file-earmark-text"></i> View price table</button></div></div><div class="training-quote">
+
 <table class="training-quote__table"><caption class="visually-hidden">Choose one or more Tekla Structures courses and set the duration, group size and desired start date for each. The course end date is calculated automatically.</caption><colgroup><col class="training-quote__col-check"/><col class="training-quote__col-course"/><col class="training-quote__col-days"/><col class="training-quote__col-people"/><col class="training-quote__col-start"/><col class="training-quote__col-end"/><col class="training-quote__col-price"/></colgroup>
 <thead><tr><th scope="col">Select</th><th scope="col">Course / item</th><th scope="col">Duration <span>(8 hours per day)</span></th><th scope="col">Participants</th><th scope="col">Preferred start date (optional)</th><th scope="col">Course end date <span>(calculated)</span></th><th scope="col">Group / item price</th></tr></thead>
 <tbody><tr class="training-quote__course is-selected" data-course="1" data-course-name="Tekla Structures basic course">
@@ -1234,19 +1234,19 @@
 <td class="training-quote__setting training-quote__start"><label class="training-quote__mobile-label" for="quote-start-4">Preferred start date (optional)</label><input aria-describedby="quote-date-note" aria-label="Preferred start date for Level 4 (optional)" class="training-quote__date" data-start-date="" disabled="" id="quote-start-4" max="9999-12-31" min="0001-01-01" type="date"/></td>
 <td class="training-quote__setting training-quote__end"><span class="training-quote__mobile-label">Course end date</span><output aria-label="Calculated end date for Level 4" class="training-quote__end-date" for="quote-start-4 quote-days-4"><time data-end-date="">—</time></output></td>
 <td class="training-quote__price"><span class="training-quote__mobile-label">Group price</span><output data-course-price="">—</output><small class="minimum-fee-note" data-minimum-fee="" hidden="">Minimum group fee covers up to 3 participants.</small></td>
-</tr><tr class="training-quote__books" data-book-row="">
-<td class="training-quote__select"><label class="training-quote__check-target"><input aria-label="Add the electronic book set" class="training-quote__checkbox" data-book-selected="" type="checkbox"/><span class="visually-hidden">Add book set</span></label></td>
-<td class="training-quote__book-details" colspan="5"><div class="training-quote__book-content"><div><strong class="training-quote__title">Tekla Structures modelling guide</strong><span class="small text-muted">Electronic set of three English-language volumes · €89 per set</span> <a class="training-quote__programme-link" href="#training-books">About the books</a></div><div class="training-quote__book-quantity"><label class="small" for="quote-book-quantity">Number of sets</label><select class="form-select" data-book-quantity="" disabled="" id="quote-book-quantity"><option value="1">1 set</option><option value="2">2 sets</option><option value="3">3 sets</option><option value="4">4 sets</option><option value="5">5 sets</option><option value="6">6 sets</option><option value="7">7 sets</option><option value="8">8 sets</option><option value="9">9 sets</option><option value="10">10 sets</option><option value="11">11 sets</option><option value="12">12 sets</option><option value="13">13 sets</option><option value="14">14 sets</option><option value="15">15 sets</option><option value="16">16 sets</option><option value="17">17 sets</option><option value="18">18 sets</option><option value="19">19 sets</option><option value="20">20 sets</option></select></div></div></td>
-<td class="training-quote__price"><span class="training-quote__mobile-label">Book price</span><output data-book-price="">—</output></td>
+</tr><tr class="training-quote__books is-selected" data-book-row="">
+<td class="training-quote__select"><label class="training-quote__check-target"><input aria-label="Add the electronic book set" checked="" class="training-quote__checkbox" data-book-selected="" type="checkbox"/><span class="visually-hidden">Add book set</span></label></td>
+<td class="training-quote__book-details" colspan="5"><div class="training-quote__book-content"><div><strong class="training-quote__title">Tekla Structures modelling guide</strong><span class="small text-muted">Electronic set of three English-language volumes · €89 per set</span> <a class="training-quote__programme-link" href="#training-books">About the books</a></div><div class="training-quote__book-quantity"><label class="small" for="quote-book-quantity">Number of sets</label><select class="form-select" data-book-quantity="" id="quote-book-quantity"><option value="1">1 set</option><option value="2">2 sets</option><option value="3">3 sets</option><option value="4">4 sets</option><option value="5">5 sets</option><option value="6">6 sets</option><option value="7">7 sets</option><option value="8">8 sets</option><option value="9">9 sets</option><option value="10">10 sets</option><option value="11">11 sets</option><option value="12">12 sets</option><option value="13">13 sets</option><option value="14">14 sets</option><option value="15">15 sets</option><option value="16">16 sets</option><option value="17">17 sets</option><option value="18">18 sets</option><option value="19">19 sets</option><option value="20">20 sets</option></select></div></div></td>
+<td class="training-quote__price"><span class="training-quote__mobile-label">Book price</span><output data-book-price="">€89.00</output></td>
 </tr></tbody>
-<tfoot><tr><td colspan="7"><div aria-atomic="true" aria-live="polite" class="training-quote__total"><div><strong>Total for selected items</strong><span data-total-meta="">1 course · 2 days · 16 hours</span></div><output data-quote-total="">€450.00</output></div></td></tr></tfoot>
+
 </table>
-</div>
-<p class="training-quote__date-note" id="quote-date-note">Start dates are optional. The estimated end date counts all calendar days, including weekends and the start date. Your instructor will confirm the actual schedule.</p>
-<div class="training-quote__actions"><p>For 5- and 10-day courses: minimum fee for 3 participants, even if only 1 or 2 attend. The 10-day fee is twice the 5-day fee. All prices are per group.</p><div class="d-flex flex-wrap gap-2 justify-content-end flex-shrink-0"><button class="btn btn-outline-primary" data-discuss-plan="" type="button">Ask a question</button><span class="proposal-hint">No company details needed for the proposal.</span><button class="btn btn-outline-primary" data-download-proposal="" type="button">Download proposal PDF</button><button class="training-quote__discuss" data-start-checkout="" type="button">Prepare order documents</button></div></div><p class="small text-danger mt-2" hidden="" id="checkout-cart-error" role="alert"></p><p aria-live="polite" class="small text-muted mt-2 mb-0" hidden="" id="proposal-download-status" role="status"></p>
+</div><div class="training-quote__summary"><div aria-atomic="true" aria-live="polite" class="training-quote__total"><div><strong>Total for selected items</strong><span data-total-meta="">1 course · 2 days · 16 hours · 1 book set</span></div><output data-quote-total="">€539.00</output></div><div class="training-quote__notes"><p class="training-quote__date-note" id="quote-date-note">Start dates are optional. The estimated end date counts all calendar days, including weekends and the start date. Your instructor will confirm the actual schedule.</p><p>For 5- and 10-day courses: minimum fee for 3 participants, even if only 1 or 2 attend. The 10-day fee is twice the 5-day fee. All prices are per group.</p></div></div>
+
+<div class="training-quote__actions"><div class="d-flex flex-wrap gap-2 justify-content-end flex-shrink-0"><button class="btn btn-outline-primary" data-discuss-plan="" type="button">Ask a question</button><button class="btn btn-outline-primary" data-download-proposal="" type="button">Download proposal PDF</button><button class="training-quote__discuss" data-start-checkout="" type="button">Prepare order documents</button></div></div><p class="small text-danger mt-2" hidden="" id="checkout-cart-error" role="alert"></p><p aria-live="polite" class="small text-muted mt-2 mb-0" hidden="" id="proposal-download-status" role="status"></p>
 <noscript><p>Please enable JavaScript to update the training estimate.</p></noscript>
 </div>
-<div class="mobile-quote-bar" data-mobile-quote-bar="" hidden=""><div><span>Estimated total</span><strong data-mobile-total="">€450.00</strong></div><button class="btn btn-primary" data-mobile-continue="" type="button">Prepare documents</button></div></section><section aria-labelledby="how-training-works-title" class="row px-4 px-md-5 py-5" id="how-training-works">
+<div class="mobile-quote-bar" data-mobile-quote-bar="" hidden=""><div><span>Estimated total</span><strong data-mobile-total="">€539.00</strong></div><button class="btn btn-primary" data-mobile-continue="" type="button">Prepare documents</button></div></section><section aria-labelledby="how-training-works-title" class="row px-4 px-md-5 py-5 section-bg" id="how-training-works">
 <div class="container">
 <div class="section-title pt-4"><h2 id="how-training-works-title">How the training works</h2><p>Live demonstrations, guided exercises and time to practise.</p></div>
 <div class="row g-4 align-items-stretch">
@@ -1296,7 +1296,7 @@
 </div>
 </div>
 </section>
-<section aria-labelledby="training-formats-title" class="row pricing px-4 px-md-5 pt-5 pb-5" id="training-formats"><div class="container">
+<section aria-labelledby="training-formats-title" class="row pricing px-4 px-md-5 pt-5 pb-5 section-bg" id="training-formats"><div class="container">
 <div class="section-title pt-4"><h2 id="training-formats-title">Choose your training format</h2><p>Hands-on practice makes the difference when introducing Tekla Structures into your company’s real project work.</p></div>
 <div class="row g-4"><div class="col-lg-4 d-flex"><article aria-labelledby="training-format-2-title" class="box featured d-flex flex-column w-100 text-start" id="training-format-2">
 <h3 class="text-center" id="training-format-2-title">2 days<span class="d-block small fw-normal mt-1">16 hours</span></h3>
@@ -1322,7 +1322,7 @@
 </ol>
 <div class="bg-light border-start border-4 border-primary p-4 mt-4"><h3 class="h5 fw-bold">Allow time for internal IT approvals</h3><p class="mb-0">In larger organisations, approvals for software installation, shared-folder access and other IT permissions can take unexpectedly long because requests may need to pass through several departments. Please involve your IT team early and allow enough time to complete these steps before training starts.</p></div>
 </div>
-</section><section aria-labelledby="course-certificate-title" class="row px-4 px-md-5 pb-5" id="course-certificate">
+</section><section aria-labelledby="course-certificate-title" class="row px-4 px-md-5 pb-5 section-bg" id="course-certificate">
 <div class="container">
 <div class="section-title pt-4">
 <h2 id="course-certificate-title">Your certificate of completion</h2>
@@ -1345,15 +1345,6 @@
 <ul class="certificate-types list-unstyled"><li class="certificate-type certificate-blue"><h3 class="h6 fw-bold mb-1">2 days · 16 hours</h3><p class="mb-0">Essentials</p></li><li class="certificate-type certificate-teal"><h3 class="h6 fw-bold mb-1">5 days · 40 hours</h3><p class="mb-0">In-depth training</p></li><li class="certificate-type certificate-bronze"><h3 class="h6 fw-bold mb-1">10 days · 80 hours</h3><p class="mb-0">Training + your pilot project</p></li></ul>
 <p class="mb-0">Your certificate records the course completed and your name, and has a unique certificate number. Keep the electronic version or print your own paper copy.</p>
 </div>
-</div>
-</div>
-</section><section aria-labelledby="after-training-support-title" class="row px-4 px-md-5 pb-5" id="after-training-support">
-<div class="container">
-<div class="section-title pt-4"><h2 id="after-training-support-title">Support after your training</h2><p>Help as you put your new skills into practice.</p></div>
-<div class="row justify-content-center mb-4"><div class="col-lg-10"><p class="text-center mb-0">You keep your instructor’s direct contact details after the course and can ask follow-up questions via Telegram, WhatsApp or another agreed channel.</p></div></div>
-<div class="row g-4 justify-content-center">
-<div class="col-md-6 col-xxl-5"><div class="bg-light rounded p-4 h-100"><h3 class="h5 fw-bold">Free help with quick questions</h3><p class="mb-0">If a question can be answered without a significant time commitment, your instructor will respond free of charge.</p></div></div>
-<div class="col-md-6 col-xxl-5"><div class="bg-light rounded p-4 h-100"><h3 class="h5 fw-bold">Hourly support for more involved work</h3><p class="mb-0">If an issue requires your instructor’s direct involvement and substantial working time, we can provide paid technical support. The task and hourly rate are agreed with you before work starts.</p></div></div>
 </div>
 </div>
 </section><section aria-labelledby="course-programmes-title" class="row px-4 px-md-5 pb-5" id="course-programmes"><div class="container">
@@ -1397,7 +1388,16 @@
 </section></div>
 </div><p class="small text-muted mt-3 mb-0">Each course programme is organised into two parts. The teaching schedule and time for practical exercises are agreed with your instructor to suit your chosen course duration.</p>
 <noscript><p>Enable JavaScript to switch courses. Both parts of Level 1 are available below.</p></noscript>
-</div></section><!-- End Pricing Section -->
+</div></section><section aria-labelledby="after-training-support-title" class="row px-4 px-md-5 pb-5" id="after-training-support">
+<div class="container">
+<div class="section-title pt-4"><h2 id="after-training-support-title">Support after your training</h2><p>Help as you put your new skills into practice.</p></div>
+<div class="row justify-content-center mb-4"><div class="col-lg-10"><p class="text-center mb-0">You keep your instructor’s direct contact details after the course and can ask follow-up questions via Telegram, WhatsApp or another agreed channel.</p></div></div>
+<div class="row g-4 justify-content-center">
+<div class="col-md-6 col-xxl-5"><div class="bg-light rounded p-4 h-100"><h3 class="h5 fw-bold">Free help with quick questions</h3><p class="mb-0">If a question can be answered without a significant time commitment, your instructor will respond free of charge.</p></div></div>
+<div class="col-md-6 col-xxl-5"><div class="bg-light rounded p-4 h-100"><h3 class="h5 fw-bold">Hourly support for more involved work</h3><p class="mb-0">If an issue requires your instructor’s direct involvement and substantial working time, we can provide paid technical support. The task and hourly rate are agreed with you before work starts.</p></div></div>
+</div>
+</div>
+</section><!-- End Pricing Section -->
 <!-- ======= Cut Section ======= -->
 <section class="cta" id="cta">
 <div class="container">

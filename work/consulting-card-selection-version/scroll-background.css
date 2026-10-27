@@ -1,0 +1,11 @@
+/* One shared canvas follows the section being read. Existing panels keep their own colours. */
+body[data-scroll-background] {
+  background-color: var(--scroll-page-bg, #fff);
+  transition: background-color 700ms cubic-bezier(.22, .61, .36, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  body[data-scroll-background] { transition: none; }
+}
+@media print {
+  body[data-scroll-background] { background-color: #fff !important; transition: none; }
+}
