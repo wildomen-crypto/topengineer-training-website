@@ -87,8 +87,6 @@ def build():
     scrolling.head.append(BeautifulSoup('<link rel="stylesheet" href="/assets/scroll-background.css?v=1">', 'html.parser'))
     scrolling.body.append(BeautifulSoup('<script src="/assets/scroll-background.js?v=1" defer></script>', 'html.parser'))
     (OUT / 'scroll-background.html').write_text(str(scrolling), encoding='utf8')
-    page.select_one('#course-programmes').insert_after(
-        page.select_one('#after-training-support').extract())
     # The current page stays white, with three static section highlights.
     # Apply it after producing the independent background experiments above.
     for section_id in ['how-training-works', 'training-formats', 'course-certificate']:
