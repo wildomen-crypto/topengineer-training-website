@@ -4,6 +4,8 @@
 
 **Для Codex на новом компьютере:** начните с [CODEX_HANDOFF.md](CODEX_HANDOFF.md). Там есть готовое первое сообщение, порядок запуска, карта файлов и оставшиеся задачи. Репозиторий: [wildomen-crypto/topengineer-training-website](https://github.com/wildomen-crypto/topengineer-training-website).
 
+**Отдельный вариант с боковыми полями (27 октября):** запустить `Start-Contained.cmd` и открыть **http://127.0.0.1:8775/**. Максимальная ширина страницы — 1600 px. Исходники: [work/consulting-contained-version](work/consulting-contained-version/README.md), готовый сайт: `outputs/consulting-contained-version`. Прежняя версия с выбором карточек и книгами продолжает запускаться через `tools/Start-Card-Selection.ps1` на порте 8774; варианты можно развивать независимо.
+
 ## Как открыть дома на Windows
 
 1. Скачать репозиторий через **Code → Download ZIP** или клонировать его, затем распаковать.

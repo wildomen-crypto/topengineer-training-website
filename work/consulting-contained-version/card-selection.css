@@ -1,0 +1,36 @@
+#course-descriptions [data-selectable-card] { cursor: pointer; transition: box-shadow .18s ease, outline-color .18s ease, transform .18s ease; outline: 3px solid transparent; outline-offset: -3px; }
+@media (hover: hover) {
+  #course-descriptions [data-selectable-card]:hover { box-shadow: 0 6px 20px rgba(26,65,100,.22); outline-color: var(--course-ink, #05579e); transform: translateY(-3px); }
+}
+#course-descriptions [data-selectable-card].course-card-selected { outline-color: var(--course-ink, #05579e); box-shadow: 0 4px 15px rgba(26,65,100,.18); }
+#course-descriptions .course-card-choice { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; vertical-align: middle; margin: 0 4px 0 0; cursor: pointer; }
+#course-descriptions .course-card-choice input { width: 20px; height: 20px; margin: 0; accent-color: #fff; cursor: pointer; }
+#course-descriptions .course-card-choice input:focus-visible { outline: 3px solid #ffbc00; outline-offset: 3px; }
+#training-calculator .training-quote__book-content { display: flex; justify-content: space-between; align-items: center; gap: 12px 24px; min-width: 0; }
+#training-calculator .training-quote__book-quantity { flex: 0 0 140px; }
+#training-calculator .training-quote__book-quantity label { display: block; margin-bottom: 4px; }
+#training-calculator .training-quote__books > * { background: #f7f9fb; }
+#training-calculator .training-quote__books.is-selected > * { background: #e5f0fa; }
+@media (max-width: 1399px) {
+  #training-calculator .training-quote__books { display: grid; grid-template-columns: 44px minmax(0,1fr) auto; gap: 12px 18px; padding: 16px; border-top: 1px solid #d4dfe8; background: #f7f9fb; }
+  #training-calculator .training-quote__books.is-selected { background: #e5f0fa; }
+  #training-calculator .training-quote__books .training-quote__select { grid-row: 1 / span 2; }
+  #training-calculator .training-quote__books .training-quote__price { grid-column: 3; grid-row: 1; }
+  #training-calculator .training-quote__books:not(.is-selected) :is(.training-quote__book-quantity, .training-quote__price) { display: none; }
+  #training-calculator .training-quote__books:not(.is-selected) .training-quote__book-details { grid-column: 2 / -1; }
+}
+@media (max-width: 767px) {
+  #training-calculator .training-quote__books { grid-template-columns: 32px minmax(0,1fr); gap: 12px; padding: 14px 12px; }
+  #training-calculator .training-quote__book-content { flex-wrap: wrap; }
+  #training-calculator .training-quote__books .training-quote__price { grid-column: 2; grid-row: 2; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+}
+#training-books { scroll-margin-top: 76px; }
+#training-books .training-books__artwork { display: flex; }
+#training-books .training-books__gallery { display: flex; flex-direction: column; width: 100%; max-width: 820px; margin-inline: auto; min-width: 0; container-type: inline-size; }
+/* The deck stretches with the adjacent copy; narrower galleries also stagger the volumes vertically. */
+#training-books .training-books__deck { --book-width: min(60cqw, clamp(190px, (100cqw - 24px) / 3, 300px)); --book-height: calc(var(--book-width) * 920 / 600); --book-step-y: clamp(0px, (700px - 100cqw) * .16, 72px); position: relative; isolation: isolate; flex: 1; min-height: calc(var(--book-height) + var(--book-step-y) * 2); }
+#training-books .training-books__volume { position: absolute; overflow: hidden; width: var(--book-width); height: var(--book-height); top: calc((100% - var(--book-height)) * var(--book-index) / 2); left: calc((100% - var(--book-width)) * var(--book-index) / 2); z-index: calc(3 - var(--book-index)); filter: drop-shadow(3px 3px 3px rgba(24,45,62,.25)); transition: transform .18s ease; }
+/* Follow the book silhouette: the original JPG's white surround must not cover the next volume. */
+#training-books .training-books__volume img { position: absolute; height: 100%; width: auto; max-width: none; left: -28%; top: 0; clip-path: polygon(21% 2.5%, 27.7% .5%, 31.8% .8%, 90.6% 5.6%, 90.6% 93.7%, 31.8% 98.5%, 27.7% 98.6%, 21% 96.5%); }
+@media (hover: hover) { #training-books .training-books__volume:hover { z-index: 5; transform: translateY(-4px); } }
+@media (prefers-reduced-motion: reduce) { #course-descriptions [data-selectable-card], #training-books .training-books__volume { transition: none; } }

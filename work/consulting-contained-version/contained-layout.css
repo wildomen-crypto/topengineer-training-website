@@ -1,0 +1,17 @@
+/* This optional variant keeps the full page within a centred, readable width. */
+body.contained-site { --site-width: 1600px; --site-gutter: clamp(12px, 2.5vw, 48px); background: #eef2f5; }
+.contained-site :is(#main, #footer, #topbar, #header, .mobile-quote-bar) { width: calc(100% - var(--site-gutter) * 2); max-width: var(--site-width); margin-inline: auto; }
+.contained-site :is(#main, #footer) { background-color: #fff; box-shadow: 0 0 0 1px #dce5ec; }
+.contained-site :is(#header, #topbar) { transition-property: background-color, box-shadow, top, opacity; }
+.contained-site :is(#main > .row, #consulting > .row) { margin-inline: 0; }
+.contained-site .sr-sharebar.sr-sb-left { left: max(0px, calc((100vw - var(--site-width)) / 2 - 36px)); }
+.contained-site .course-programme--parallel { width: min(1520px, calc(100% - 32px)); }
+@media (max-width: 1279px) {
+  .contained-site #navbar:not(.navbar-mobile) > ul { display: none; }
+  .contained-site #navbar .mobile-nav-toggle { display: block; }
+}
+@media (max-width: 575px) {
+  .contained-site #consulting > .row { padding-inline: 0 !important; }
+  .contained-site #header .logo img { max-width: 140px; height: auto; }
+  .contained-site #header .socializer .bi { font-size: 16px; }
+}

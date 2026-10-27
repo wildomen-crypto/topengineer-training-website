@@ -1,0 +1,1 @@
+Independent centred layout, max width 1600 px. Start from the repository root with tools/Start-Contained.ps1 (port 8775). Source: work/consulting-contained-version. Rebuild: python -X utf8 work/consulting-contained-version/build_contained.py. The original selectable-card version on port 8774 is separate.
